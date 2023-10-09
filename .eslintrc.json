@@ -1,3 +1,49 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "eslint:recommended",
+    "airbnb-base",
+    "next/core-web-vitals",
+    "prettier"
+  ],
+  "rules": {
+    "no-console": "warn",
+    "consistent-return": "off",
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "no-unused-vars": [
+      "warn",
+      {
+        "vars": "local",
+        "args": "none"
+      }
+    ],
+    "camelcase": [
+      "warn",
+      {
+        "ignoreImports": true
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          [
+            "@",
+            "./src"
+          ]
+        ],
+        "extensions": [
+          ".ts",
+          ".js",
+          ".jsx",
+          ".json"
+        ]
+      }
+    }
+  }
 }

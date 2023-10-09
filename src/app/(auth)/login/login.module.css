@@ -1,0 +1,60 @@
+.authPageContainer {
+  composes: authPageContainer from '../authPagesGlobal.css';
+}
+
+.authPageContainer h1,
+.authPageContainer p {
+  text-align: unset;
+}
+
+.authPageContainer h1 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.authPageContainer p {
+  color: #5c5c5c;
+  font-size: 1.25rem;
+}
+
+.formWrapper {
+  composes: formWrapper from '../authPagesGlobal.css';
+  position: relative;
+}
+
+.authForm {
+  composes: authForm from '../authPagesGlobal.css';
+  align-items: unset;
+}
+
+.authForm label {
+  width: fit-content;
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin-bottom: 24px;
+}
+
+.authForm input {
+  margin-bottom: 42px;
+}
+
+.btnEnter {
+  composes: btnEnter from '../authPagesGlobal.css';
+  width: 208px;
+  margin-bottom: 32px;
+}
+
+@media only screen and (min-height: 740px) and (min-width: 340px) and (max-width: 500px) {
+  .formWrapper::before {
+    content: '';
+    position: absolute;
+    background-image: url('/images/login-back-shape-mobile.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 264px;
+    width: 100%;
+    left: 0;
+    bottom: -100px;
+  }
+}
