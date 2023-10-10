@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { CgSpinner } from 'react-icons/cg';
 import { useUser } from '@/contexts/userContext';
-import withPrivateRoute from '@/hoc/withPrivateRoute';
 import styles from './dashboard.module.css';
 
 function Dashboard() {
@@ -31,4 +30,4 @@ function Dashboard() {
   );
 }
 
-export default withPrivateRoute(Dashboard);
+export default Dashboard;

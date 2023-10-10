@@ -8,6 +8,7 @@
   "rules": {
     "no-console": "warn",
     "consistent-return": "off",
+    "import/prefer-default-export": "off",
     "no-plusplus": [
       "error",
       {

@@ -15,22 +15,15 @@ function Login() {
   const { logIn } = useUser();
 
   async function handleLogin(e) {
-    try {
-      e.preventDefault();
-      setIsSendingForm(true);
+    e.preventDefault();
 
-      const form = e.target;
-      const formData = new FormData(form);
-      const formJson = Object.fromEntries(formData.entries());
+    const form = e.target;
+    const formData = new FormData(form);
+    const formJson = Object.fromEntries(formData.entries());
 
-      const { email, password } = formJson;
+    const { email, password } = formJson;
 
-      await logIn(email, password);
-      setIsSendingForm(false);
-    } catch (error) {
-      // console.log({ error });
-      setIsSendingForm(false);
-    }
+    await logIn(email, password);
   }
 
   return (
@@ -42,6 +35,7 @@ function Login() {
           <label htmlFor="email">Email:</label>
           <input
             required
+            minLength={6}
             autoComplete="email"
             type="email"
             name="email"
