@@ -15,15 +15,52 @@ export const UserContext = createContext();
 export default function UserContextComp({ children }) {
   const [user, setUser] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true); // Helpful, to update the UI accordingly.
-  const [firebaseStatusMessage, setFirebaseStatusMessage] = useState(null); // Error or success message
+  const [authStatusMessage, setAuthStatusMessage] = useState(null); // Error or success message
+
+  useEffect(() => {
+    let ignore = false;
+
+    async function checkAuthenticated() {
+      try {
+        const storageToken = localStorage.getItem('token');
+
+        if (storageToken) {
+          api.defaults.headers.Authorization = `Bearer ${storageToken}`;
+
+          const response = await api.get('/api/users/me');
+          if (!ignore) {
+            setUser(response.data);
+          }
+        }
+      } catch (error) {
+        setAuthStatusMessage({
+          type: 'error',
+          message: `${error.response.data.error.message}. (${error.response.data.error.name}).`,
+        });
+      } finally {
+        setLoadingUser(false);
+      }
+    }
+
+    checkAuthenticated();
+    return () => {
+      ignore = true;
+    };
+  }, []);
 
   // Display toast messages dynamically based on type (error, success, etc)
   useEffect(() => {
-    if (firebaseStatusMessage) {
-      const { type, message } = firebaseStatusMessage;
+    if (authStatusMessage) {
+      const { type, message } = authStatusMessage;
       toast[type](message);
     }
-  }, [firebaseStatusMessage]);
+  }, [authStatusMessage]);
+
+  function storeToken(accessToken) {
+    localStorage.setItem('token', accessToken);
+
+    api.defaults.headers.Authorization = `Bearer ${accessToken}`;
+  }
 
   const logIn = useCallback(async (email, password) => {
     try {
@@ -31,56 +68,50 @@ export default function UserContextComp({ children }) {
 
       const response = await api.post('/api/auth/login', data);
 
-      // storeTokens(response.data);
+      storeToken(response.data.jwt);
 
-      // setAuthenticated(true);
-      console.log(response.data);
       setUser(response.data.user);
-      console.log(user);
 
-      setFirebaseStatusMessage({
+      setAuthStatusMessage({
         type: 'success',
         message: 'Login realizado com sucesso.',
       });
     } catch (error) {
-      setFirebaseStatusMessage({
+      setAuthStatusMessage({
         type: 'error',
-        message: error.message,
+        message: `${error.response.data.error.message}. (${error.response.data.error.name}).`,
       });
-
-      console.log(error);
-
-      // throw error;
     }
   }, []);
 
-  // const logOut = useCallback(async () => {
-  //   try {
-  //     await signOut(auth);
-  //     setFirebaseStatusMessage({
-  //       type: 'success',
-  //       message: 'Deslogado com sucesso.',
-  //     });
-  //   } catch (error) {
-  //     setFirebaseStatusMessage({
-  //       type: 'error',
-  //       message: firebaseErrorsPTBR[error.code]
-  //         ? `${firebaseErrorsPTBR[error.code]} (${error.code}).`
-  //         : error.message,
-  //     });
-  //   }
-  // }, [auth]);
+  const logOut = useCallback(async () => {
+    try {
+      localStorage.removeItem('token');
+
+      setUser(null);
+
+      setAuthStatusMessage({
+        type: 'success',
+        message: 'Deslogado com sucesso.',
+      });
+    } catch (error) {
+      setAuthStatusMessage({
+        type: 'error',
+        message: error.message,
+      });
+    }
+  }, []);
 
   // const enviarEmailRedefinirSenha = useCallback(
   //   async (email) => {
   //     try {
   //       await sendPasswordResetEmail(auth, email);
-  //       setFirebaseStatusMessage({
+  //       setAuthStatusMessage({
   //         type: 'success',
   //         message: 'Email de redefinição de senha enviado com sucesso.',
   //       });
   //     } catch (error) {
-  //       setFirebaseStatusMessage({
+  //       setAuthStatusMessage({
   //         type: 'error',
   //         message: firebaseErrorsPTBR[error.code]
   //           ? `${firebaseErrorsPTBR[error.code]} (${error.code}).`
@@ -99,7 +130,7 @@ export default function UserContextComp({ children }) {
   //       const userEmail = await verifyPasswordResetCode(auth, actionCode);
   //       return userEmail;
   //     } catch (error) {
-  //       setFirebaseStatusMessage({
+  //       setAuthStatusMessage({
   //         type: 'error',
   //         message: firebaseErrorsPTBR[error.code]
   //           ? `${firebaseErrorsPTBR[error.code]} (${error.code}).`
@@ -115,12 +146,12 @@ export default function UserContextComp({ children }) {
   //   async (actionCode, newPassword) => {
   //     try {
   //       await confirmPasswordReset(auth, actionCode, newPassword);
-  //       setFirebaseStatusMessage({
+  //       setAuthStatusMessage({
   //         type: 'success',
   //         message: 'Senha redefinida com sucesso.',
   //       });
   //     } catch (error) {
-  //       setFirebaseStatusMessage({
+  //       setAuthStatusMessage({
   //         type: 'error',
   //         message: firebaseErrorsPTBR[error.code]
   //           ? `${firebaseErrorsPTBR[error.code]} (${error.code}).`
@@ -136,9 +167,9 @@ export default function UserContextComp({ children }) {
     () => ({
       user,
       loadingUser,
-      firebaseStatusMessage,
+      authStatusMessage,
       logIn,
-      // logOut,
+      logOut,
       // enviarEmailRedefinirSenha,
       // verificarCodRedefinicaoSenha,
       // confirmarRedefinicaoSenha,
@@ -146,9 +177,9 @@ export default function UserContextComp({ children }) {
     [
       user,
       loadingUser,
-      firebaseStatusMessage,
+      authStatusMessage,
       logIn,
-      // logOut,
+      logOut,
       // enviarEmailRedefinirSenha,
       // verificarCodRedefinicaoSenha,
       // confirmarRedefinicaoSenha,
