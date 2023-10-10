@@ -33,9 +33,13 @@ export default function UserContextComp({ children }) {
           }
         }
       } catch (error) {
+        const errMessage = error.response?.data
+          ? `${error.response.data.error.message}. (${error.response.data.error.name}).`
+          : `${error.message}. (${error.name}).`;
+
         setAuthStatusMessage({
           type: 'error',
-          message: `${error.response.data.error.message}. (${error.response.data.error.name}).`,
+          message: errMessage,
         });
       } finally {
         setLoadingUser(false);
@@ -77,9 +81,13 @@ export default function UserContextComp({ children }) {
         message: 'Login realizado com sucesso.',
       });
     } catch (error) {
+      const errMessage = error.response?.data
+        ? `${error.response.data.error.message}. (${error.response.data.error.name}).`
+        : `${error.message}. (${error.name}).`;
+
       setAuthStatusMessage({
         type: 'error',
-        message: `${error.response.data.error.message}. (${error.response.data.error.name}).`,
+        message: errMessage,
       });
     }
   }, []);
@@ -97,7 +105,7 @@ export default function UserContextComp({ children }) {
     } catch (error) {
       setAuthStatusMessage({
         type: 'error',
-        message: error.message,
+        message: `${error.message}. (${error.name}).`,
       });
     }
   }, []);
