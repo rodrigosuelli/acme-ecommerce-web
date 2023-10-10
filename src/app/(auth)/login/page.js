@@ -16,6 +16,7 @@ function Login() {
 
   async function handleLogin(e) {
     e.preventDefault();
+    setIsSendingForm(true);
 
     const form = e.target;
     const formData = new FormData(form);
@@ -24,6 +25,8 @@ function Login() {
     const { email, password } = formJson;
 
     await logIn(email, password);
+
+    setIsSendingForm(false);
   }
 
   return (
