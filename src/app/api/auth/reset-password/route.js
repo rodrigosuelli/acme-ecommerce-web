@@ -1,3 +1,5 @@
+import { NextResponse } from 'next/server';
+
 export async function POST(request) {
   const url = `${process.env.STRAPI_API_URL}/auth/passwordConfirmation`;
 
@@ -18,5 +20,9 @@ export async function POST(request) {
 
   const data = await res.json();
 
-  return Response.json(data);
+  return NextResponse.json(data, {
+    headers: res.headers,
+    status: res.status,
+    statusText: res.statusText,
+  });
 }
