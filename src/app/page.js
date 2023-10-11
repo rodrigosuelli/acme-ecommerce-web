@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import { CgSpinner } from 'react-icons/cg';
 import { useUser } from '@/contexts/userContext';
-import styles from './dashboard.module.css';
+import styles from './homepage.module.css';
 
-function Dashboard() {
+function Homepage() {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const { logOut } = useUser();
@@ -17,8 +17,8 @@ function Dashboard() {
   }
 
   return (
-    <div className={styles.dashboardContainer}>
-      <h1>Dashboard Page</h1>
+    <div className={styles.homepageContainer}>
+      <h1>Homepage</h1>
       <button
         disabled={isLoggingOut}
         className={styles.btnLogout}
@@ -30,4 +30,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Homepage;

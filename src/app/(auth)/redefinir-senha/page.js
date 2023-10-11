@@ -62,7 +62,7 @@ function RedefinirSenha() {
               </p>
 
               <Link href="/" className="btnEnter">
-                Ir para o dashboard
+                Ir para a homepage
               </Link>
             </>
           ) : (
