@@ -1,30 +1,20 @@
 'use client';
 
-import { useState } from 'react';
-import { CgSpinner } from 'react-icons/cg';
 import { useUser } from '@/contexts/userContext';
 import styles from './homepage.module.css';
 
 function Homepage() {
-  const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const { user, logOut } = useUser();
 
-  const { logOut } = useUser();
-
-  async function handleLogout() {
-    setIsLoggingOut(true);
-    await logOut();
-    setIsLoggingOut(false);
+  function handleLogout() {
+    logOut();
   }
 
   return (
     <div className={styles.homepageContainer}>
-      <h1>Homepage</h1>
-      <button
-        disabled={isLoggingOut}
-        className={styles.btnLogout}
-        onClick={handleLogout}
-      >
-        {isLoggingOut ? <CgSpinner size={28} /> : 'Logout'}
+      <h1>{user && user.username}</h1>
+      <button className={styles.btnLogout} onClick={handleLogout}>
+        Logout
       </button>
     </div>
   );

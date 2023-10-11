@@ -92,22 +92,15 @@ export default function UserContextComp({ children }) {
     }
   }, []);
 
-  const logOut = useCallback(async () => {
-    try {
-      localStorage.removeItem('token');
+  const logOut = useCallback(() => {
+    localStorage.removeItem('token');
 
-      setUser(null);
+    setUser(null);
 
-      setAuthStatusMessage({
-        type: 'success',
-        message: 'Deslogado com sucesso.',
-      });
-    } catch (error) {
-      setAuthStatusMessage({
-        type: 'error',
-        message: `${error.message}. (${error.name}).`,
-      });
-    }
+    setAuthStatusMessage({
+      type: 'success',
+      message: 'Deslogado com sucesso.',
+    });
   }, []);
 
   // const enviarEmailRedefinirSenha = useCallback(
