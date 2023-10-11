@@ -20,7 +20,6 @@ export async function POST(request) {
   const data = await res.json();
 
   return NextResponse.json(data, {
-    headers: res.headers,
     status: res.status,
     statusText: res.statusText,
   });
