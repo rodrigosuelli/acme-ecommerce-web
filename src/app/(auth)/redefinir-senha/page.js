@@ -68,7 +68,7 @@ function RedefinirSenha() {
                 type="text"
                 name="email_code"
                 id="email_code"
-                value={code}
+                value={code || undefined}
               />
               <input
                 required
