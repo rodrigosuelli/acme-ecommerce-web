@@ -41,6 +41,8 @@ export default function UserContextComp({ children }) {
           type: errMessageType,
           message: errMessage,
         });
+
+        return Promise.reject(error);
       },
       { synchronous: true }
     );
@@ -132,7 +134,7 @@ export default function UserContextComp({ children }) {
       });
     } catch (error) {
       // Let interceptor handle
-      // throw error;
+      throw error;
     }
   }, []);
 

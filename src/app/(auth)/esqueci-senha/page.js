@@ -10,29 +10,33 @@ function EsqueciSenha() {
   const [isSendingForm, setIsSendingForm] = useState(false);
   const [isEmailSent, setIsEmailSent] = useState(false);
 
-  const { enviarEmailRedefinirSenha } = useUser();
+  const { forgotPassword } = useUser();
 
   const isEmailSentWithSuccess = !isSendingForm && isEmailSent;
 
-  async function handleEnviarEmailRedefinirSenha(e) {
-    e.preventDefault();
-    setIsSendingForm(true);
+  async function handleForgotPassword(e) {
+    try {
+      e.preventDefault();
+      setIsSendingForm(true);
 
-    const form = e.target;
-    const formData = new FormData(form);
+      const form = e.target;
+      const formData = new FormData(form);
+      const email = formData.get('email');
 
-    const email = formData.get('email');
+      await forgotPassword(email);
 
-    await enviarEmailRedefinirSenha(email);
-
-    setIsSendingForm(false);
-    setIsEmailSent(true);
+      setIsEmailSent(true);
+    } catch (error) {
+      // Let interceptor handle
+    } finally {
+      setIsSendingForm(false);
+    }
   }
 
   return (
     <div className="authPageContainer">
       <div className="formWrapper">
-        <form onSubmit={handleEnviarEmailRedefinirSenha} className="authForm">
+        <form onSubmit={handleForgotPassword} className="authForm">
           {isEmailSentWithSuccess ? (
             <>
               <h1>Email Enviado!</h1>
