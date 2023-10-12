@@ -110,12 +110,30 @@ export default function UserContextComp({ children }) {
   const logOut = useCallback(() => {
     localStorage.removeItem('token');
 
+    api.defaults.headers.Authorization = undefined; // clear Auth header
+
     setUser(null);
 
     setAuthStatusMessage({
       type: 'success',
       message: 'Deslogado com sucesso.',
     });
+  }, []);
+
+  const forgotPassword = useCallback(async (email) => {
+    try {
+      const data = { email };
+
+      await api.post('/api/auth/forgot-password', data);
+
+      setAuthStatusMessage({
+        type: 'success',
+        message: 'Email de redefinição de senha enviado com sucesso.',
+      });
+    } catch (error) {
+      // Let interceptor handle
+      // throw error;
+    }
   }, []);
 
   // const enviarEmailRedefinirSenha = useCallback(
@@ -186,7 +204,7 @@ export default function UserContextComp({ children }) {
       authStatusMessage,
       logIn,
       logOut,
-      // enviarEmailRedefinirSenha,
+      forgotPassword,
       // verificarCodRedefinicaoSenha,
       // confirmarRedefinicaoSenha,
     }),
@@ -196,7 +214,7 @@ export default function UserContextComp({ children }) {
       authStatusMessage,
       logIn,
       logOut,
-      // enviarEmailRedefinirSenha,
+      forgotPassword,
       // verificarCodRedefinicaoSenha,
       // confirmarRedefinicaoSenha,
     ]
