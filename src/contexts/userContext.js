@@ -18,6 +18,33 @@ export default function UserContextComp({ children }) {
   const [authStatusMessage, setAuthStatusMessage] = useState(null); // Error or success message
 
   useEffect(() => {
+    // Add interceptopr
+    api.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        let errMessage;
+        let errMessageType = 'error';
+
+        if (error.response?.data.error.name === 'UnauthorizedError') {
+          // if access token is invalid/expired, clear token and logout
+          localStorage.removeItem('token');
+          setUser(null);
+          errMessageType = 'warn';
+          errMessage = 'Sessão expirada, por favor faça login novamente.';
+        } else {
+          errMessage = error.response?.data
+            ? `${error.response.data.error.message}. (${error.response.data.error.name}).`
+            : `${error.message}. (${error.name}).`;
+        }
+
+        setAuthStatusMessage({
+          type: errMessageType,
+          message: errMessage,
+        });
+      },
+      { synchronous: true }
+    );
+
     let ignore = false;
 
     async function checkAuthenticated() {
@@ -33,22 +60,17 @@ export default function UserContextComp({ children }) {
           }
         }
       } catch (error) {
-        const errMessage = error.response?.data
-          ? `${error.response.data.error.message}. (${error.response.data.error.name}).`
-          : `${error.message}. (${error.name}).`;
-
-        setAuthStatusMessage({
-          type: 'error',
-          message: errMessage,
-        });
+        // Let interceptor handle
       } finally {
         setLoadingUser(false);
       }
     }
 
     checkAuthenticated();
+
     return () => {
       ignore = true;
+      api.interceptors.response.clear(); // clear all interceptors
     };
   }, []);
 
@@ -81,14 +103,7 @@ export default function UserContextComp({ children }) {
         message: 'Login realizado com sucesso.',
       });
     } catch (error) {
-      const errMessage = error.response?.data
-        ? `${error.response.data.error.message}. (${error.response.data.error.name}).`
-        : `${error.message}. (${error.name}).`;
-
-      setAuthStatusMessage({
-        type: 'error',
-        message: errMessage,
-      });
+      // Let interceptor handle
     }
   }, []);
 

@@ -19,31 +19,26 @@ function RedefinirSenha() {
   const isPasswordResetWithSuccess = !isSendingForm && isPasswordReset;
 
   async function handleRedefinirSenha(e) {
-    try {
-      e.preventDefault();
-      setIsSendingForm(true);
+    e.preventDefault();
+    setIsSendingForm(true);
 
-      const mode = searchParams.get('mode');
-      const actionCode = searchParams.get('oobCode');
+    const mode = searchParams.get('mode');
+    const actionCode = searchParams.get('oobCode');
 
-      if (mode === 'resetPassword') {
-        const userEmail = await verificarCodRedefinicaoSenha(actionCode);
+    if (mode === 'resetPassword') {
+      const userEmail = await verificarCodRedefinicaoSenha(actionCode);
 
-        const form = e.target;
-        const formData = new FormData(form);
-        const newPassword = formData.get('password');
+      const form = e.target;
+      const formData = new FormData(form);
+      const newPassword = formData.get('password');
 
-        await confirmarRedefinicaoSenha(actionCode, newPassword);
-        await logIn(userEmail, newPassword);
+      await confirmarRedefinicaoSenha(actionCode, newPassword);
+      await logIn(userEmail, newPassword);
 
-        setIsSendingForm(false);
-        setIsPasswordReset(true);
-      } else {
-        toast.error('Erro: mode searchParam não é igual a `resetPassword`.');
-        setIsSendingForm(false);
-      }
-    } catch (error) {
-      toast.error(error.message);
+      setIsSendingForm(false);
+      setIsPasswordReset(true);
+    } else {
+      toast.error('Erro: mode searchParam não é igual a `resetPassword`.');
       setIsSendingForm(false);
     }
   }

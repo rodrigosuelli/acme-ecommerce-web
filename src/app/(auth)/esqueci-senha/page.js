@@ -15,23 +15,18 @@ function EsqueciSenha() {
   const isEmailSentWithSuccess = !isSendingForm && isEmailSent;
 
   async function handleEnviarEmailRedefinirSenha(e) {
-    try {
-      e.preventDefault();
-      setIsSendingForm(true);
+    e.preventDefault();
+    setIsSendingForm(true);
 
-      const form = e.target;
-      const formData = new FormData(form);
+    const form = e.target;
+    const formData = new FormData(form);
 
-      const email = formData.get('email');
+    const email = formData.get('email');
 
-      await enviarEmailRedefinirSenha(email);
+    await enviarEmailRedefinirSenha(email);
 
-      setIsSendingForm(false);
-      setIsEmailSent(true);
-    } catch (error) {
-      // console.log({ error });
-      setIsSendingForm(false);
-    }
+    setIsSendingForm(false);
+    setIsEmailSent(true);
   }
 
   return (
