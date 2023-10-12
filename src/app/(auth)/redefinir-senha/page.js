@@ -13,6 +13,7 @@ function RedefinirSenha() {
   const { resetPassword } = useUser();
 
   const searchParams = useSearchParams();
+  const code = searchParams.get('code');
 
   const isPasswordResetWithSuccess = !isSendingForm && isPasswordReset;
 
@@ -20,8 +21,6 @@ function RedefinirSenha() {
     try {
       e.preventDefault();
       setIsSendingForm(true);
-
-      const code = searchParams.get('code');
 
       const form = e.target;
       const formData = new FormData(form);
@@ -62,6 +61,15 @@ function RedefinirSenha() {
                 procedimento você será autenticado automaticamente e poderá
                 acessar a plataforma.
               </p>
+              <input
+                hidden
+                readOnly
+                autoComplete="off"
+                type="text"
+                name="email_code"
+                id="email_code"
+                value={code}
+              />
               <input
                 required
                 minLength={6}
