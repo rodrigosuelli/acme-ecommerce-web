@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export async function POST(request) {
-  const url = `${process.env.STRAPI_API_URL}/auth/passwordConfirmation`;
+  const url = `${process.env.STRAPI_API_URL}/auth/reset-password`;
 
   const { code, password } = await request.json();
 
