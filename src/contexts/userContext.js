@@ -138,66 +138,25 @@ export default function UserContextComp({ children }) {
     }
   }, []);
 
-  // const enviarEmailRedefinirSenha = useCallback(
-  //   async (email) => {
-  //     try {
-  //       await sendPasswordResetEmail(auth, email);
-  //       setAuthStatusMessage({
-  //         type: 'success',
-  //         message: 'Email de redefinição de senha enviado com sucesso.',
-  //       });
-  //     } catch (error) {
-  //       setAuthStatusMessage({
-  //         type: 'error',
-  //         message: firebaseErrorsPTBR[error.code]
-  //           ? `${firebaseErrorsPTBR[error.code]} (${error.code}).`
-  //           : error.message,
-  //       });
-  //       throw error;
-  //     }
-  //   },
-  //   [auth]
-  // );
+  const resetPassword = useCallback(async (code, password) => {
+    try {
+      const data = { code, password };
 
-  // const verificarCodRedefinicaoSenha = useCallback(
-  //   async (actionCode) => {
-  //     try {
-  //       // Verifica se o codigo de redefinicao de senha é valido e retorna o email do usuario
-  //       const userEmail = await verifyPasswordResetCode(auth, actionCode);
-  //       return userEmail;
-  //     } catch (error) {
-  //       setAuthStatusMessage({
-  //         type: 'error',
-  //         message: firebaseErrorsPTBR[error.code]
-  //           ? `${firebaseErrorsPTBR[error.code]} (${error.code}).`
-  //           : error.message,
-  //       });
-  //       throw error;
-  //     }
-  //   },
-  //   [auth]
-  // );
+      const response = await api.post('/api/auth/reset-password', data);
 
-  // const confirmarRedefinicaoSenha = useCallback(
-  //   async (actionCode, newPassword) => {
-  //     try {
-  //       await confirmPasswordReset(auth, actionCode, newPassword);
-  //       setAuthStatusMessage({
-  //         type: 'success',
-  //         message: 'Senha redefinida com sucesso.',
-  //       });
-  //     } catch (error) {
-  //       setAuthStatusMessage({
-  //         type: 'error',
-  //         message: firebaseErrorsPTBR[error.code]
-  //           ? `${firebaseErrorsPTBR[error.code]} (${error.code}).`
-  //           : error.message,
-  //       });
-  //       throw error;
-  //     }
-  //   },
-  //   [auth]
-  // );
+      storeToken(response.data.jwt);
+
+      setUser(response.data.user);
+
+      setAuthStatusMessage({
+        type: 'success',
+        message: 'Senha redefinida com sucesso.',
+      });
+    } catch (error) {
+      // Let interceptor handle
+      throw error;
+    }
+  }, []);
 
   const contextValue = useMemo(
     () => ({
@@ -207,6 +166,7 @@ export default function UserContextComp({ children }) {
       logIn,
       logOut,
       forgotPassword,
+      resetPassword,
       // verificarCodRedefinicaoSenha,
       // confirmarRedefinicaoSenha,
     }),
@@ -217,6 +177,7 @@ export default function UserContextComp({ children }) {
       logIn,
       logOut,
       forgotPassword,
+      resetPassword,
       // verificarCodRedefinicaoSenha,
       // confirmarRedefinicaoSenha,
     ]
