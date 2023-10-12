@@ -5,40 +5,34 @@ import { CgSpinner } from 'react-icons/cg';
 import Link from 'next/link';
 import { useUser } from '@/contexts/userContext';
 import { useSearchParams } from 'next/navigation';
-import { toast } from 'react-toastify';
 
 function RedefinirSenha() {
   const [isSendingForm, setIsSendingForm] = useState(false);
   const [isPasswordReset, setIsPasswordReset] = useState(false);
 
-  const { verificarCodRedefinicaoSenha, confirmarRedefinicaoSenha, logIn } =
-    useUser();
+  const { resetPassword } = useUser();
 
   const searchParams = useSearchParams();
 
   const isPasswordResetWithSuccess = !isSendingForm && isPasswordReset;
 
-  async function handleRedefinirSenha(e) {
-    e.preventDefault();
-    setIsSendingForm(true);
+  async function handleResetPassword(e) {
+    try {
+      e.preventDefault();
+      setIsSendingForm(true);
 
-    const mode = searchParams.get('mode');
-    const actionCode = searchParams.get('oobCode');
-
-    if (mode === 'resetPassword') {
-      const userEmail = await verificarCodRedefinicaoSenha(actionCode);
+      const code = searchParams.get('code');
 
       const form = e.target;
       const formData = new FormData(form);
       const newPassword = formData.get('password');
 
-      await confirmarRedefinicaoSenha(actionCode, newPassword);
-      await logIn(userEmail, newPassword);
+      await resetPassword(code, newPassword);
 
-      setIsSendingForm(false);
       setIsPasswordReset(true);
-    } else {
-      toast.error('Erro: mode searchParam não é igual a `resetPassword`.');
+    } catch (error) {
+      // Let interceptor handle
+    } finally {
       setIsSendingForm(false);
     }
   }
@@ -46,7 +40,7 @@ function RedefinirSenha() {
   return (
     <div className="authPageContainer">
       <div className="formWrapper">
-        <form onSubmit={handleRedefinirSenha} className="authForm">
+        <form onSubmit={handleResetPassword} className="authForm">
           {isPasswordResetWithSuccess ? (
             <>
               <h1>Senha Redefinida!</h1>
