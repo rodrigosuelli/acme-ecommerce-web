@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation';
+
 import styles from './produto.module.css';
 
 export async function generateStaticParams() {
@@ -42,6 +44,10 @@ async function Produto({ params }) {
 
   const data = await getData(slug);
   const produtoData = data.data[0];
+
+  if (!produtoData) {
+    notFound();
+  }
 
   return (
     <div className={styles.produtoContainer}>
