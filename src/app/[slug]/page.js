@@ -48,6 +48,7 @@ async function Produto({ params }) {
       <h1>Produto</h1>
       <h1>{produtoData && produtoData.id}</h1>
       <h1>{produtoData && produtoData.attributes.titulo}</h1>
+      <h1>{produtoData && produtoData.attributes.descricao}</h1>
     </div>
   );
 }
