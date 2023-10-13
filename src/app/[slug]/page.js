@@ -84,7 +84,7 @@ async function Produto({ params }) {
       <h1>{produtoData && produtoData.id}</h1>
       <h1>{produtoData && produtoData.attributes.titulo}</h1>
       <h1>{produtoData && produtoData.attributes.descricao}</h1>
-      <img src={firstImgMediumUrl} alt="imagem do produto" />
+      <img src={produtoData && firstImgMediumUrl} alt="imagem do produto" />
     </div>
   );
 }
