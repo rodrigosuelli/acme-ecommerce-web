@@ -1,7 +1,7 @@
-import { revalidateTag } from 'next/cache';
+import { revalidatePath } from 'next/cache';
 import { headers } from 'next/headers';
 
-// e.g a webhook to `your-website.com/api/revalidate?tag=collection&secret=<token>`
+// Revalidate webhook to `your-website.com/api/revalidate
 export async function POST(request) {
   const headersList = headers();
 
@@ -9,36 +9,29 @@ export async function POST(request) {
   const authHeader = headersList.get('Authorization');
   const secret = authHeader && authHeader.split(' ')[1];
 
-  const event = headersList.get('X-Strapi-Event');
+  const { event, model, entry } = await request.json();
 
-  console.log(event);
-  console.log(await request.json());
-
-  // const tag = request.nextUrl.searchParams.get('tag');
+  if (model !== 'produto') {
+    return Response.json(
+      { message: 'Model is not `produto`' },
+      { status: 400 }
+    );
+  }
 
   if (secret !== process.env.NEXT_REVALIDATION_SECRET) {
     return Response.json({ message: 'Invalid secret' }, { status: 401 });
   }
 
-  // if (!tag) {
-  //   return Response.json({ message: 'Missing tag param' }, { status: 400 });
-  // }
+  const path = `/${entry.slug}`;
 
-  // revalidateTag(tag);
+  if (!path) {
+    return Response.json(
+      { message: 'Invalid or missing path param' },
+      { status: 400 }
+    );
+  }
+
+  revalidatePath(path);
 
   return Response.json({ revalidated: true, now: Date.now() });
 }
-
-// import { revalidatePath } from 'next/cache'
-
-// export async function POST(request) {
-//   const path = request.nextUrl.searchParams.get('path')
-
-//   if (!path) {
-//     return Response.json({ message: 'Missing path param' }, { status: 400 })
-//   }
-
-//   revalidatePath(path)
-
-//   return Response.json({ revalidated: true, now: Date.now() })
-// }
