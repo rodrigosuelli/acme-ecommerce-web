@@ -76,6 +76,7 @@ async function Produto({ params }) {
   }
 
   const firstImgMediumUrl =
+    produtoData.attributes.imagens.data &&
     produtoData.attributes.imagens.data[0].attributes.formats.medium.url;
 
   return (
