@@ -1,9 +1,20 @@
+import qs from 'qs';
+
 import { notFound } from 'next/navigation';
 
 import styles from './produto.module.css';
 
 export async function generateStaticParams() {
-  const url = `${process.env.STRAPI_API_URL}/produtos`;
+  const query = qs.stringify(
+    {
+      fields: ['slug'],
+    },
+    {
+      encodeValuesOnly: true, // prettify URL
+    }
+  );
+
+  const url = `${process.env.STRAPI_API_URL}/produtos?${query}`;
 
   const res = await fetch(url, {
     method: 'GET',
@@ -21,7 +32,22 @@ export async function generateStaticParams() {
 }
 
 async function getData(slug) {
-  const url = `${process.env.STRAPI_API_URL}/produtos?filters[slug][$eq]=${slug}`;
+  const query = qs.stringify(
+    {
+      filters: {
+        slug: {
+          $eq: slug,
+        },
+      },
+      populate: ['imagens'],
+      fields: ['id', 'titulo', 'descricao'],
+    },
+    {
+      encodeValuesOnly: true, // prettify URL
+    }
+  );
+
+  const url = `${process.env.STRAPI_API_URL}/produtos?${query}`;
 
   const res = await fetch(url, {
     method: 'GET',
@@ -49,12 +75,16 @@ async function Produto({ params }) {
     notFound();
   }
 
+  const firstImgMediumUrl =
+    produtoData.attributes.imagens.data[0].attributes.formats.medium.url;
+
   return (
     <div className={styles.produtoContainer}>
       <h1>Produto</h1>
       <h1>{produtoData && produtoData.id}</h1>
       <h1>{produtoData && produtoData.attributes.titulo}</h1>
       <h1>{produtoData && produtoData.attributes.descricao}</h1>
+      <img src={firstImgMediumUrl} alt="imagem do produto" />
     </div>
   );
 }
