@@ -75,17 +75,17 @@ async function Produto({ params }) {
     notFound();
   }
 
-  const firstImgMediumUrl =
+  const imgUrl =
     produtoData.attributes.imagens.data &&
-    produtoData.attributes.imagens.data[0].attributes.formats.medium.url;
+    produtoData.attributes.imagens.data[0].attributes.url;
 
   return (
     <div className={styles.produtoContainer}>
       <h1>Produto</h1>
-      <h1>{produtoData && produtoData.id}</h1>
-      <h1>{produtoData && produtoData.attributes.titulo}</h1>
-      <h1>{produtoData && produtoData.attributes.descricao}</h1>
-      <img src={produtoData && firstImgMediumUrl} alt="imagem do produto" />
+      <h1>{produtoData.id}</h1>
+      <h1>{produtoData.attributes.titulo}</h1>
+      <h1>{produtoData.attributes.descricao}</h1>
+      <img src={imgUrl} alt="imagem do produto" />
     </div>
   );
 }
