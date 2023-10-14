@@ -39,7 +39,7 @@ async function getData(slug) {
           $eq: slug,
         },
       },
-      populate: ['imagens'],
+      populate: { imagens: { fields: ['url'] } },
       fields: ['id', 'titulo', 'descricao'],
     },
     {
