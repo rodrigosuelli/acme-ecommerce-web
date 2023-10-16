@@ -77,7 +77,7 @@ async function Produto({ params }) {
   }
 
   const imgUrl =
-    produtoData.attributes.imagens?.data[0].attributes.formats?.medium.url;
+    produtoData.attributes.imagens?.data[0]?.attributes.formats?.medium.url;
 
   return (
     <div className={styles.produtoContainer}>
