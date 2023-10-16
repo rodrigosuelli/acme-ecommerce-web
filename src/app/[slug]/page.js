@@ -40,7 +40,7 @@ async function getData(slug) {
           $eq: slug,
         },
       },
-      populate: { imagens: { fields: ['url', 'formats'] } },
+      populate: { imagens: { fields: ['url'] } },
       fields: ['id', 'titulo', 'descricao'],
     },
     {
@@ -80,10 +80,6 @@ async function Produto({ params }) {
     produtoData.attributes.imagens.data &&
     produtoData.attributes.imagens.data[0].attributes.url;
 
-  const thumbUrl =
-    produtoData.attributes.imagens.data[0] &&
-    produtoData.attributes.imagens.data[0].attributes.formats.thumbnail.url;
-
   return (
     <div className={styles.produtoContainer}>
       <h1>Produto</h1>
@@ -96,8 +92,6 @@ async function Produto({ params }) {
         alt="imagem do produto"
         width={400}
         height={400}
-        blurDataURL={thumbUrl}
-        placeholder="blur" // Optional blur-up while loading
       />
     </div>
   );
