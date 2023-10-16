@@ -93,6 +93,7 @@ async function Produto({ params }) {
         width={400}
         height={400}
       />
+      <img className={styles.imgProduto} src={imgUrl} alt="imagem do produto" />
     </div>
   );
 }

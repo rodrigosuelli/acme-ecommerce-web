@@ -1,3 +1,8 @@
 .produtoContainer {
   background: black;
 }
+
+.imgProduto {
+  width: 400px;
+  height: 400px;
+}
