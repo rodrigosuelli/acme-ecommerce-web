@@ -40,7 +40,7 @@ async function getData(slug) {
           $eq: slug,
         },
       },
-      populate: { imagens: { fields: ['url'] } },
+      populate: { imagens: { fields: ['url', 'formats'] } },
       fields: ['id', 'titulo', 'descricao'],
     },
     {
@@ -77,8 +77,7 @@ async function Produto({ params }) {
   }
 
   const imgUrl =
-    produtoData.attributes.imagens.data &&
-    produtoData.attributes.imagens.data[0].attributes.url;
+    produtoData.attributes.imagens?.data[0].attributes.formats?.medium.url;
 
   return (
     <div className={styles.produtoContainer}>
