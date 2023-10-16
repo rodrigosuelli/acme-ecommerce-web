@@ -93,11 +93,6 @@ async function Produto({ params }) {
         width={400}
         height={400}
       />
-      <img
-        className={styles.imgProduto}
-        src="https://storage.googleapis.com/tg-server-8dac2.appspot.com/Image/anel_prateado_fb8d64c0bb/thumbnail_anel_prateado_fb8d64c0bb.png"
-        alt="imagem do produto"
-      />
     </div>
   );
 }
