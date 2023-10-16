@@ -1,11 +1,23 @@
-import { Fredoka } from 'next/font/google';
+import { Roboto_Flex, Merriweather } from 'next/font/google';
 import { ToastContainer } from 'react-toastify';
 import Providers from './providers';
 
 import './globals.css';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-const fredoka = Fredoka({ subsets: ['latin'] });
+const roboto = Roboto_Flex({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto',
+});
+
+const merriweather = Merriweather({
+  weight: ['400', '700'],
+  style: ['normal'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-merriweather',
+});
 
 export const metadata = {
   title: 'Acme',
@@ -14,8 +26,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-BR">
-      <body className={fredoka.className}>
+    <html
+      lang="pt-BR"
+      className={`${roboto.variable} ${merriweather.variable}`}
+    >
+      <body>
         <Providers>
           {children}
           <ToastContainer

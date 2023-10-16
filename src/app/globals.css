@@ -18,6 +18,31 @@
   --placeholder-text: #858585;
 }
 
+html {
+  font-family: var(--font-roboto);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-merriweather);
+}
+
+h1,
+h2 {
+  font-weight: 700;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+}
+
 html,
 body {
   height: 100%;
