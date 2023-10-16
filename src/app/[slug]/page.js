@@ -2,6 +2,7 @@ import qs from 'qs';
 
 import { notFound } from 'next/navigation';
 
+import Image from 'next/image';
 import styles from './produto.module.css';
 
 export async function generateStaticParams() {
@@ -39,7 +40,7 @@ async function getData(slug) {
           $eq: slug,
         },
       },
-      populate: { imagens: { fields: ['url'] } },
+      populate: { imagens: { fields: ['url', 'formats'] } },
       fields: ['id', 'titulo', 'descricao'],
     },
     {
@@ -79,13 +80,25 @@ async function Produto({ params }) {
     produtoData.attributes.imagens.data &&
     produtoData.attributes.imagens.data[0].attributes.url;
 
+  const thumbUrl =
+    produtoData.attributes.imagens.data[0] &&
+    produtoData.attributes.imagens.data[0].attributes.formats.thumbnail.url;
+
   return (
     <div className={styles.produtoContainer}>
       <h1>Produto</h1>
       <h1>{produtoData.id}</h1>
       <h1>{produtoData.attributes.titulo}</h1>
       <h1>{produtoData.attributes.descricao}</h1>
-      <img src={imgUrl} alt="imagem do produto" />
+      <Image
+        priority={true}
+        src={imgUrl}
+        alt="imagem do produto"
+        width={400}
+        height={400}
+        blurDataURL={thumbUrl}
+        placeholder="blur" // Optional blur-up while loading
+      />
     </div>
   );
 }
