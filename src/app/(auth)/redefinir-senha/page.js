@@ -38,6 +38,9 @@ function RedefinirSenha() {
 
   return (
     <div className="authPageContainer">
+      <noscript>
+        <h1>Please enable Javascript</h1>
+      </noscript>
       <div className="formWrapper">
         <form onSubmit={handleResetPassword} className="authForm">
           {isPasswordResetWithSuccess ? (
@@ -56,9 +59,6 @@ function RedefinirSenha() {
           ) : (
             <>
               <h1>Redefinir senha</h1>
-              <noscript>
-                <h1>Please enable Javascript</h1>
-              </noscript>
 
               <p>
                 Por favor insira sua nova senha abaixo, após finalizar o
