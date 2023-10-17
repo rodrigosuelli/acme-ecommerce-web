@@ -56,6 +56,10 @@ function RedefinirSenha() {
           ) : (
             <>
               <h1>Redefinir senha</h1>
+              <noscript>
+                <h1>Please enable Javascript</h1>
+              </noscript>
+
               <p>
                 Por favor insira sua nova senha abaixo, após finalizar o
                 procedimento você será autenticado automaticamente e poderá
