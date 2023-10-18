@@ -26,10 +26,10 @@
   background-size: cover;
   width: 174px;
   height: 174px;
-  top: -255%;
-  left: -255%;
+  top: -50%;
+  left: -46%;
   /* top: 50%; */
   /* left: 50%; */
-  /* transform: translate(-50%, -50%); */
+  transform: translate(-46%, -50%);
   z-index: -1;
 }
