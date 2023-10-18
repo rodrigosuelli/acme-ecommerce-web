@@ -24,14 +24,6 @@
   margin-bottom: 25px;
 }
 
-.authHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 280px;
-  height: 76px;
-}
-
 .authForm {
   margin-top: 28px;
   display: flex;
