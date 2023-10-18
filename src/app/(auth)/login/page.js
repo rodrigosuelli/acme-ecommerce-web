@@ -58,7 +58,7 @@ function Login() {
       </button>
       <p className="paragraphWithLink">
         Não possui uma conta?&nbsp;
-        <Link href="/criar-conta" className="textLink">
+        <Link href="/cadastro" className="textLink">
           Crie Uma
         </Link>
       </p>
