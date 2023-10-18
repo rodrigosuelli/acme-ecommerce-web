@@ -46,7 +46,7 @@ function EsqueciSenha() {
             nossa equipe de suporte está à disposição para ajudar.
           </p>
           <Link href="/login" className="btnEnter">
-            Voltar para o login
+            Retornar para Login
           </Link>
         </>
       ) : (
