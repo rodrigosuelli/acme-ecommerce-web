@@ -65,6 +65,12 @@ function Login() {
         <button disabled={isSendingForm} className="btnEnter" type="submit">
           {isSendingForm ? <CgSpinner size={28} /> : 'Login'}
         </button>
+        <p className="paragraphWithLink">
+          Não possui uma conta?&nbsp;
+          <Link href="/criar-conta" className="textLink">
+            Crie Uma
+          </Link>
+        </p>
       </form>
     </div>
   );

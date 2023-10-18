@@ -64,7 +64,7 @@
 }
 
 .authForm input:focus {
-  outline: 2px solid var(--text-black);
+  outline: 2px solid var(--black);
 }
 
 .authForm input::placeholder {
@@ -85,6 +85,16 @@ a.textLink:hover {
   color: var(--primary-p75);
 }
 
+p.paragraphWithLink {
+  color: var(--neutral-n500);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+p.paragraphWithLink a.textLink {
+  padding: 3px 0;
+}
+
 .btnEnter {
   display: flex;
   justify-content: center;
@@ -93,7 +103,7 @@ a.textLink:hover {
   border-radius: 40px;
   height: 40px;
   width: 145px;
-  margin-bottom: 24px;
+  margin-bottom: 42px;
   border: 3px solid transparent;
 
   align-self: flex-end;
