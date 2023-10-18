@@ -82,7 +82,7 @@ a.textLink {
 }
 
 a.textLink:hover {
-  color: #85d1e0;
+  color: var(--primary-p75);
 }
 
 .btnEnter {
@@ -103,8 +103,8 @@ a.textLink:hover {
 .btnEnter:not(:disabled):hover,
 .btnEnter:not(:disabled):active {
   background: white;
-  color: #85d1e0;
-  border: 3px solid #85d1e0;
+  color: var(--primary-p300);
+  border: 3px solid var(--primary-p300);
 }
 
 .btnEnter:disabled {
