@@ -25,7 +25,7 @@
 
 html {
   font-family: var(--font-roboto);
-  font-size: 16px;
+  font-size: 100%;
 }
 
 h1,
