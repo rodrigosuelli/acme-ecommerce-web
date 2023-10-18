@@ -38,59 +38,53 @@ function RedefinirSenha() {
 
   return (
     <div className="authPageContainer">
-      <div className="formWrapper">
-        <form onSubmit={handleResetPassword} className="authForm">
-          {isPasswordResetWithSuccess ? (
-            <>
-              <h1>Senha Redefinida!</h1>
-              <p>
-                Sua senha foi redefinida com sucesso, agora você já poderá
-                utilizar sua nova senha nas próximas vezes em que fizer login na
-                plataforma.
-              </p>
+      <form onSubmit={handleResetPassword} className="authForm">
+        {isPasswordResetWithSuccess ? (
+          <>
+            <h1>Senha Redefinida!</h1>
+            <p>
+              Sua senha foi redefinida com sucesso, agora você já poderá
+              utilizar sua nova senha nas próximas vezes em que fizer login na
+              plataforma.
+            </p>
 
-              <Link href="/" className="btnEnter">
-                Ir para a homepage
-              </Link>
-            </>
-          ) : (
-            <>
-              <h1>Redefinir senha</h1>
+            <Link href="/" className="btnEnter">
+              Ir para a homepage
+            </Link>
+          </>
+        ) : (
+          <>
+            <h1>Redefinir senha</h1>
 
-              <p>
-                Por favor insira sua nova senha abaixo, após finalizar o
-                procedimento você será autenticado automaticamente e poderá
-                acessar a plataforma.
-              </p>
-              <input
-                hidden
-                readOnly
-                autoComplete="off"
-                type="text"
-                name="email_code"
-                id="email_code"
-                value={code || undefined}
-              />
-              <input
-                required
-                minLength={6}
-                autoComplete="new-password"
-                placeholder="Nova senha"
-                type="password"
-                name="password"
-                id="password"
-              />
-              <button
-                disabled={isSendingForm}
-                className="btnEnter"
-                type="submit"
-              >
-                {isSendingForm ? <CgSpinner size={28} /> : 'Redefinir Senha'}
-              </button>
-            </>
-          )}
-        </form>
-      </div>
+            <p>
+              Por favor insira sua nova senha abaixo, após finalizar o
+              procedimento você será autenticado automaticamente e poderá
+              acessar a plataforma.
+            </p>
+            <input
+              hidden
+              readOnly
+              autoComplete="off"
+              type="text"
+              name="email_code"
+              id="email_code"
+              value={code || undefined}
+            />
+            <input
+              required
+              minLength={6}
+              autoComplete="new-password"
+              placeholder="Nova senha"
+              type="password"
+              name="password"
+              id="password"
+            />
+            <button disabled={isSendingForm} className="btnEnter" type="submit">
+              {isSendingForm ? <CgSpinner size={28} /> : 'Redefinir Senha'}
+            </button>
+          </>
+        )}
+      </form>
     </div>
   );
 }
