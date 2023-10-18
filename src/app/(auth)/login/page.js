@@ -28,7 +28,7 @@ function Login() {
 
   return (
     <form onSubmit={handleLogin} className="authForm">
-      <h1>Bem-vindo de volta</h1>
+      <h1>Bem-vindo de volta!</h1>
       <p>Efetue o login para ter uma melhor experiência.</p>
       <label htmlFor="email">Email:</label>
       <input
