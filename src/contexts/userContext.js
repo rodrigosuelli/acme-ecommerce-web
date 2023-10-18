@@ -90,6 +90,28 @@ export default function UserContextComp({ children }) {
     api.defaults.headers.Authorization = `Bearer ${accessToken}`;
   }
 
+  const register = useCallback(
+    async ({ username, email, password, celular, data_nasc }) => {
+      try {
+        const data = { username, email, password, celular, data_nasc };
+
+        const response = await api.post('/api/auth/register', data);
+
+        storeToken(response.data.jwt);
+
+        setUser(response.data.user);
+
+        setAuthStatusMessage({
+          type: 'success',
+          message: 'Cadastro realizado com sucesso.',
+        });
+      } catch (error) {
+        // Let interceptor handle
+      }
+    },
+    []
+  );
+
   const logIn = useCallback(async (email, password) => {
     try {
       const data = { email, password };
@@ -167,6 +189,7 @@ export default function UserContextComp({ children }) {
       logOut,
       forgotPassword,
       resetPassword,
+      register,
       // verificarCodRedefinicaoSenha,
       // confirmarRedefinicaoSenha,
     }),
@@ -178,6 +201,7 @@ export default function UserContextComp({ children }) {
       logOut,
       forgotPassword,
       resetPassword,
+      register,
       // verificarCodRedefinicaoSenha,
       // confirmarRedefinicaoSenha,
     ]
