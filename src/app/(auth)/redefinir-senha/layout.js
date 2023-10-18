@@ -4,5 +4,10 @@ export const metadata = {
 };
 
 export default function redefinirSenhaLayout({ children }) {
-  return children;
+  return (
+    <>
+      <noscript>You need to enable JavaScript to run this app.</noscript>
+      {children}
+    </>
+  );
 }
