@@ -29,7 +29,6 @@
   display: flex;
   flex-direction: column;
   width: 280px;
-  max-height: 668px;
   z-index: 0;
 }
 
@@ -177,7 +176,6 @@ p.paragraphWithLink a.textLink {
   .authForm {
     width: 380px;
     margin-top: unset;
-    max-height: unset;
     justify-content: unset;
   }
 
