@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export async function POST(request) {
-  const url = `${process.env.STRAPI_API_URL}/auth/register`;
+  const url = `${process.env.STRAPI_API_URL}/auth/local/register`;
 
   const { username, email, password, celular, data_nasc } =
     await request.json();

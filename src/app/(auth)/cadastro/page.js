@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useUser } from '@/contexts/userContext';
 import withAuthRoute from '@/hoc/withAuthRoute';
+import { toast } from 'react-toastify';
 
 function Cadastro() {
   const [isSendingForm, setIsSendingForm] = useState(false);
@@ -27,16 +28,19 @@ function Cadastro() {
     const formData = new FormData(form);
     const formJson = Object.fromEntries(formData.entries());
 
-    const { name, email, password, confirm_password, data_nasc } = formJson;
+    const { username, email, password, confirm_password, data_nasc } = formJson;
 
-    await register({
-      name,
-      email,
-      password,
-      confirm_password,
-      data_nasc,
-      celular,
-    });
+    if (password === confirm_password) {
+      await register({
+        username,
+        email,
+        password,
+        data_nasc,
+        celular,
+      });
+    } else {
+      toast.error('Erro: as senhas inseridas não são iguais.');
+    }
 
     setIsSendingForm(false);
   }
@@ -45,14 +49,14 @@ function Cadastro() {
     <form onSubmit={handleRegister} className="authForm">
       <h1>Deseja ficar por dentro?</h1>
       <p>Crie uma conta para poder ter acesso completo ao site.</p>
-      <label htmlFor="name">Nome Completo:</label>
+      <label htmlFor="username">Nome Completo:</label>
       <input
         required
         minLength={3}
         autoComplete="name"
         type="text"
-        name="name"
-        id="name"
+        name="username"
+        id="username"
         placeholder="Insira seu nome completo..."
       />
 
