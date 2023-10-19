@@ -1,0 +1,19 @@
+.headerMenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 76px;
+  padding-right: 30px;
+  padding-left: 25px;
+  max-width: 800px;
+  position: relative;
+}
+
+.backButtonLink {
+  padding: 10px;
+}
+
+.backButtonLink svg {
+  color: var(--white);
+}
