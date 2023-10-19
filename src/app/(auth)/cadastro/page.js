@@ -88,7 +88,6 @@ function Cadastro() {
       <label htmlFor="data_nasc">Data de nascimento:</label>
       <InputMask
         required
-        autoComplete="bday"
         name="data_nasc"
         placeholder="dd/mm/aaaa"
         id="data_nasc"
