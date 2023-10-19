@@ -48,6 +48,7 @@ function Cadastro() {
         id="name"
         placeholder="Insira seu nome completo..."
       />
+
       <label htmlFor="email">Email:</label>
       <input
         required
@@ -58,6 +59,7 @@ function Cadastro() {
         id="email"
         placeholder="Insira seu email..."
       />
+
       <label htmlFor="password">Senha:</label>
       <input
         required
@@ -68,6 +70,7 @@ function Cadastro() {
         name="password"
         id="password"
       />
+
       <label htmlFor="confirm_password">Confirmar Senha:</label>
       <input
         required
@@ -78,6 +81,7 @@ function Cadastro() {
         name="confirm_password"
         id="confirm_password"
       />
+
       <label htmlFor="data_nasc">Data de nascimento:</label>
       <input
         required
@@ -86,14 +90,19 @@ function Cadastro() {
         name="data_nasc"
         id="data_nasc"
       />
+
       <label htmlFor="celular">N° de celular:</label>
       <input
         required
         autoComplete="tel-national"
-        type="text"
+        type="tel"
         name="celular"
         id="celular"
-        placeholder="Telefone celular..."
+        placeholder="(__) _ ____-____"
+        minLength={10}
+        maxLength={11}
+        pattern="^[1-9]{2}(?:[1-9]|9[0-9])[0-9]{3}[0-9]{4}$"
+        title="(DDD) 9 9999-9999"
       />
 
       <button disabled={isSendingForm} className="btnEnter" type="submit">
