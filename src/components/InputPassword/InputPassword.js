@@ -21,7 +21,7 @@ function InputPassword({ autoComplete, placeholder, name, id }) {
         name={name}
         id={id}
       />
-      <button type="button">
+      <button type="button" tabindex="-1">
         {isPasswordVisible ? (
           <EyeFilled fontSize={22} onClick={handleToggleShowPassword} />
         ) : (
