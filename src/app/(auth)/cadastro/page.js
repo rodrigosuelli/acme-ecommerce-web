@@ -26,8 +26,6 @@ function Cadastro() {
 
     const celularValidado = celular.replace(/\D/g, ''); // Replace all leading non-digits with nothing
 
-    console.log(data_nasc);
-
     if (password === confirm_password) {
       await register({
         nome,
@@ -92,10 +90,18 @@ function Cadastro() {
         required
         autoComplete="bday"
         name="data_nasc"
-        placeholder="__/__/____"
+        placeholder="dd/mm/aaaa"
         id="data_nasc"
-        mask="dd/mm/yyyy"
-        replacement={{ d: /\d/, m: /\d/, y: /\d/ }}
+        title="Insira uma data válida no formato: dd/mm/aaaa"
+        mask="ab/cd/ebbb"
+        pattern="^(0[1-9]|1[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/([0-9]{4})$"
+        replacement={{
+          a: /[0-3]/,
+          b: /[0-9]/,
+          c: /[0-1]/,
+          d: /[0-9]/,
+          e: /[1-2]/,
+        }}
       />
       <label htmlFor="celular">N° de celular:</label>
       <InputMask
