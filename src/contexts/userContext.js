@@ -91,9 +91,9 @@ export default function UserContextComp({ children }) {
   }
 
   const register = useCallback(
-    async ({ username, email, password, celular, data_nasc }) => {
+    async ({ nome, email, password, celular, data_nasc }) => {
       try {
-        const data = { username, email, password, celular, data_nasc };
+        const data = { nome, email, password, celular, data_nasc };
 
         const response = await api.post('/api/auth/register', data);
 

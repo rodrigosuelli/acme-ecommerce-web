@@ -21,7 +21,7 @@ function Cadastro() {
     const formData = new FormData(form);
     const formJson = Object.fromEntries(formData.entries());
 
-    const { username, email, password, confirm_password, data_nasc, celular } =
+    const { nome, email, password, confirm_password, data_nasc, celular } =
       formJson;
 
     const celularValidado = celular.replace(/\D/g, ''); // Replace all leading non-digits with nothing
@@ -30,7 +30,7 @@ function Cadastro() {
 
     if (password === confirm_password) {
       await register({
-        username,
+        nome,
         email,
         password,
         data_nasc,
@@ -47,14 +47,14 @@ function Cadastro() {
     <form onSubmit={handleRegister} className="authForm">
       <h1>Deseja ficar por dentro?</h1>
       <p>Crie uma conta para poder ter acesso completo ao site.</p>
-      <label htmlFor="username">Nome Completo:</label>
+      <label htmlFor="nome">Nome Completo:</label>
       <input
         required
         minLength={3}
         autoComplete="name"
         type="text"
-        name="username"
-        id="username"
+        name="nome"
+        id="nome"
         placeholder="Insira seu nome completo..."
       />
       <label htmlFor="email">Email:</label>

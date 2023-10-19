@@ -3,8 +3,10 @@ import { NextResponse } from 'next/server';
 export async function POST(request) {
   const url = `${process.env.STRAPI_API_URL}/auth/local/register`;
 
-  const { username, email, password, celular, data_nasc } =
-    await request.json();
+  /** @type {{nome: string}} */
+  const { nome, email, password, celular, data_nasc } = await request.json();
+
+  const username = email.split('@')[0];
 
   const res = await fetch(url, {
     method: 'POST',
@@ -14,6 +16,7 @@ export async function POST(request) {
     },
     body: JSON.stringify({
       username,
+      nome,
       email,
       password,
       celular,
