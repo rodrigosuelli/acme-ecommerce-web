@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useUser } from '@/contexts/userContext';
 import withAuthRoute from '@/hoc/withAuthRoute';
+import InputPassword from '../../../components/InputPassword/InputPassword';
 
 function Login() {
   const [isSendingForm, setIsSendingForm] = useState(false);
@@ -41,12 +42,9 @@ function Login() {
         placeholder="Insira seu email..."
       />
       <label htmlFor="password">Senha:</label>
-      <input
-        required
-        minLength={6}
+      <InputPassword
         autoComplete="current-password"
         placeholder="Senha"
-        type="password"
         name="password"
         id="password"
       />
