@@ -110,7 +110,7 @@ function Cadastro() {
         replacement={{ a: /[1-9]/, b: /9/, c: /[0-9]/ }}
       />
       <button disabled={isSendingForm} className="btnEnter" type="submit">
-        {isSendingForm ? <CgSpinner size={28} /> : 'Criar Conta'}
+        {isSendingForm ? <CgSpinner size={26} /> : 'Criar Conta'}
       </button>
       <p className="paragraphWithLink">
         Já possui uma conta?&nbsp;

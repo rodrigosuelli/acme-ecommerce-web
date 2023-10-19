@@ -78,7 +78,7 @@ function RedefinirSenha() {
             id="password"
           />
           <button disabled={isSendingForm} className="btnEnter" type="submit">
-            {isSendingForm ? <CgSpinner size={28} /> : 'Redefinir Senha'}
+            {isSendingForm ? <CgSpinner size={26} /> : 'Redefinir Senha'}
           </button>
         </>
       )}

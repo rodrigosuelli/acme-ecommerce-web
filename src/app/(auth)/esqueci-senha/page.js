@@ -67,7 +67,7 @@ function EsqueciSenha() {
             placeholder="Insira seu email aqui..."
           />
           <button disabled={isSendingForm} className="btnEnter" type="submit">
-            {isSendingForm ? <CgSpinner size={28} /> : 'Enviar Email'}
+            {isSendingForm ? <CgSpinner size={26} /> : 'Enviar Email'}
           </button>
           <Link href="/login" className="textLink">
             Retornar para página de login

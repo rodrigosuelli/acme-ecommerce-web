@@ -52,7 +52,7 @@ function Login() {
         Esqueceu a senha?
       </Link>
       <button disabled={isSendingForm} className="btnEnter" type="submit">
-        {isSendingForm ? <CgSpinner size={28} /> : 'Login'}
+        {isSendingForm ? <CgSpinner size={26} /> : 'Login'}
       </button>
       <p className="paragraphWithLink">
         Não possui uma conta?&nbsp;
