@@ -8,8 +8,16 @@ import withAuthRoute from '@/hoc/withAuthRoute';
 
 function Cadastro() {
   const [isSendingForm, setIsSendingForm] = useState(false);
+  const [celular, setCelular] = useState('');
 
   const { register } = useUser();
+
+  function handleCelularChange(e) {
+    const notDigitRegex = /\D/g; // Matches any character that is not a digit character (0-9)
+    // Remove any character that is not a digit
+    const value = e.target.value.replace(notDigitRegex, '');
+    setCelular(value);
+  }
 
   async function handleRegister(e) {
     e.preventDefault();
@@ -19,8 +27,7 @@ function Cadastro() {
     const formData = new FormData(form);
     const formJson = Object.fromEntries(formData.entries());
 
-    const { name, email, password, confirm_password, data_nasc, celular } =
-      formJson;
+    const { name, email, password, confirm_password, data_nasc } = formJson;
 
     await register({
       name,
@@ -94,6 +101,8 @@ function Cadastro() {
       <label htmlFor="celular">N° de celular:</label>
       <input
         required
+        value={celular}
+        onChange={handleCelularChange}
         autoComplete="tel-national"
         type="tel"
         name="celular"
