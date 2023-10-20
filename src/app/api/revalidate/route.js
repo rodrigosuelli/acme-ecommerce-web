@@ -11,6 +11,7 @@ export async function POST(request) {
 
   const data = await request.json();
 
+  // eslint-disable-next-line no-console
   console.log(data);
 
   const { model } = data;
