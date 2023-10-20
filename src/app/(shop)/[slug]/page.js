@@ -1,10 +1,7 @@
 import qs from 'qs';
 
 import { notFound } from 'next/navigation';
-
-import Image from 'next/image';
-import ProductRating from '../../../components/ProductRating/ProductRating';
-import styles from './produto.module.css';
+import ProductContent from './productContent';
 
 async function fetchSlugsByPage({ page }) {
   const query = qs.stringify(
@@ -70,7 +67,7 @@ async function getData(slug) {
         },
       },
       populate: { imagens: { fields: ['url', 'formats'] } },
-      fields: ['id', 'titulo', 'descricao'],
+      fields: ['id', 'titulo', 'descricao', 'preco_real'],
     },
     {
       encodeValuesOnly: true, // prettify URL
@@ -105,61 +102,7 @@ async function Produto({ params }) {
     notFound();
   }
 
-  const imgUrl =
-    produtoData.attributes.imagens?.data[0]?.attributes.formats?.small.url;
-  const imgThumbUrl =
-    produtoData.attributes.imagens?.data[0]?.attributes.formats?.thumbnail.url;
-
-  return (
-    <div className={styles.produtoContainer}>
-      <Image
-        className={styles.mainImg}
-        priority={true}
-        src={imgUrl}
-        alt="imagem do produto"
-        width={280}
-        height={280}
-      />
-      <div className={styles.imgThumbs}>
-        <Image
-          className={styles.mainImg}
-          priority={true}
-          src={imgThumbUrl}
-          alt="imagem miniatura do produto"
-          width={64}
-          height={64}
-        />
-        <Image
-          className={styles.mainImg}
-          priority={true}
-          src={imgThumbUrl}
-          alt="imagem miniatura do produto"
-          width={64}
-          height={64}
-        />
-        <Image
-          className={styles.mainImg}
-          priority={true}
-          src={imgThumbUrl}
-          alt="imagem miniatura do produto"
-          width={64}
-          height={64}
-        />
-        <Image
-          className={styles.mainImg}
-          priority={true}
-          src={imgThumbUrl}
-          alt="imagem miniatura do produto"
-          width={64}
-          height={64}
-        />
-      </div>
-      <h1 className={styles.productTitle}>{produtoData.attributes.titulo}</h1>
-      <ProductRating />
-      <h1>{produtoData.id}</h1>
-      <h1>{produtoData.attributes.descricao}</h1>
-    </div>
-  );
+  return <ProductContent produtoData={produtoData} />;
 }
 
 export default Produto;

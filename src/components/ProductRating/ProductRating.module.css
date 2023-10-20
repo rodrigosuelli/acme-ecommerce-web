@@ -1,6 +1,7 @@
 .productRating {
   display: flex;
   align-items: center;
+  margin-bottom: 5px;
 }
 
 .productRating svg:not(:last-child) {

@@ -27,3 +27,19 @@ img.mainImg {
   font-size: 1.25rem;
   margin-bottom: 6px;
 }
+
+.productStatus {
+  color: #15a35c;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.productPrice {
+  color: #127db3;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+p.paymentInfo {
+  margin: 15px 0;
+}
