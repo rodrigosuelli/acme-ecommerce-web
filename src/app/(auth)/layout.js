@@ -1,4 +1,4 @@
-import AuthHeader from '../../components/AuthHeader/AuthHeader';
+import AuthHeader from '../components/AuthHeader/AuthHeader';
 import './authPagesGlobal.css';
 
 export default function AuthPagesLayout({ children }) {

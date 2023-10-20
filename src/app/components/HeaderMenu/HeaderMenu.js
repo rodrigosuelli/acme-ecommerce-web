@@ -8,7 +8,7 @@ import {
   CartFilled,
 } from '@fluentui/react-icons';
 import Link from 'next/link';
-import logoImg from '../../../public/images/logo.svg';
+import logoImg from '../../../../public/images/logo.svg';
 import styles from './HeaderMenu.module.css';
 
 function HeaderMenu() {

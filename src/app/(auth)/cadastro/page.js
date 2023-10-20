@@ -7,7 +7,7 @@ import { useUser } from '@/contexts/userContext';
 import withAuthRoute from '@/hoc/withAuthRoute';
 import { toast } from 'react-toastify';
 import { InputMask } from '@react-input/mask';
-import InputPassword from '../../../components/InputPassword/InputPassword';
+import InputPassword from '../../components/InputPassword/InputPassword';
 
 function Cadastro() {
   const [isSendingForm, setIsSendingForm] = useState(false);

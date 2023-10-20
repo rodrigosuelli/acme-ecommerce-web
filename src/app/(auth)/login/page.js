@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useUser } from '@/contexts/userContext';
 import withAuthRoute from '@/hoc/withAuthRoute';
-import InputPassword from '../../../components/InputPassword/InputPassword';
+import InputPassword from '../../components/InputPassword/InputPassword';
 
 function Login() {
   const [isSendingForm, setIsSendingForm] = useState(false);

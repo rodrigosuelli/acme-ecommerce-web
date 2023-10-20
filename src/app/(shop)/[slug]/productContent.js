@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import ProductRating from '../../../components/ProductRating/ProductRating';
-import InputCEP from '../../../components/InputCEP/InputCEP';
+import ProductRating from '../../components/ProductRating/ProductRating';
+import InputCEP from '../../components/InputCEP/InputCEP';
 import styles from './produto.module.css';
 
 function ProductContent({ produtoData }) {
