@@ -11,12 +11,12 @@ function Homepage() {
   }
 
   return (
-    <div className={styles.homepageContainer}>
+    <>
       <h1>{user && user.username}</h1>
       <button className={styles.btnLogout} onClick={handleLogout}>
         Logout
       </button>
-    </div>
+    </>
   );
 }
 

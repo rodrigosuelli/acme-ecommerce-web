@@ -3,6 +3,7 @@ import qs from 'qs';
 import { notFound } from 'next/navigation';
 
 import Image from 'next/image';
+import ProductRating from '../../../components/ProductRating/ProductRating';
 import styles from './produto.module.css';
 
 async function fetchSlugsByPage({ page }) {
@@ -105,21 +106,58 @@ async function Produto({ params }) {
   }
 
   const imgUrl =
-    produtoData.attributes.imagens?.data[0]?.attributes.formats?.medium.url;
+    produtoData.attributes.imagens?.data[0]?.attributes.formats?.small.url;
+  const imgThumbUrl =
+    produtoData.attributes.imagens?.data[0]?.attributes.formats?.thumbnail.url;
 
   return (
     <div className={styles.produtoContainer}>
-      <h1>Produto</h1>
-      <h1>{produtoData.id}</h1>
-      <h1>{produtoData.attributes.titulo}</h1>
-      <h1>{produtoData.attributes.descricao}</h1>
       <Image
+        className={styles.mainImg}
         priority={true}
         src={imgUrl}
         alt="imagem do produto"
-        width={400}
-        height={400}
+        width={280}
+        height={280}
       />
+      <div className={styles.imgThumbs}>
+        <Image
+          className={styles.mainImg}
+          priority={true}
+          src={imgThumbUrl}
+          alt="imagem miniatura do produto"
+          width={64}
+          height={64}
+        />
+        <Image
+          className={styles.mainImg}
+          priority={true}
+          src={imgThumbUrl}
+          alt="imagem miniatura do produto"
+          width={64}
+          height={64}
+        />
+        <Image
+          className={styles.mainImg}
+          priority={true}
+          src={imgThumbUrl}
+          alt="imagem miniatura do produto"
+          width={64}
+          height={64}
+        />
+        <Image
+          className={styles.mainImg}
+          priority={true}
+          src={imgThumbUrl}
+          alt="imagem miniatura do produto"
+          width={64}
+          height={64}
+        />
+      </div>
+      <h1 className={styles.productTitle}>{produtoData.attributes.titulo}</h1>
+      <ProductRating />
+      <h1>{produtoData.id}</h1>
+      <h1>{produtoData.attributes.descricao}</h1>
     </div>
   );
 }

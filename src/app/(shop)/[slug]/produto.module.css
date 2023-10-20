@@ -1,3 +1,29 @@
 .produtoContainer {
-  background: black;
+  margin: 18px 0px 30px;
+  color: #666666;
+  width: 280px;
+}
+
+img.mainImg {
+  border-radius: 6px;
+  border: 2px solid #c9c9c9;
+}
+
+.imgThumbs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.imgThumbs img:not(:last-child) {
+  margin-right: 5px;
+  margin-bottom: unset;
+}
+
+.productTitle {
+  color: #191919;
+  font-size: 1.25rem;
+  margin-bottom: 6px;
 }

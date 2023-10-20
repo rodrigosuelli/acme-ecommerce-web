@@ -1,0 +1,14 @@
+.productRating {
+  display: flex;
+  align-items: center;
+}
+
+.productRating svg:not(:last-child) {
+  color: #e7cc42;
+  margin-right: 3px;
+}
+
+.productRating span {
+  margin-left: 5px;
+  font-size: 0.95rem;
+}
