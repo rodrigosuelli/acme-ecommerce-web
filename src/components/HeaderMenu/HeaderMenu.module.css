@@ -4,16 +4,30 @@
   justify-content: space-between;
   width: 100%;
   height: 76px;
-  padding-right: 30px;
-  padding-left: 25px;
-  max-width: 800px;
-  position: relative;
+  padding: 0 15px;
 }
 
-.backButtonLink {
-  padding: 10px;
+.rightItems {
+  display: flex;
 }
 
-.backButtonLink svg {
-  color: var(--white);
+.rightItems a:not(:last-child),
+.rightItems button:not(:last-child) {
+  margin-right: 10px;
+}
+
+.iconBtn,
+.logoLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.logoLink {
+  margin-left: 15px;
+}
+
+.iconBtn svg {
+  color: var(--neutral-n800);
 }

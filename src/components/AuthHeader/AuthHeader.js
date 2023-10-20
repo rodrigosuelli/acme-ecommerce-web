@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { ArrowLeftFilled } from '@fluentui/react-icons';
 import Link from 'next/link';
-import logoImg from '../../../public/images/logo.svg';
+import logoImg from '../../../public/images/logoAuth.svg';
 import styles from './AuthHeader.module.css';
 
 function AuthHeader() {

@@ -2,18 +2,32 @@
 
 import Image from 'next/image';
 
-import { NavigationFilled } from '@fluentui/react-icons';
+import {
+  NavigationFilled,
+  SearchFilled,
+  CartFilled,
+} from '@fluentui/react-icons';
 import Link from 'next/link';
 import logoImg from '../../../public/images/logo.svg';
 import styles from './HeaderMenu.module.css';
 
 function HeaderMenu() {
   return (
-    <header className={styles.authHeader}>
-      <Link href="/" className={styles.backButtonLink}>
-        <NavigationFilled fontSize={28} />
+    <header className={styles.headerMenu}>
+      <button type="button" className={styles.iconBtn}>
+        <NavigationFilled fontSize={32} />
+      </button>
+      <Link href="/" className={styles.logoLink}>
+        <Image priority={true} src={logoImg} alt="Logo Acme" />
       </Link>
-      <Image priority={true} src={logoImg} alt="Logo Acme" />
+      <div className={styles.rightItems}>
+        <Link href="/carrinho" className={styles.iconBtn}>
+          <CartFilled fontSize={32} />
+        </Link>
+        <button type="button" className={styles.iconBtn}>
+          <SearchFilled fontSize={32} />
+        </button>
+      </div>
     </header>
   );
 }
