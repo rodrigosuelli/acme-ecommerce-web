@@ -9,7 +9,11 @@ export async function POST(request) {
   const authHeader = headersList.get('Authorization');
   const secret = authHeader && authHeader.split(' ')[1];
 
-  const { event, model, entry } = await request.json();
+  const data = await request.json();
+
+  console.log(data);
+
+  const { model } = data;
 
   if (model !== 'produto') {
     return Response.json(
@@ -22,16 +26,7 @@ export async function POST(request) {
     return Response.json({ message: 'Invalid secret' }, { status: 401 });
   }
 
-  const path = `/${entry.slug}`;
-
-  if (!path) {
-    return Response.json(
-      { message: 'Invalid or missing path param' },
-      { status: 400 }
-    );
-  }
-
-  revalidatePath(path);
+  revalidatePath('/(shop)/[slug]', 'page');
 
   return Response.json({ revalidated: true, now: Date.now() });
 }
