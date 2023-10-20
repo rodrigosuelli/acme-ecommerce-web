@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import ProductRating from '../../../components/ProductRating/ProductRating';
+import InputCEP from '../../../components/InputCEP/InputCEP';
 import styles from './produto.module.css';
 
 function ProductContent({ produtoData }) {
@@ -60,6 +61,7 @@ function ProductContent({ produtoData }) {
       <h3 className={styles.productPrice}>R${preco}</h3>
       <p className={styles.paymentInfo}>Em até 10x de R$ 118,94 sem juros </p>
       <p className={styles.paymentInfo}>Ou em 1x no cartão com até 5% OFF</p>
+      <InputCEP />
     </div>
   );
 }
