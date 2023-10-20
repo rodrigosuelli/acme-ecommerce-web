@@ -78,14 +78,14 @@ textarea {
 
 input,
 textarea,
-select {
+select,
+button {
   border: none;
-  background: var(--neutral-n10);
+  background: none;
 }
 
 button {
   color: var(--white);
-  background: none;
   border: 0;
   cursor: pointer;
   font-family: var(--font-merriweather);

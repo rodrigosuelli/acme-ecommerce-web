@@ -48,6 +48,7 @@
   border-radius: 5px;
   outline: 2px solid transparent;
   transition: all 0.15s ease;
+  background: var(--neutral-n10);
 }
 
 .authForm input:last-of-type {
