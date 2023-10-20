@@ -8,7 +8,6 @@ import {
   CartFilled,
 } from '@fluentui/react-icons';
 import Link from 'next/link';
-import logoImg from '../../../../public/images/logo.svg';
 import styles from './HeaderMenu.module.css';
 
 function HeaderMenu() {
@@ -18,7 +17,13 @@ function HeaderMenu() {
         <NavigationFilled fontSize={32} />
       </button>
       <Link href="/" className={styles.logoLink}>
-        <Image priority={true} src={logoImg} alt="Logo Acme" />
+        <Image
+          priority={true}
+          src="/images/logo.svg"
+          alt="Logo Acme"
+          width={91}
+          height={30}
+        />
       </Link>
       <div className={styles.rightItems}>
         <Link href="/carrinho" className={styles.iconBtn}>
