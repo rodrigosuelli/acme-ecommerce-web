@@ -2,17 +2,19 @@
 
 import Image from 'next/image';
 import { AddFilled, CartFilled } from '@fluentui/react-icons';
+import { useRouter } from 'next/navigation';
 import ProductRating from '../../components/ProductRating/ProductRating';
 import InputCEP from '../../components/InputCEP/InputCEP';
 import styles from './produto.module.css';
 import { useCart } from '../../contexts/cartContext';
 
 function ProductContent({ produtoData }) {
+  const { addItemToCart } = useCart();
+  const router = useRouter();
+
   const { id } = produtoData;
   const { titulo, descricao, preco_real, imagens, avaliacao, qtd_avaliacoes } =
     produtoData.attributes;
-
-  const { addItemToCart } = useCart();
 
   const preco = preco_real.toFixed(2).toString().replace('.', ',');
   const precoEm10X = (preco_real / 10).toFixed(2).toString().replace('.', ',');
@@ -76,7 +78,14 @@ function ProductContent({ produtoData }) {
       </p>
       <InputCEP />
       <div className={styles.btnBuyContainer}>
-        <button className={`btnPrimary ${styles.btnBuy}`} type="button">
+        <button
+          onClick={() => {
+            addItemToCart(id);
+            router.push('/carrinho');
+          }}
+          className={`btnPrimary ${styles.btnBuy}`}
+          type="button"
+        >
           <CartFilled fontSize={26} />
           Comprar
         </button>
