@@ -17,7 +17,7 @@ function InputCEP() {
         mask="ddddd-ddd"
         replacement={{ d: /[0-9]/ }}
       />
-      <button>Calcular</button>
+      <button type="button">Calcular</button>
     </div>
   );
 }
