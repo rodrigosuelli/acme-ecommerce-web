@@ -15,9 +15,9 @@ export default function CartContextComp({ children }) {
 
       // if cart is empty or not iterable
       if (!cart?.length) {
-        setCart([itemId]);
+        setCart([{ id: itemId, qtd: 1 }]);
       } else {
-        setCart([...cart, itemId]);
+        setCart([...cart, { id: itemId, qtd: 1 }]);
       }
     },
     [cart, setCart]
