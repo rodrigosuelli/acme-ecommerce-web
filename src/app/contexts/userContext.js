@@ -190,8 +190,6 @@ export default function UserContextComp({ children }) {
       forgotPassword,
       resetPassword,
       register,
-      // verificarCodRedefinicaoSenha,
-      // confirmarRedefinicaoSenha,
     }),
     [
       user,
@@ -202,8 +200,6 @@ export default function UserContextComp({ children }) {
       forgotPassword,
       resetPassword,
       register,
-      // verificarCodRedefinicaoSenha,
-      // confirmarRedefinicaoSenha,
     ]
   );
 

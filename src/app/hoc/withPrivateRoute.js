@@ -1,6 +1,6 @@
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import { useUser } from '../contexts/userContext';
+import { useUser } from '@/contexts/userContext';
 
 const withPrivateRoute = (Component) => {
   const PrivateRoute = (props) => {
