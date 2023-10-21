@@ -23,12 +23,17 @@ export default function CartContextComp({ children }) {
     [cart, setCart]
   );
 
+  const clearCart = useCallback(() => {
+    setCart(null);
+  }, [setCart]);
+
   const contextValue = useMemo(
     () => ({
       cart,
       addItemToCart,
+      clearCart,
     }),
-    [cart, addItemToCart]
+    [cart, addItemToCart, clearCart]
   );
 
   return (
