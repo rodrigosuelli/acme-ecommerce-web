@@ -13,7 +13,10 @@ function Homepage() {
   return (
     <>
       <h1>{user && user.username}</h1>
-      <button className={styles.btnLogout} onClick={handleLogout}>
+      <button
+        className={`btnPrimary ${styles.btnLogout}`}
+        onClick={handleLogout}
+      >
         Logout
       </button>
     </>

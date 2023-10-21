@@ -31,7 +31,7 @@
         "map": [
           [
             "@",
-            "./src"
+            "./src/app"
           ]
         ],
         "extensions": [

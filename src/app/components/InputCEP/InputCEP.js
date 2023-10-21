@@ -7,6 +7,7 @@ function InputCEP() {
   return (
     <div className={styles.cepField}>
       <InputMask
+        className="inputDefault"
         required
         autoComplete="postal-code"
         placeholder="Insira o seu CEP aqui"
@@ -17,7 +18,9 @@ function InputCEP() {
         mask="ddddd-ddd"
         replacement={{ d: /[0-9]/ }}
       />
-      <button type="button">Calcular</button>
+      <button className="btnPrimary" type="button">
+        Calcular
+      </button>
     </div>
   );
 }

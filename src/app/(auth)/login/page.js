@@ -8,7 +8,7 @@ import withAuthRoute from '@/hoc/withAuthRoute';
 import InputPassword from '../../components/InputPassword/InputPassword';
 
 function Login() {
-  const [isSendingForm, setIsSendingForm] = useState(false);
+  const [isSendingForm, setIsSendingForm] = useState(true);
 
   const { logIn } = useUser();
 
@@ -33,6 +33,7 @@ function Login() {
       <p>Efetue o login para ter uma melhor experiência.</p>
       <label htmlFor="email">Email:</label>
       <input
+        className="inputDefault"
         required
         minLength={6}
         autoComplete="email"
@@ -51,7 +52,11 @@ function Login() {
       <Link href="/esqueci-senha" className="textLink">
         Esqueceu a senha?
       </Link>
-      <button disabled={isSendingForm} className="btnEnter" type="submit">
+      <button
+        disabled={isSendingForm}
+        className="btnPrimary btnEnter"
+        type="submit"
+      >
         {isSendingForm ? <CgSpinner size={26} /> : 'Login'}
       </button>
       <p className="paragraphWithLink">

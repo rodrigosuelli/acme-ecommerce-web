@@ -46,7 +46,7 @@ function RedefinirSenha() {
             sua nova senha nas próximas vezes em que fizer login na plataforma.
           </p>
 
-          <Link href="/" className="btnEnter">
+          <Link href="/" className="btnPrimary btnEnter">
             Ir para a homepage
           </Link>
         </>
@@ -60,6 +60,7 @@ function RedefinirSenha() {
             a plataforma.
           </p>
           <input
+            className="inputDefault"
             hidden
             readOnly
             autoComplete="off"
@@ -69,6 +70,7 @@ function RedefinirSenha() {
             value={code || undefined}
           />
           <input
+            className="inputDefault"
             required
             minLength={6}
             autoComplete="new-password"
@@ -77,7 +79,11 @@ function RedefinirSenha() {
             name="password"
             id="password"
           />
-          <button disabled={isSendingForm} className="btnEnter" type="submit">
+          <button
+            disabled={isSendingForm}
+            className="btnPrimary btnEnter"
+            type="submit"
+          >
             {isSendingForm ? <CgSpinner size={26} /> : 'Redefinir Senha'}
           </button>
         </>

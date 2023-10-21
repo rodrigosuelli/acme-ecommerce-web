@@ -45,7 +45,7 @@ function EsqueciSenha() {
             encontre nosso email imediatamente. Se precisar de mais assistência,
             nossa equipe de suporte está à disposição para ajudar.
           </p>
-          <Link href="/login" className="btnEnter">
+          <Link href="/login" className="btnPrimary btnEnter">
             Retornar para Login
           </Link>
         </>
@@ -59,6 +59,7 @@ function EsqueciSenha() {
             se não receber nosso email imediatamente.
           </p>
           <input
+            className="inputDefault"
             required
             autoComplete="email"
             type="email"
@@ -66,7 +67,11 @@ function EsqueciSenha() {
             id="email"
             placeholder="Insira seu email aqui..."
           />
-          <button disabled={isSendingForm} className="btnEnter" type="submit">
+          <button
+            disabled={isSendingForm}
+            className="btnPrimary btnEnter"
+            type="submit"
+          >
             {isSendingForm ? <CgSpinner size={26} /> : 'Enviar Email'}
           </button>
           <Link href="/login" className="textLink">

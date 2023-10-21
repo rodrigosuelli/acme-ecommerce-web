@@ -41,26 +41,15 @@
 }
 
 .authForm input {
-  width: 100%;
   padding: 0px 16px;
   margin-bottom: 24px;
   height: 50px;
   border-radius: 5px;
-  outline: 2px solid transparent;
-  transition: all 0.15s ease;
   background: var(--neutral-n10);
 }
 
 .authForm input:last-of-type {
   margin-bottom: 20px;
-}
-
-.authForm input:focus {
-  outline: 2px solid var(--black);
-}
-
-.authForm input::placeholder {
-  color: #999999;
 }
 
 .authForm .passwordField {
@@ -75,15 +64,12 @@
 }
 
 .authForm .passwordField button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: var(--neutral-n500);
   position: absolute;
   right: 16px;
   top: 50%;
   transform: translateY(-50%);
-  transition: all 0.15s ease;
+  transition: unset;
 }
 
 a.textLink {
@@ -93,7 +79,6 @@ a.textLink {
   font-weight: 700;
   font-size: 1rem;
   margin-bottom: 25px;
-  transition: all 0.15s ease;
 }
 
 a.textLink:hover {
@@ -111,12 +96,6 @@ p.paragraphWithLink a.textLink {
 }
 
 .btnEnter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--primary-p300);
-  color: var(--white);
-  font-family: var(--font-merriweather);
   border-radius: 40px;
   height: 40px;
   min-width: 145px;
@@ -124,39 +103,8 @@ p.paragraphWithLink a.textLink {
   padding: 0 35px;
   margin-top: 10px;
   margin-bottom: 42px;
-  border: 3px solid transparent;
 
   align-self: flex-end;
-  transition: all 0.15s ease;
-}
-
-.btnEnter:not(:disabled):hover,
-.btnEnter:not(:disabled):active {
-  background: white;
-  color: var(--primary-p300);
-  border: 3px solid var(--primary-p300);
-}
-
-.btnEnter:disabled {
-  background: var(--placeholder-text);
-}
-
-.btnEnter svg {
-  /* color: var(--black); */
-  animation: spin;
-  animation-duration: 1.1s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 @media only screen and (min-width: 500px) {

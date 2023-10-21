@@ -1,35 +1,7 @@
 .btnLogout {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: var(--primary-light);
-  color: var(--black);
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 1.25rem;
   border-radius: 5px;
 
   width: 200px;
   height: 54px;
-  transition: all 0.15s ease;
-}
-
-.btnLogout:hover {
-  background: var(--primary-medium);
-}
-
-.btnLogout:active {
-  background: var(--primary-dark);
-}
-
-.btnLogout:disabled {
-  background: var(--placeholder-text);
-}
-
-.btnLogout svg {
-  /* color: var(--black); */
-  animation: spin;
-  animation-duration: 1.1s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
 }

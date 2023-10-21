@@ -48,6 +48,7 @@ function Cadastro() {
       <p>Crie uma conta para poder ter acesso completo ao site.</p>
       <label htmlFor="nome">Nome Completo:</label>
       <input
+        className="inputDefault"
         required
         minLength={3}
         autoComplete="name"
@@ -58,6 +59,7 @@ function Cadastro() {
       />
       <label htmlFor="email">Email:</label>
       <input
+        className="inputDefault"
         required
         minLength={6}
         autoComplete="email"
@@ -82,6 +84,7 @@ function Cadastro() {
       />
       <label htmlFor="data_nasc">Data de nascimento:</label>
       <InputMask
+        className="inputDefault"
         required
         name="data_nasc"
         placeholder="dd/mm/aaaa"
@@ -99,6 +102,7 @@ function Cadastro() {
       />
       <label htmlFor="celular">N° de celular:</label>
       <InputMask
+        className="inputDefault"
         required
         autoComplete="tel-national"
         name="celular"
@@ -109,7 +113,11 @@ function Cadastro() {
         mask="(aa) b cccc-cccc"
         replacement={{ a: /[1-9]/, b: /9/, c: /[0-9]/ }}
       />
-      <button disabled={isSendingForm} className="btnEnter" type="submit">
+      <button
+        disabled={isSendingForm}
+        className="btnPrimary btnEnter"
+        type="submit"
+      >
         {isSendingForm ? <CgSpinner size={26} /> : 'Criar Conta'}
       </button>
       <p className="paragraphWithLink">

@@ -13,6 +13,7 @@ function InputPassword({ autoComplete, placeholder, name, id }) {
   return (
     <div className="passwordField">
       <input
+        className="inputDefault"
         required
         minLength={6}
         autoComplete={autoComplete}
