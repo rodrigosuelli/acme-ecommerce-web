@@ -1,14 +1,19 @@
 'use client';
 
 import Image from 'next/image';
-import { CartFilled, AddFilled } from '@fluentui/react-icons';
+import { AddFilled, CartFilled } from '@fluentui/react-icons';
 import ProductRating from '../../components/ProductRating/ProductRating';
 import InputCEP from '../../components/InputCEP/InputCEP';
 import styles from './produto.module.css';
+import { useCart } from '../../contexts/cartContext';
 
 function ProductContent({ produtoData }) {
+  const { id } = produtoData;
   const { titulo, descricao, preco_real, imagens, avaliacao, qtd_avaliacoes } =
     produtoData.attributes;
+
+  const { addItemToCart } = useCart();
+
   const preco = preco_real.toFixed(2).toString().replace('.', ',');
   const precoEm10X = (preco_real / 10).toFixed(2).toString().replace('.', ',');
   const imgUrl = imagens?.data[0]?.attributes.formats?.small.url;
@@ -76,6 +81,9 @@ function ProductContent({ produtoData }) {
           Comprar
         </button>
         <button
+          onClick={() => {
+            addItemToCart(id);
+          }}
           className={`btnPrimaryOutline ${styles.btnAddToCart}`}
           type="button"
         >

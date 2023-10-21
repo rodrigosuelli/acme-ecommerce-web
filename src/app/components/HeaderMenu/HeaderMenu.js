@@ -9,8 +9,11 @@ import {
 } from '@fluentui/react-icons';
 import Link from 'next/link';
 import styles from './HeaderMenu.module.css';
+import { useCart } from '../../contexts/cartContext';
 
 function HeaderMenu() {
+  const { cart } = useCart();
+
   return (
     <header className={styles.headerMenu}>
       <button type="button" className={styles.iconBtn}>
@@ -28,6 +31,7 @@ function HeaderMenu() {
       <div className={styles.rightItems}>
         <Link href="/carrinho" className={styles.iconBtn}>
           <CartFilled fontSize={32} />
+          <div>{cart ? cart.length : 0}</div>
         </Link>
         <button type="button" className={styles.iconBtn}>
           <SearchFilled fontSize={32} />
