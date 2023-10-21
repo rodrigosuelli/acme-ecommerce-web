@@ -8,7 +8,7 @@ import withAuthRoute from '@/hoc/withAuthRoute';
 import InputPassword from '../../components/InputPassword/InputPassword';
 
 function Login() {
-  const [isSendingForm, setIsSendingForm] = useState(true);
+  const [isSendingForm, setIsSendingForm] = useState(false);
 
   const { logIn } = useUser();
 
