@@ -3,15 +3,25 @@
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
 import styles from './ProductRating.module.css';
 
-function ProductRating() {
+function ProductRating({ avaliacao, qtd_avaliacoes }) {
+  function renderStars(numberOfStarsFilled) {
+    const contentToRender = [];
+
+    for (let i = 1; i <= 5; i++) {
+      if (i <= numberOfStarsFilled) {
+        contentToRender.push(<StarFilled fontSize={18} key={i} />);
+      } else {
+        contentToRender.push(<StarRegular fontSize={18} key={i} />);
+      }
+    }
+
+    return contentToRender;
+  }
+
   return (
     <div className={styles.productRating}>
-      <StarFilled fontSize={18} />
-      <StarFilled fontSize={18} />
-      <StarFilled fontSize={18} />
-      <StarFilled fontSize={18} />
-      <StarRegular fontSize={18} />
-      <span>(22)</span>
+      {renderStars(avaliacao)}
+      <span>({qtd_avaliacoes})</span>
     </div>
   );
 }

@@ -67,7 +67,14 @@ async function getData(slug) {
         },
       },
       populate: { imagens: { fields: ['url', 'formats'] } },
-      fields: ['id', 'titulo', 'descricao', 'preco_real'],
+      fields: [
+        'id',
+        'titulo',
+        'descricao',
+        'preco_real',
+        'avaliacao',
+        'qtd_avaliacoes',
+      ],
     },
     {
       encodeValuesOnly: true, // prettify URL
