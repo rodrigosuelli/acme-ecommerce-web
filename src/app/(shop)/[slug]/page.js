@@ -89,6 +89,9 @@ async function getData(slug) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
     },
+    next: {
+      tags: ['product'],
+    },
   });
 
   if (!res.ok) {

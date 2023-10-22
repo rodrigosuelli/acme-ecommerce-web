@@ -1,4 +1,4 @@
-import { revalidatePath } from 'next/cache';
+import { revalidateTag } from 'next/cache';
 import { headers } from 'next/headers';
 
 // Revalidate webhook to `your-website.com/api/revalidate
@@ -11,10 +11,10 @@ export async function POST(request) {
 
   const data = await request.json();
 
-  // eslint-disable-next-line no-console
-  console.log(data);
+  const { event, model, entry } = data;
 
-  const { model } = data;
+  // eslint-disable-next-line no-console
+  console.log({ event, model, entry });
 
   if (model !== 'produto') {
     return Response.json(
@@ -27,7 +27,7 @@ export async function POST(request) {
     return Response.json({ message: 'Invalid secret' }, { status: 401 });
   }
 
-  revalidatePath('/(shop)/[slug]', 'page');
+  revalidateTag('product');
 
   return Response.json({ revalidated: true, now: Date.now() });
 }
