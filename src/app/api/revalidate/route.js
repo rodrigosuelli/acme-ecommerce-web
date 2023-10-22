@@ -9,15 +9,14 @@ export async function POST(request) {
   // Extract secret from header: 'Bearer jqklmaosdpakm' => 'jqklmaosdpakm'
   const authHeader = headersList.get('Authorization');
   const secret = authHeader && authHeader.split(' ')[1];
-  // eslint-disable-next-line no-use-before-define
-  console.log(data.teste.taste);
 
   const data = await request.json();
 
-  console.log(data.teste.taste);
-  console.log('==========================');
+  const { event, model, entry } = data;
 
-  const { model } = data;
+  console.log(event);
+  console.log(model);
+  console.log(entry?.slug);
 
   if (model !== 'produto') {
     return Response.json({ message: 'Model is not produto' }, { status: 400 });
@@ -27,9 +26,9 @@ export async function POST(request) {
     return Response.json({ message: 'Invalid secret' }, { status: 401 });
   }
 
-  // revalidateTag('product');
+  revalidateTag('product');
 
-  console.log('revalidated with success');
+  console.log({ revalidated: true, now: Date.now() });
 
   return Response.json({ revalidated: true, now: Date.now() });
 }
