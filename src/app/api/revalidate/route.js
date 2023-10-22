@@ -14,7 +14,7 @@ export async function POST(request) {
   const { event, model, entry } = data;
 
   // eslint-disable-next-line no-console
-  console.log({ event, model, entry });
+  console.log({ event, model, entry: entry.titulo });
 
   if (model !== 'produto') {
     return Response.json(
@@ -28,6 +28,9 @@ export async function POST(request) {
   }
 
   revalidateTag('product');
+
+  // eslint-disable-next-line no-console
+  console.log({ revalidated: true, now: Date.now() });
 
   return Response.json({ revalidated: true, now: Date.now() });
 }
