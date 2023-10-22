@@ -12,11 +12,10 @@ export async function POST(request) {
 
   const data = await request.json();
 
-  const { event, model, entry } = data;
+  console.log(data);
+  console.log('==========================');
 
-  console.log(event);
-  console.log(model);
-  console.log(entry?.slug);
+  const { model } = data;
 
   if (model !== 'produto') {
     return Response.json({ message: 'Model is not produto' }, { status: 400 });
@@ -28,7 +27,7 @@ export async function POST(request) {
 
   revalidateTag('product');
 
-  console.log({ revalidated: true, now: Date.now() });
+  console.log('revalidated with success');
 
   return Response.json({ revalidated: true, now: Date.now() });
 }
