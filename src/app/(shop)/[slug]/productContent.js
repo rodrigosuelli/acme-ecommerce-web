@@ -124,7 +124,11 @@ function ProductContent({ produtoData }) {
       </div>
       <div className={styles.productDesc}>
         <h1>Descrição do Produto</h1>
-        <p>{descricao}</p>
+        {descricao
+          .split('\n')
+          .map(
+            (paragrafo, index) => paragrafo && <p key={index}>{paragrafo}</p>
+          )}
       </div>
     </div>
   );

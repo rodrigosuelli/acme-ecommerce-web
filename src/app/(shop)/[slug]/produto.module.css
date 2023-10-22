@@ -98,3 +98,7 @@ p.seeMoreOptions {
 .productDesc p {
   color: var(--neutral-n300);
 }
+
+.productDesc p:not(:last-child) {
+  margin-bottom: 10px;
+}
