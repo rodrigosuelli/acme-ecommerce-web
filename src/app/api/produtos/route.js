@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function GET(request) {
   const query = request.nextUrl.search;
 
-  const url = `${process.env.STRAPI_API_URL}/produtos?${query}`;
+  const url = `${process.env.STRAPI_API_URL}/produtos${query}`;
 
   const res = await fetch(url, {
     method: 'GET',
