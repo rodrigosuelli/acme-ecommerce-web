@@ -1,2 +1,16 @@
-.carrinhoContainer {
+.carrinhoContainer h1 {
+  font-size: 1.5rem;
+  color: var(--neutral-n800);
+  margin-bottom: 15px;
+}
+
+.marker {
+  width: 120px;
+  height: 2px;
+  background: var(--primary-p300);
+  margin-bottom: 20px;
+}
+
+.titleMgTop {
+  margin-top: 40px;
 }

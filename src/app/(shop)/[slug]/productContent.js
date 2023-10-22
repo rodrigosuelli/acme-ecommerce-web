@@ -25,7 +25,7 @@ function ProductContent({ produtoData }) {
   const imgThumbUrl = imagens?.data[0]?.attributes.formats?.thumbnail.url;
 
   return (
-    <div className={styles.produtoContainer}>
+    <div className={`shopPage ${styles.produtoContainer}`}>
       <Image
         className={styles.mainImg}
         priority={true}

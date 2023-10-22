@@ -4,3 +4,8 @@
   align-items: center;
   min-height: 100%;
 }
+
+.shopPage {
+  margin: 15px 0px 30px;
+  width: 280px;
+}
