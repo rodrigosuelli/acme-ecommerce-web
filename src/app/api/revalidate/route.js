@@ -9,6 +9,7 @@ export async function POST(request) {
   // Extract secret from header: 'Bearer jqklmaosdpakm' => 'jqklmaosdpakm'
   const authHeader = headersList.get('Authorization');
   const secret = authHeader && authHeader.split(' ')[1];
+  // eslint-disable-next-line no-use-before-define
   console.log(data.teste.taste);
 
   const data = await request.json();
