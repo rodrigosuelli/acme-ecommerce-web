@@ -87,7 +87,8 @@ input {
   transition: all 0.15s ease;
 }
 
-button {
+button,
+a.btnEnter {
   display: flex;
   align-items: center;
   justify-content: center;
