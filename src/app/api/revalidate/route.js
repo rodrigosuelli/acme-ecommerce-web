@@ -13,7 +13,7 @@ export async function POST(request) {
 
     const data = await request.json();
 
-    console.log(data);
+    console.log(data.teste.taste);
     console.log('==========================');
 
     const { model } = data;
