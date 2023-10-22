@@ -14,13 +14,12 @@ export async function POST(request) {
   const { event, model, entry } = data;
 
   // eslint-disable-next-line no-console
-  console.log({ event, model, entry: entry.titulo });
+  console.log(event);
+  console.log(model);
+  console.log(entry?.slug);
 
   if (model !== 'produto') {
-    return Response.json(
-      { message: 'Model is not `produto`' },
-      { status: 400 }
-    );
+    return Response.json({ message: 'Model is not produto' }, { status: 400 });
   }
 
   if (secret !== process.env.NEXT_REVALIDATION_SECRET) {
