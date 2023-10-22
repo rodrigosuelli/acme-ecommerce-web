@@ -22,6 +22,10 @@ img.mainImg {
   margin-bottom: 15px;
 }
 
+.imgThumbs img:not(:first-child) {
+  opacity: 0.5;
+}
+
 .imgThumbs img:not(:last-child) {
   margin-right: 5px;
   margin-bottom: unset;
