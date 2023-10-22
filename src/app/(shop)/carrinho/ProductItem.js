@@ -24,7 +24,7 @@ function ProductItem({ produtoData }) {
       />
       <div className={styles.produtoInfo}>
         <h2>{titulo}</h2>
-        <h3>{preco}</h3>
+        <h3>R${preco}</h3>
         <p>10x sem juros de R${precoEm10X}</p>
         <p>Quantidade: {cartItem.qtd}</p>
       </div>
