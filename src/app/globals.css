@@ -88,7 +88,7 @@ input {
 }
 
 button,
-a.btnEnter {
+.btnEnter {
   display: flex;
   align-items: center;
   justify-content: center;
