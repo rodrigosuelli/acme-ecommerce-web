@@ -1,14 +1,17 @@
 'use client';
 
 import Image from 'next/image';
-import { AddFilled, CartFilled } from '@fluentui/react-icons';
+import { AddFilled, CartFilled, CheckmarkFilled } from '@fluentui/react-icons';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
 import ProductRating from '../../components/ProductRating/ProductRating';
 import InputCEP from '../../components/InputCEP/InputCEP';
 import styles from './produto.module.css';
 import { useCart } from '../../contexts/cartContext';
 
 function ProductContent({ produtoData }) {
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
   const { addItemToCart } = useCart();
   const router = useRouter();
 
@@ -80,8 +83,16 @@ function ProductContent({ produtoData }) {
       <div className={styles.btnBuyContainer}>
         <button
           onClick={() => {
-            addItemToCart(id);
-            router.push('/carrinho');
+            try {
+              if (!isAddedToCart) {
+                addItemToCart(id);
+              }
+              router.push('/carrinho');
+            } catch (error) {
+              toast.error(error.message, {
+                position: 'bottom-right',
+              });
+            }
           }}
           className={`btnPrimary ${styles.btnBuy}`}
           type="button"
@@ -91,12 +102,24 @@ function ProductContent({ produtoData }) {
         </button>
         <button
           onClick={() => {
-            addItemToCart(id);
+            try {
+              if (isAddedToCart) return;
+              addItemToCart(id);
+              setIsAddedToCart(true);
+            } catch (error) {
+              toast.error(error.message, {
+                position: 'bottom-right',
+              });
+            }
           }}
           className={`btnPrimaryOutline ${styles.btnAddToCart}`}
           type="button"
         >
-          <AddFilled fontSize={24} />
+          {isAddedToCart ? (
+            <CheckmarkFilled fontSize={24} />
+          ) : (
+            <AddFilled fontSize={24} />
+          )}
         </button>
       </div>
       <div className={styles.productDesc}>
