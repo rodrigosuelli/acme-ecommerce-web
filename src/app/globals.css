@@ -141,7 +141,8 @@ input.inputDefault::placeholder {
   background: var(--placeholder-text);
 }
 
-.btnPrimary svg {
+.btnPrimary svg,
+.spinner {
   animation: spin;
   animation-duration: 1.1s;
   animation-iteration-count: infinite;

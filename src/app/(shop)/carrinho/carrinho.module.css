@@ -14,3 +14,49 @@
 .titleMgTop {
   margin-top: 40px;
 }
+
+.produtosList {
+  padding-top: 10px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.produtoItemContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  outline: 1px solid var(--neutral-n60);
+  border-radius: 5px;
+  padding: 12px 10px;
+  height: 130px;
+  width: 100%;
+}
+
+.produtoItemContainer:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.produtoItemContainer .produtoInfo {
+  margin-left: 8px;
+}
+
+.produtoItemContainer .produtoInfo h2,
+.produtoItemContainer .produtoInfo h3 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.produtoItemContainer .produtoInfo h2 {
+  color: #084145;
+}
+
+.produtoItemContainer .produtoInfo h3 {
+  color: var(--primary-p300);
+}
+
+.produtoItemContainer .produtoInfo p {
+  font-size: 0.875rem;
+}
