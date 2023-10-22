@@ -1,7 +1,7 @@
 import qs from 'qs';
 
 import { notFound } from 'next/navigation';
-import ProductContent from './productContent';
+import ProductContent from './ProductContent';
 
 async function fetchSlugsByPage({ page }) {
   const query = qs.stringify(
