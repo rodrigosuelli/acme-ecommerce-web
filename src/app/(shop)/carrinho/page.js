@@ -1,9 +1,14 @@
 'use client';
 
+import qs from 'qs';
 import { useCart } from '@/contexts/cartContext';
+import useSWR from 'swr';
 import InputCEP from '../../components/InputCEP/InputCEP';
 import styles from './carrinho.module.css';
-import ProductList from './ProductList';
+import ProductListContent from './ProductListContent';
+import api from '../../services/api';
+
+const fetcher = (url) => api.get(url).then((res) => res.data);
 
 function Carrinho() {
   const { cart } = useCart();
@@ -18,6 +23,26 @@ function Carrinho() {
 
   const shouldRenderProductList = isCartValid && productIdArray.length;
 
+  const query = qs.stringify(
+    {
+      filters: {
+        id: {
+          $in: productIdArray,
+        },
+      },
+      populate: { imagens: { fields: ['url', 'formats'] } },
+      fields: ['id', 'titulo', 'preco_real', 'qtd_estoque'],
+    },
+    {
+      encodeValuesOnly: true, // prettify URL
+    }
+  );
+
+  const { data, error, isLoading } = useSWR(
+    shouldRenderProductList ? `/api/produtos?${query}` : null,
+    fetcher
+  );
+
   return (
     <div className={`shopPage ${styles.carrinhoContainer}`}>
       <h1>Adicionar CEP</h1>
@@ -25,9 +50,12 @@ function Carrinho() {
       <InputCEP />
       <h1 className={styles.titleMgTop}>Produtos Selecionados</h1>
       <div className={styles.marker}></div>
-      {shouldRenderProductList && (
-        <ProductList productIdArray={productIdArray} />
-      )}
+      <div className={styles.produtosList}>
+        {shouldRenderProductList && (
+          <ProductListContent data={data} error={error} isLoading={isLoading} />
+        )}
+        {!isCartValid && <h3>Seu carrinho está vazio.</h3>}
+      </div>
     </div>
   );
 }
