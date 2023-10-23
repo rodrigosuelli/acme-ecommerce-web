@@ -51,10 +51,11 @@ function Carrinho() {
       <h1 className={styles.titleMgTop}>Produtos Selecionados</h1>
       <div className={styles.marker}></div>
       <div className={styles.produtosList}>
-        {shouldRenderProductList && (
+        {shouldRenderProductList ? (
           <ProductListContent data={data} error={error} isLoading={isLoading} />
+        ) : (
+          <h3>Seu carrinho está vazio.</h3>
         )}
-        {!isCartValid && <h3>Seu carrinho está vazio.</h3>}
       </div>
     </div>
   );

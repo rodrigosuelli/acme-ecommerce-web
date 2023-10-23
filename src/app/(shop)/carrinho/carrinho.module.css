@@ -39,6 +39,7 @@
 }
 
 .produtoItemContainer .produtoInfo {
+  width: 100%;
   margin-left: 8px;
 }
 
@@ -66,17 +67,39 @@
   font-weight: 700;
 }
 
-.qtdContainer {
+.actionsContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.qtdBtnContainer {
   display: flex;
   align-items: center;
   color: #144b4e;
 }
 
-.qtdContainer span {
+.qtdBtnContainer span {
   margin: 0 10px;
   font-size: 0.8125rem;
 }
 
 .btnChangeQtd {
   color: var(--primary-p300);
+}
+
+.btnDeleteItem {
+  background: var(--danger-d300);
+  color: var(--white);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.btnDeleteItem:hover {
+  background: var(--white);
+  color: var(--danger-d300);
+  border: 1px solid var(--danger-d300);
 }
