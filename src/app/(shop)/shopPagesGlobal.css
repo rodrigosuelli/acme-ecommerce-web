@@ -9,3 +9,7 @@
   margin: 15px 0px 30px;
   width: 280px;
 }
+
+.shopPageContainer svg.spinner {
+  margin-top: 200px;
+}
