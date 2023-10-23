@@ -26,7 +26,7 @@ export async function POST(request) {
     return Response.json({ message: 'Invalid secret' }, { status: 401 });
   }
 
-  revalidateTag('product');
+  revalidateTag(`product:${entry.slug}`);
 
   console.log({ revalidated: true, now: Date.now() });
 

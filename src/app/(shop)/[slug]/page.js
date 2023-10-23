@@ -90,7 +90,7 @@ async function getData(slug) {
       Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
     },
     next: {
-      tags: ['product'],
+      tags: [`product:${slug}`],
     },
   });
 
