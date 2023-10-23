@@ -60,3 +60,23 @@
   font-size: 0.8125rem;
   margin-bottom: 10px;
 }
+
+.produtoItemContainer .produtoInfo .qtdTitle {
+  margin-bottom: 3px;
+  font-weight: 700;
+}
+
+.qtdContainer {
+  display: flex;
+  align-items: center;
+  color: #144b4e;
+}
+
+.qtdContainer span {
+  margin: 0 10px;
+  font-size: 0.8125rem;
+}
+
+.btnChangeQtd {
+  color: var(--primary-p300);
+}

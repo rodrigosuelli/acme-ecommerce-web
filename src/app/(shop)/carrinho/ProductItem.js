@@ -1,9 +1,10 @@
 import Image from 'next/image';
+import { CaretLeftFilled, CaretRightFilled } from '@fluentui/react-icons';
 import { useCart } from '../../contexts/cartContext';
 import styles from './carrinho.module.css';
 
 function ProductItem({ produtoData }) {
-  const { cart } = useCart();
+  const { cart, changeItemQuantity } = useCart();
 
   const { id } = produtoData;
   const cartItem = cart.find((item) => item.id === id);
@@ -26,7 +27,28 @@ function ProductItem({ produtoData }) {
         <h2>{titulo}</h2>
         <h3>R${preco}</h3>
         <p>10x sem juros de R${precoEm10X}</p>
-        <p>Quantidade: {cartItem.qtd}</p>
+        <p className={styles.qtdTitle}>Quantidade:</p>
+        <div className={styles.qtdContainer}>
+          <button
+            onClick={() => {
+              if (cartItem.qtd > 1) changeItemQuantity(id, cartItem.qtd - 1);
+            }}
+            className={styles.btnChangeQtd}
+            type="button"
+          >
+            <CaretLeftFilled fontSize={18} />
+          </button>
+          <span>{cartItem.qtd}</span>
+          <button
+            onClick={() => {
+              if (cartItem.qtd < 50) changeItemQuantity(id, cartItem.qtd + 1);
+            }}
+            className={styles.btnChangeQtd}
+            type="button"
+          >
+            <CaretRightFilled fontSize={18} />
+          </button>
+        </div>
       </div>
     </div>
   );
