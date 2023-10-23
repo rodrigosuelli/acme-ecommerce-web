@@ -10,6 +10,12 @@
   width: 280px;
 }
 
-.shopPageContainer svg.spinner {
-  margin-top: 200px;
+.loadingProdutoPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: auto 0;
+  padding-top: 15px;
+  padding-bottom: 95px;
 }
