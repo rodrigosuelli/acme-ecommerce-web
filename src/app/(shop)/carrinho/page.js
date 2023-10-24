@@ -51,15 +51,16 @@ function Carrinho() {
     setSavedData(data);
 
     // Set cart with response data
-    if (data?.data) {
-      setCart(
-        data.data.map((produto) => {
-          const cartItem = cart.find((item) => item.id === produto.id);
+    // TODO: Cannot update component CartContext while rendering Carrinho component, fix the setState()
+    // if (data?.data) {
+    //   setCart(
+    //     data.data.map((produto) => {
+    //       const cartItem = cart.find((item) => item.id === produto.id);
 
-          return { id: produto.id, qtd: cartItem.qtd };
-        })
-      );
-    }
+    //       return { id: produto.id, qtd: cartItem.qtd };
+    //     })
+    //   );
+    // }
   }
 
   return (
