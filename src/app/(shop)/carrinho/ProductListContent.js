@@ -1,7 +1,10 @@
 import { CgSpinner } from 'react-icons/cg';
 import ProductItem from './ProductItem';
+import { useCart } from '../../contexts/cartContext';
 
 function ProductListContent({ data, error, isLoading }) {
+  const { cart } = useCart();
+
   if (error) {
     return (
       <h3>Erro, não foi possível buscar os produtos no banco de dados.</h3>
@@ -13,9 +16,21 @@ function ProductListContent({ data, error, isLoading }) {
   }
 
   if (data.data) {
-    return data.data.map((produto) => (
-      <ProductItem key={produto.id} produtoData={produto} />
-    ));
+    if (cart && cart.length) {
+      const contentToRender = [];
+
+      cart.forEach((item) => {
+        const produtoItem = data.data.find((produto) => produto.id === item.id);
+
+        if (produtoItem) {
+          contentToRender.push(
+            <ProductItem key={produtoItem.id} produtoData={produtoItem} />
+          );
+        }
+      });
+
+      return contentToRender;
+    }
   }
 }
 
