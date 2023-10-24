@@ -4,6 +4,7 @@ import {
   CaretRightFilled,
   DeleteRegular,
 } from '@fluentui/react-icons';
+import Link from 'next/link';
 import { useCart } from '../../contexts/cartContext';
 import styles from './carrinho.module.css';
 
@@ -13,7 +14,7 @@ function ProductItem({ produtoData }) {
   const { id } = produtoData;
   const cartItem = cart.find((item) => item.id === id);
 
-  const { titulo, preco_real, imagens } = produtoData.attributes;
+  const { titulo, preco_real, slug, imagens } = produtoData.attributes;
   const preco = preco_real.toFixed(2).toString().replace('.', ',');
   const precoEm10X = (preco_real / 10).toFixed(2).toString().replace('.', ',');
   const imgThumbUrl = imagens?.data[0]?.attributes.formats?.thumbnail.url;
@@ -28,7 +29,9 @@ function ProductItem({ produtoData }) {
         height={100}
       />
       <div className={styles.produtoInfo}>
-        <h2>{titulo}</h2>
+        <Link href={`/${slug}`} className="textLink">
+          <h2>{titulo}</h2>
+        </Link>
         <h3>R${preco}</h3>
         <p>10x sem juros de R${precoEm10X}</p>
         <div className={styles.actionsContainer}>
