@@ -91,12 +91,20 @@ export default function CartContextComp({ children }) {
   const contextValue = useMemo(
     () => ({
       cart,
+      setCart,
       addItemToCart,
       changeItemQuantity,
       removeItemFromCart,
       clearCart,
     }),
-    [cart, addItemToCart, changeItemQuantity, removeItemFromCart, clearCart]
+    [
+      cart,
+      setCart,
+      addItemToCart,
+      changeItemQuantity,
+      removeItemFromCart,
+      clearCart,
+    ]
   );
 
   return (
