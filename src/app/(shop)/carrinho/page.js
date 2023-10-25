@@ -4,10 +4,11 @@ import qs from 'qs';
 import { useCart } from '@/contexts/cartContext';
 import useSWR from 'swr';
 import { useState } from 'react';
-import InputCEP from '../../components/InputCEP/InputCEP';
+import InputCEP from '../../components/Inputs/InputCEP';
 import styles from './carrinho.module.css';
 import ProductListContent from './ProductListContent';
 import api from '../../services/api';
+import InputCupom from '../../components/Inputs/InputCupom';
 
 const fetcher = (url) => api.get(url).then((res) => res.data);
 
@@ -82,6 +83,17 @@ function Carrinho() {
           <h3>Seu carrinho está vazio.</h3>
         )}
       </div>
+      {isCartValid ? (
+        <>
+          <h1>Inserir Cupom de Desconto</h1>
+          <div className={styles.marker}></div>
+          <InputCupom />
+          <h1>Resumo da compra</h1>
+          <div className={styles.marker}></div>
+        </>
+      ) : (
+        <h1>Continue comprando</h1>
+      )}
     </div>
   );
 }

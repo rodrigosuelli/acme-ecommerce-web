@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import ProductRating from '../../components/ProductRating/ProductRating';
-import InputCEP from '../../components/InputCEP/InputCEP';
+import InputCEP from '../../components/Inputs/InputCEP';
 import styles from './produto.module.css';
 import { useCart } from '../../contexts/cartContext';
 
