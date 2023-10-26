@@ -71,7 +71,7 @@ function Carrinho() {
   let precoFrete = 0;
   let precoTotal = 0;
 
-  if (savedData) {
+  if (savedData && isCartValid) {
     precoFrete = generateRandomInteger(10, 35);
 
     savedData.data.forEach((produto) => {
