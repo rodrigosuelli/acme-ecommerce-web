@@ -135,15 +135,15 @@ function Carrinho() {
           <button className={`btnPrimary ${styles.btnCarrinho}`} type="button">
             Ir para o pagamento
           </button>
-          <Link
-            className={`btnEnter btnPrimaryOutline ${styles.btnCarrinho}`}
-            href="/"
-          >
-            Continuar comprando
-          </Link>
         </>
-      ) : (
-        <h1>Continue comprando</h1>
+      ) : null}
+      {!isLoading && (
+        <Link
+          className={`btnEnter btnPrimaryOutline ${styles.btnCarrinho}`}
+          href="/"
+        >
+          Continuar comprando
+        </Link>
       )}
     </div>
   );
