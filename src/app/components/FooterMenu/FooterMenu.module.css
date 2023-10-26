@@ -21,6 +21,11 @@
 
 .links .linkContainer a {
   font-weight: 400;
+  padding: 8px;
+}
+
+.links .linkContainer a:hover {
+  text-decoration: underline;
 }
 
 .separator {
