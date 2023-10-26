@@ -15,8 +15,8 @@ function ProductItem({ produtoData }) {
   const cartItem = cart.find((item) => item.id === id);
 
   const { titulo, preco_real, slug, imagens } = produtoData.attributes;
-  const preco = preco_real.toFixed(2).toString().replace('.', ',');
-  const precoEm10X = (preco_real / 10).toFixed(2).toString().replace('.', ',');
+  const preco = preco_real.toFixed(2).replace('.', ',');
+  const precoEm10X = (preco_real / 10).toFixed(2).replace('.', ',');
   const imgThumbUrl = imagens?.data[0]?.attributes.formats?.thumbnail.url;
 
   return (
