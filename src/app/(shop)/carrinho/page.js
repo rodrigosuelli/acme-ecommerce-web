@@ -10,6 +10,7 @@ import styles from './carrinho.module.css';
 import ProductListContent from './ProductListContent';
 import api from '../../services/api';
 import InputCupom from '../../components/Inputs/InputCupom';
+import generateRandomInteger from '../../utils/generateRandomInteger';
 
 const fetcher = (url) => api.get(url).then((res) => res.data);
 
@@ -66,6 +67,23 @@ function Carrinho() {
     // }
   }
 
+  let precoProdutos = 0;
+  let precoFrete = 0;
+  let precoTotal = 0;
+
+  if (savedData) {
+    precoFrete = generateRandomInteger(10, 35);
+
+    savedData.data.forEach((produto) => {
+      const cartItem = cart.find((item) => item.id === produto.id);
+      precoProdutos += produto.attributes.preco_real * cartItem.qtd;
+    });
+
+    precoTotal = (precoFrete + precoProdutos).toFixed(2).replace('.', ',');
+    precoFrete = precoFrete.toFixed(2).replace('.', ',');
+    precoProdutos = precoProdutos.toFixed(2).replace('.', ',');
+  }
+
   return (
     <div className={`shopPage ${styles.carrinhoContainer}`}>
       <h1>Adicionar CEP</h1>
@@ -84,7 +102,7 @@ function Carrinho() {
           <h3>Seu carrinho está vazio.</h3>
         )}
       </div>
-      {isCartValid && !isLoading ? (
+      {isCartValid && !isLoading && savedData ? (
         <>
           <h1>Inserir Cupom de Desconto</h1>
           <div className={styles.marker}></div>
@@ -94,23 +112,23 @@ function Carrinho() {
           <div className={styles.resumoCarrinho}>
             <div className={styles.textContainer}>
               <h2>Valor dos produtos:</h2>
-              <h3 className={styles.priceMed}>R$300,00</h3>
+              <h3 className={styles.priceMed}>R${precoProdutos}</h3>
               <div className={styles.separator}></div>
             </div>
             <div className={styles.textContainer}>
               <h2>Frete:</h2>
-              <h3 className={styles.priceSmall}>R$12,00</h3>
+              <h3 className={styles.priceSmall}>R${precoFrete}</h3>
             </div>
             <div className={styles.textContainer}>
               <div className={styles.textLineSpaced}>
-                <h2>Total a prazo:</h2>
-                <h3 className={styles.priceSmall}>R$330,00</h3>
+                <h2>Total à prazo:</h2>
+                <h3 className={styles.priceSmall}>R${precoTotal}</h3>
               </div>
               <p>(em até 5x de R$66,00 sem juros)</p>
             </div>
             <div className={styles.textContainer}>
-              <h2>Valor a vista:</h2>
-              <h3 className={styles.priceBig}>R$312,00</h3>
+              <h2>Total à vista:</h2>
+              <h3 className={styles.priceBig}>R${precoTotal}</h3>
               <p>Economize R$18,00</p>
             </div>
           </div>
