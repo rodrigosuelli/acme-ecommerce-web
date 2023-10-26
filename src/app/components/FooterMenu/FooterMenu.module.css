@@ -1,0 +1,67 @@
+.footerMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 36px;
+  background: var(--neutral-n800);
+  color: white;
+}
+
+.links {
+  width: 100%;
+  margin-bottom: 48px;
+}
+
+.links .linkContainer {
+  padding: 24px 0;
+  text-align: center;
+}
+
+.links .linkContainer a {
+  font-weight: 400;
+}
+
+.separator {
+  height: 2px;
+  background: var(--white);
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.social svg:not(:last-child) {
+  margin-right: 22px;
+}
+
+.linkLine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.linkLine span:first-child {
+  margin-right: 12px;
+}
+
+.linkLine span {
+  margin: 0 12px;
+}
+
+.linkLine span:last-child {
+  margin-left: 12px;
+}
+
+.linkLine .inlineSeparator {
+  margin: unset;
+}
+
+.copyright {
+  font-weight: 700;
+}
