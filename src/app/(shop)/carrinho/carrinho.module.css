@@ -12,12 +12,12 @@
 }
 
 .titleMgTop {
-  margin-top: 40px;
+  margin-top: 35px;
 }
 
 .produtosList {
   padding-top: 10px;
-  padding-bottom: 30px;
+  margin-bottom: 35px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,4 +102,60 @@
   background: var(--white);
   color: var(--danger-d300);
   border: 1px solid var(--danger-d300);
+}
+
+.resumoCarrinho {
+  padding: 16px;
+  border-radius: 6px;
+  background: var(--neutral-n20);
+}
+
+.resumoCarrinho .textContainer:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.resumoCarrinho h1,
+.resumoCarrinho h2,
+.resumoCarrinho h3 {
+  margin-bottom: 6px;
+  color: var(--neutral-n800);
+}
+
+.resumoCarrinho h1 {
+  font-size: 1.25rem;
+}
+
+.resumoCarrinho h2,
+.resumoCarrinho h3 {
+  font-size: 1rem;
+}
+
+.resumoCarrinho .priceSmall {
+  color: var(--primary-p300);
+  font-size: 1rem;
+}
+
+.resumoCarrinho .priceMed {
+  color: var(--primary-p400);
+  font-size: 1.25rem;
+}
+
+.resumoCarrinho .priceBig {
+  color: var(--success-s400);
+  font-size: 1.5rem;
+}
+
+.resumoCarrinho p {
+  color: var(--neutral-n300);
+}
+
+.resumoCarrinho .separator {
+  height: 2px;
+  background: var(--neutral-n300);
+}
+
+.resumoCarrinho .textLineSpaced {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

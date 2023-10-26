@@ -83,13 +83,36 @@ function Carrinho() {
           <h3>Seu carrinho está vazio.</h3>
         )}
       </div>
-      {isCartValid ? (
+      {isCartValid && !isLoading ? (
         <>
           <h1>Inserir Cupom de Desconto</h1>
           <div className={styles.marker}></div>
           <InputCupom />
-          <h1>Resumo da compra</h1>
+          <h1 className={styles.titleMgTop}>Resumo da compra</h1>
           <div className={styles.marker}></div>
+          <div className={styles.resumoCarrinho}>
+            <div className={styles.textContainer}>
+              <h2>Valor dos produtos:</h2>
+              <h3 className={styles.priceMed}>R$300,00</h3>
+              <div className={styles.separator}></div>
+            </div>
+            <div className={styles.textContainer}>
+              <h2>Frete:</h2>
+              <h3 className={styles.priceSmall}>R$12,00</h3>
+            </div>
+            <div className={styles.textContainer}>
+              <div className={styles.textLineSpaced}>
+                <h2>Total a prazo:</h2>
+                <h3 className={styles.priceSmall}>R$330,00</h3>
+              </div>
+              <p>(em até 5x de R$66,00 sem juros)</p>
+            </div>
+            <div className={styles.textContainer}>
+              <h2>Valor a vista:</h2>
+              <h3 className={styles.priceBig}>R$312,00</h3>
+              <p>Economize R$18,00</p>
+            </div>
+          </div>
         </>
       ) : (
         <h1>Continue comprando</h1>
