@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 76px;
+  height: var(--header-menu-height);
   padding: 0 15px;
 }
 
