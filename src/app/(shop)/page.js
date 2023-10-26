@@ -11,7 +11,7 @@ function Homepage() {
   }
 
   return (
-    <>
+    <div className={`shopPage ${styles.homeContainer}`}>
       <h1>{user && user.username}</h1>
       <button
         className={`btnPrimary ${styles.btnLogout}`}
@@ -19,7 +19,7 @@ function Homepage() {
       >
         Logout
       </button>
-    </>
+    </div>
   );
 }
 

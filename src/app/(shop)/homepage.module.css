@@ -1,3 +1,9 @@
+.homeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .btnLogout {
   font-size: 1.25rem;
   border-radius: 5px;
