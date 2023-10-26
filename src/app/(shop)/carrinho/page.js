@@ -4,6 +4,7 @@ import qs from 'qs';
 import { useCart } from '@/contexts/cartContext';
 import useSWR from 'swr';
 import { useState } from 'react';
+import Link from 'next/link';
 import InputCEP from '../../components/Inputs/InputCEP';
 import styles from './carrinho.module.css';
 import ProductListContent from './ProductListContent';
@@ -113,6 +114,15 @@ function Carrinho() {
               <p>Economize R$18,00</p>
             </div>
           </div>
+          <button className={`btnPrimary ${styles.btnCarrinho}`} type="button">
+            Ir para o pagamento
+          </button>
+          <Link
+            className={`btnEnter btnPrimaryOutline ${styles.btnCarrinho}`}
+            href="/"
+          >
+            Continuar comprando
+          </Link>
         </>
       ) : (
         <h1>Continue comprando</h1>
