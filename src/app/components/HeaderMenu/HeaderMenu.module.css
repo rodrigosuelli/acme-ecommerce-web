@@ -41,6 +41,7 @@
   top: -3px;
   right: -4px;
   background: var(--success-s200);
+  color: var(--neutral-n800);
   border-radius: 50%;
   width: 18px;
   height: 18px;
