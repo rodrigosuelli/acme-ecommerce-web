@@ -74,9 +74,11 @@ function Carrinho() {
   if (savedData && isCartValid) {
     precoFrete = generateRandomInteger(10, 35);
 
-    savedData.data.forEach((produto) => {
-      const cartItem = cart.find((item) => item.id === produto.id);
-      precoProdutos += produto.attributes.preco_real * cartItem.qtd;
+    cart.forEach((item) => {
+      const produtoItem = savedData.data.find(
+        (produto) => produto.id === item.id
+      );
+      precoProdutos += produtoItem.attributes.preco_real * item.qtd;
     });
 
     precoTotal = (precoFrete + precoProdutos).toFixed(2).replace('.', ',');
