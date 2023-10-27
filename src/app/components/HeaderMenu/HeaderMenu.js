@@ -16,7 +16,7 @@ import Sidebar from './Sidebar/Sidebar';
 function HeaderMenu() {
   const { cart } = useCart();
 
-  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
   function handleToggleSidebar() {
     setIsSidebarVisible(!isSidebarVisible);
@@ -41,9 +41,12 @@ function HeaderMenu() {
         />
       </Link>
       <div className={styles.rightItems}>
-        <Link href="/carrinho" className={styles.iconBtn}>
+        <Link
+          href="/carrinho"
+          className={`${styles.iconBtn} ${styles.cartLink}`}
+        >
           <CartFilled fontSize={32} />
-          <div>{cart ? cart.length : 0}</div>
+          <div className={styles.cartCount}>{cart ? cart.length : 0}</div>
         </Link>
         <button type="button" className={styles.iconBtn}>
           <SearchFilled fontSize={32} />
