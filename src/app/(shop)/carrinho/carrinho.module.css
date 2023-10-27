@@ -104,6 +104,11 @@
   border: 1px solid var(--danger-d300);
 }
 
+.vazioTitle {
+  font-weight: 400;
+  color: var(--neutral-n300);
+}
+
 .resumoCarrinho {
   padding: 16px;
   border-radius: 6px;

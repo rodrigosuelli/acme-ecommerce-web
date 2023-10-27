@@ -3,7 +3,7 @@
 import qs from 'qs';
 import { useCart } from '@/contexts/cartContext';
 import useSWR from 'swr';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import InputCEP from '../../components/Inputs/InputCEP';
 import styles from './carrinho.module.css';
@@ -14,8 +14,7 @@ import InputCupom from '../../components/Inputs/InputCupom';
 const fetcher = (url) => api.get(url).then((res) => res.data);
 
 function Carrinho() {
-  // const { cart, setCart } = useCart();
-  const { cart } = useCart();
+  const { cart, setCart } = useCart();
 
   const [savedData, setSavedData] = useState(null);
 
@@ -52,19 +51,20 @@ function Carrinho() {
 
   if (!error && !isLoading && data) {
     setSavedData(data);
-
-    // Set cart with response data
-    // TODO: Cannot update component CartContext while rendering Carrinho component, fix the setState()
-    // if (data?.data) {
-    //   setCart(
-    //     data.data.map((produto) => {
-    //       const cartItem = cart.find((item) => item.id === produto.id);
-
-    //       return { id: produto.id, qtd: cartItem.qtd };
-    //     })
-    //   );
-    // }
   }
+
+  // Remover itens invalidos do carrinho
+  useEffect(() => {
+    if (savedData?.data) {
+      setCart(
+        savedData.data.map((produto) => {
+          const cartItem = cart.find((item) => item.id === produto.id);
+
+          return { id: produto.id, qtd: cartItem.qtd };
+        })
+      );
+    }
+  }, [cart, savedData, setCart]);
 
   let precoProdutos = 0;
   let precoFrete = 25;
@@ -102,7 +102,7 @@ function Carrinho() {
             isLoading={isLoading}
           />
         ) : (
-          <h3>Seu carrinho está vazio.</h3>
+          <h3 className={styles.vazioTitle}>Seu carrinho está vazio.</h3>
         )}
       </div>
       {isCartValid && !isLoading && savedData ? (
