@@ -21,7 +21,7 @@ import styles from './Sidebar.module.css';
 import { useUser } from '../../../contexts/userContext';
 
 function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
-  const { user, logOut } = useUser();
+  const { user, loadingUser, logOut } = useUser();
 
   return (
     <aside
@@ -34,11 +34,13 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
       <div className={styles.brand}>
         <div className={styles.userInfo}>
           <PersonFilled fontSize={24} />
-          {user ? (
-            <h2>Olá, {user.nome.split(' ')[0]}!</h2>
-          ) : (
-            <h2>Olá, anônimo</h2>
-          )}
+          <h2>
+            {loadingUser && !user && 'Carregando...'}
+
+            {!loadingUser && user && `Olá, ${user.nome.split(' ')[0]}!`}
+
+            {!loadingUser && !user && 'Olá, anônimo'}
+          </h2>
         </div>
         <button onClick={onMenuToggle} className="close-btn" type="button">
           <DismissFilled fontSize={24} />
