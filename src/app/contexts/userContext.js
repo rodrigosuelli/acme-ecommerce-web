@@ -18,6 +18,8 @@ export default function UserContextComp({ children }) {
   const [authStatusMessage, setAuthStatusMessage] = useState(null); // Error or success message
 
   useEffect(() => {
+    const abortController = new AbortController();
+
     // Add interceptopr
     api.interceptors.response.use(
       (response) => response,
@@ -37,17 +39,17 @@ export default function UserContextComp({ children }) {
             : `${error.message}. (${error.name}).`;
         }
 
-        setAuthStatusMessage({
-          type: errMessageType,
-          message: errMessage,
-        });
+        if (error.name !== 'CanceledError') {
+          setAuthStatusMessage({
+            type: errMessageType,
+            message: errMessage,
+          });
+        }
 
         return Promise.reject(error);
       },
       { synchronous: true }
     );
-
-    let ignore = false;
 
     async function checkAuthenticated() {
       try {
@@ -56,22 +58,24 @@ export default function UserContextComp({ children }) {
         if (storageToken) {
           api.defaults.headers.Authorization = `Bearer ${storageToken}`;
 
-          const response = await api.get('/api/users/me');
-          if (!ignore) {
-            setUser(response.data);
-          }
+          const response = await api.get('/api/users/me', {
+            signal: abortController.signal,
+          });
+
+          setUser(response.data);
+          setLoadingUser(false);
         }
       } catch (error) {
-        // Let interceptor handle
-      } finally {
-        setLoadingUser(false);
+        if (error.name !== 'CanceledError') {
+          setLoadingUser(false);
+        }
       }
     }
 
     checkAuthenticated();
 
     return () => {
-      ignore = true;
+      abortController.abort();
       api.interceptors.response.clear(); // clear all interceptors
     };
   }, []);
