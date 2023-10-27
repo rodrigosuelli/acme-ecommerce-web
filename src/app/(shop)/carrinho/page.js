@@ -57,10 +57,16 @@ function Carrinho() {
   useEffect(() => {
     if (savedData?.data && isCartValid) {
       setCart(
-        savedData.data.map((produto) => {
-          const cartItem = cart.find((item) => item.id === produto.id);
+        savedData.data.flatMap((produto) => {
+          const cartItem = cart.find(
+            (item) => item.id === produto.id && item.qtd
+          );
 
-          return { id: produto.id, qtd: cartItem.qtd };
+          if (cartItem) {
+            return { id: produto.id, qtd: cartItem.qtd };
+          }
+
+          return [];
         })
       );
     }
