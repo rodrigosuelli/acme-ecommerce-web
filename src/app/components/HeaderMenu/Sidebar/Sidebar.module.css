@@ -45,10 +45,13 @@
 .link {
   display: flex;
   align-items: center;
+  justify-content: unset;
   font-weight: 400;
   font-family: var(--font-merriweather);
   font-size: 1rem;
   padding: 10px 0;
+  width: 100%;
+  color: unset;
 }
 
 .link:hover {

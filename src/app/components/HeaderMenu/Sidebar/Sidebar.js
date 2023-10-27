@@ -12,11 +12,16 @@ import {
   GiftFilled,
   BriefcaseFilled,
   ChatMultipleFilled,
+  KeyFilled,
+  PersonAddFilled,
 } from '@fluentui/react-icons';
 import Link from 'next/link';
 import styles from './Sidebar.module.css';
+import { useUser } from '../../../contexts/userContext';
 
 function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
+  const { user, logOut } = useUser();
+
   return (
     <aside
       className={
@@ -28,7 +33,11 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
       <div className={styles.brand}>
         <div className={styles.userInfo}>
           <PersonFilled fontSize={24} />
-          <h2>Olá, Marcelo!</h2>
+          {user ? (
+            <h2>Olá, {user.nome.split(' ')[0]}!</h2>
+          ) : (
+            <h2>Olá, anônimo</h2>
+          )}
         </div>
         <button onClick={onMenuToggle} className="close-btn" type="button">
           <DismissFilled fontSize={24} />
@@ -45,16 +54,18 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
           <HomeFilled fontSize={24} />
           Home
         </Link>
-        <Link
-          onClick={() => {
-            setIsSidebarVisible(false);
-          }}
-          href="#"
-          className={styles.link}
-        >
-          <PersonNoteFilled fontSize={24} />
-          Minha Conta
-        </Link>
+        {user && (
+          <Link
+            onClick={() => {
+              setIsSidebarVisible(false);
+            }}
+            href="#"
+            className={styles.link}
+          >
+            <PersonNoteFilled fontSize={24} />
+            Minha Conta
+          </Link>
+        )}
         <Link
           onClick={() => {
             setIsSidebarVisible(false);
@@ -115,16 +126,42 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
           <InfoFilled fontSize={24} />
           Sobre
         </Link>
-        <Link
-          onClick={() => {
-            setIsSidebarVisible(false);
-          }}
-          href="#"
-          className={styles.link}
-        >
-          <SignOutFilled fontSize={24} />
-          Log out
-        </Link>
+        {user ? (
+          <button
+            type="button"
+            onClick={() => {
+              logOut();
+              setIsSidebarVisible(false);
+            }}
+            className={styles.link}
+          >
+            <SignOutFilled fontSize={24} />
+            Log out
+          </button>
+        ) : (
+          <>
+            <Link
+              onClick={() => {
+                setIsSidebarVisible(false);
+              }}
+              href="/login"
+              className={styles.link}
+            >
+              <KeyFilled fontSize={24} />
+              Login
+            </Link>
+            <Link
+              onClick={() => {
+                setIsSidebarVisible(false);
+              }}
+              href="/cadastro"
+              className={styles.link}
+            >
+              <PersonAddFilled fontSize={24} />
+              Cadastro
+            </Link>
+          </>
+        )}
       </div>
     </aside>
   );
