@@ -37,9 +37,12 @@
   color: var(--white);
   margin-left: 16px;
 }
-
+/*   height: calc(100% - .brand Height); */
 .linksContainer {
   padding: 20px;
+  height: calc(100% - 92px);
+  overflow-y: scroll;
+  overscroll-behavior-y: none;
 }
 
 .link {
