@@ -55,7 +55,7 @@ function Carrinho() {
 
   // Remover itens invalidos do carrinho
   useEffect(() => {
-    if (savedData?.data) {
+    if (savedData?.data && isCartValid) {
       setCart(
         savedData.data.map((produto) => {
           const cartItem = cart.find((item) => item.id === produto.id);
@@ -64,14 +64,14 @@ function Carrinho() {
         })
       );
     }
-  }, [cart, savedData, setCart]);
+  }, [cart, isCartValid, savedData, setCart]);
 
   let precoProdutos = 0;
   let precoFrete = 25;
   let precoTotal = 0;
   let precoEm10X = 0;
 
-  if (savedData && isCartValid) {
+  if (savedData?.data && isCartValid) {
     cart.forEach((item) => {
       const produtoItem = savedData.data.find(
         (produto) => produto.id === item.id
