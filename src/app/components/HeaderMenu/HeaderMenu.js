@@ -1,22 +1,34 @@
 'use client';
 
 import Image from 'next/image';
-
 import {
   NavigationFilled,
   SearchFilled,
   CartFilled,
 } from '@fluentui/react-icons';
 import Link from 'next/link';
-import styles from './HeaderMenu.module.css';
+import { useState } from 'react';
 import { useCart } from '../../contexts/cartContext';
+
+import styles from './HeaderMenu.module.css';
+import Sidebar from './Sidebar/Sidebar';
 
 function HeaderMenu() {
   const { cart } = useCart();
 
+  const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+
+  function handleToggleSidebar() {
+    setIsSidebarVisible(!isSidebarVisible);
+  }
+
   return (
     <header className={styles.headerMenu}>
-      <button type="button" className={styles.iconBtn}>
+      <button
+        onClick={handleToggleSidebar}
+        type="button"
+        className={styles.iconBtn}
+      >
         <NavigationFilled fontSize={32} />
       </button>
       <Link href="/" className={styles.logoLink}>
@@ -37,6 +49,19 @@ function HeaderMenu() {
           <SearchFilled fontSize={32} />
         </button>
       </div>
+      <div
+        onClick={handleToggleSidebar}
+        className={
+          isSidebarVisible
+            ? `${styles.sidebarShadow} ${styles.visible}`
+            : styles.sidebarShadow
+        }
+      />
+      <Sidebar
+        onMenuToggle={handleToggleSidebar}
+        isSidebarVisible={isSidebarVisible}
+        setIsSidebarVisible={setIsSidebarVisible}
+      />
     </header>
   );
 }
