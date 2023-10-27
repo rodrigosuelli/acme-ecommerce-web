@@ -52,7 +52,7 @@
   font-weight: 400;
   font-family: var(--font-merriweather);
   font-size: 1rem;
-  padding: 10px 0;
+  height: 44px;
   width: 100%;
   color: unset;
 }
@@ -68,4 +68,21 @@
 .link span {
   margin-left: 16px;
   margin-right: 6px;
+}
+
+.link.fatherLink,
+.sublinksContainer .link:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.sublinksContainer {
+  margin-bottom: 15px;
+}
+
+.sublinksContainer .link {
+  padding-left: 40px;
+}
+
+.sublinksContainer .link span {
+  margin-left: 0;
 }

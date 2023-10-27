@@ -56,17 +56,39 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
           <span>Home</span>
         </Link>
         {user && (
-          <Link
-            onClick={() => {
-              setIsSidebarVisible(false);
-            }}
-            href="#"
-            className={styles.link}
-          >
-            <PersonNoteFilled fontSize={24} />
-            <span>Minha Conta</span>
-            <ChevronDownFilled fontSize={22} />
-          </Link>
+          <>
+            <Link
+              onClick={() => {
+                setIsSidebarVisible(false);
+              }}
+              href="#"
+              className={`${styles.link} ${styles.fatherLink}`}
+            >
+              <PersonNoteFilled fontSize={24} />
+              <span>Minha Conta</span>
+              <ChevronDownFilled fontSize={22} />
+            </Link>
+            <div className={styles.sublinksContainer}>
+              <Link
+                onClick={() => {
+                  setIsSidebarVisible(false);
+                }}
+                href="#"
+                className={styles.link}
+              >
+                <span>Meu Perfil</span>
+              </Link>
+              <Link
+                onClick={() => {
+                  setIsSidebarVisible(false);
+                }}
+                href="#"
+                className={styles.link}
+              >
+                <span>Meus Pedidos</span>
+              </Link>
+            </div>
+          </>
         )}
         <Link
           onClick={() => {
