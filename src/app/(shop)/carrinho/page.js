@@ -10,7 +10,6 @@ import styles from './carrinho.module.css';
 import ProductListContent from './ProductListContent';
 import api from '../../services/api';
 import InputCupom from '../../components/Inputs/InputCupom';
-import generateRandomInteger from '../../utils/generateRandomInteger';
 
 const fetcher = (url) => api.get(url).then((res) => res.data);
 
@@ -68,19 +67,21 @@ function Carrinho() {
   }
 
   let precoProdutos = 0;
-  let precoFrete = 0;
+  let precoFrete = 25;
   let precoTotal = 0;
+  let precoEm10X = 0;
 
   if (savedData && isCartValid) {
-    precoFrete = generateRandomInteger(10, 35);
-
     cart.forEach((item) => {
       const produtoItem = savedData.data.find(
         (produto) => produto.id === item.id
       );
-      precoProdutos += produtoItem.attributes.preco_real * item.qtd;
+      if (produtoItem) {
+        precoProdutos += produtoItem.attributes.preco_real * item.qtd;
+      }
     });
 
+    precoEm10X = (precoProdutos / 10).toFixed(2).replace('.', ',');
     precoTotal = (precoFrete + precoProdutos).toFixed(2).replace('.', ',');
     precoFrete = precoFrete.toFixed(2).replace('.', ',');
     precoProdutos = precoProdutos.toFixed(2).replace('.', ',');
@@ -126,12 +127,12 @@ function Carrinho() {
                 <h2>Total à prazo:</h2>
                 <h3 className={styles.priceSmall}>R${precoTotal}</h3>
               </div>
-              <p>(em até 5x de R$66,00 sem juros)</p>
+              <p>(em até 10x de R${precoEm10X} sem juros)</p>
             </div>
             <div className={styles.textContainer}>
               <h2>Total à vista:</h2>
               <h3 className={styles.priceBig}>R${precoTotal}</h3>
-              <p>Economize R$18,00</p>
+              <p>Ganhe até 15% de desconto no pix</p>
             </div>
           </div>
           <button className={`btnPrimary ${styles.btnCarrinho}`} type="button">
