@@ -19,9 +19,11 @@ export async function POST(request) {
       Authorization: `Bearer ${userJwtToken}`,
     },
     body: JSON.stringify({
-      user,
-      valor_frete,
-      produtos,
+      data: {
+        user,
+        valor_frete,
+        produtos,
+      },
     }),
   });
 
