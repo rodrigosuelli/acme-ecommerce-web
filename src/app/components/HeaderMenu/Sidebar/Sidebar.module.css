@@ -4,7 +4,7 @@
   left: 0;
   transform: translateX(-100%);
   z-index: 1;
-  width: 280px;
+  width: 290px;
   height: 100%;
   display: block;
   background: var(--white);
@@ -56,7 +56,7 @@
 }
 
 .link:not(:last-child) {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .link svg {

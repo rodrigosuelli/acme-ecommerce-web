@@ -5,6 +5,13 @@ import {
   PersonFilled,
   PersonNoteFilled,
   HomeFilled,
+  SignOutFilled,
+  PinFilled,
+  InfoFilled,
+  NewFilled,
+  GiftFilled,
+  BriefcaseFilled,
+  ChatMultipleFilled,
 } from '@fluentui/react-icons';
 import Link from 'next/link';
 import styles from './Sidebar.module.css';
@@ -47,6 +54,76 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
         >
           <PersonNoteFilled fontSize={24} />
           Minha Conta
+        </Link>
+        <Link
+          onClick={() => {
+            setIsSidebarVisible(false);
+          }}
+          href="#"
+          className={styles.link}
+        >
+          <PinFilled fontSize={24} />
+          Promoçoes
+        </Link>
+        <Link
+          onClick={() => {
+            setIsSidebarVisible(false);
+          }}
+          href="#"
+          className={styles.link}
+        >
+          <NewFilled fontSize={24} />
+          Lançamentos
+        </Link>
+        <Link
+          onClick={() => {
+            setIsSidebarVisible(false);
+          }}
+          href="#"
+          className={styles.link}
+        >
+          <GiftFilled fontSize={24} />
+          Presentes
+        </Link>
+        <Link
+          onClick={() => {
+            setIsSidebarVisible(false);
+          }}
+          href="#"
+          className={styles.link}
+        >
+          <BriefcaseFilled fontSize={24} />
+          Kits
+        </Link>
+        <Link
+          onClick={() => {
+            setIsSidebarVisible(false);
+          }}
+          href="#"
+          className={styles.link}
+        >
+          <ChatMultipleFilled fontSize={24} />
+          Fale Conosco
+        </Link>
+        <Link
+          onClick={() => {
+            setIsSidebarVisible(false);
+          }}
+          href="#"
+          className={styles.link}
+        >
+          <InfoFilled fontSize={24} />
+          Sobre
+        </Link>
+        <Link
+          onClick={() => {
+            setIsSidebarVisible(false);
+          }}
+          href="#"
+          className={styles.link}
+        >
+          <SignOutFilled fontSize={24} />
+          Log out
         </Link>
       </div>
     </aside>
