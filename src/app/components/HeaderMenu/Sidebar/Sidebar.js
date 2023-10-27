@@ -14,6 +14,7 @@ import {
   ChatMultipleFilled,
   KeyFilled,
   PersonAddFilled,
+  ChevronDownFilled,
 } from '@fluentui/react-icons';
 import Link from 'next/link';
 import styles from './Sidebar.module.css';
@@ -52,7 +53,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
           className={styles.link}
         >
           <HomeFilled fontSize={24} />
-          Home
+          <span>Home</span>
         </Link>
         {user && (
           <Link
@@ -63,7 +64,8 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
             className={styles.link}
           >
             <PersonNoteFilled fontSize={24} />
-            Minha Conta
+            <span>Minha Conta</span>
+            <ChevronDownFilled fontSize={22} />
           </Link>
         )}
         <Link
@@ -74,7 +76,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
           className={styles.link}
         >
           <PinFilled fontSize={24} />
-          Promoçoes
+          <span>Promoçoes</span>
         </Link>
         <Link
           onClick={() => {
@@ -84,7 +86,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
           className={styles.link}
         >
           <NewFilled fontSize={24} />
-          Lançamentos
+          <span>Lançamentos</span>
         </Link>
         <Link
           onClick={() => {
@@ -94,7 +96,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
           className={styles.link}
         >
           <GiftFilled fontSize={24} />
-          Presentes
+          <span>Presentes</span>
         </Link>
         <Link
           onClick={() => {
@@ -104,7 +106,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
           className={styles.link}
         >
           <BriefcaseFilled fontSize={24} />
-          Kits
+          <span>Kits</span>
         </Link>
         <Link
           onClick={() => {
@@ -114,7 +116,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
           className={styles.link}
         >
           <ChatMultipleFilled fontSize={24} />
-          Fale Conosco
+          <span>Fale Conosco</span>
         </Link>
         <Link
           onClick={() => {
@@ -124,7 +126,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
           className={styles.link}
         >
           <InfoFilled fontSize={24} />
-          Sobre
+          <span>Sobre</span>
         </Link>
         {user ? (
           <button
@@ -136,7 +138,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
             className={styles.link}
           >
             <SignOutFilled fontSize={24} />
-            Log out
+            <span>Log out</span>
           </button>
         ) : (
           <>
@@ -148,7 +150,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
               className={styles.link}
             >
               <KeyFilled fontSize={24} />
-              Login
+              <span>Login</span>
             </Link>
             <Link
               onClick={() => {
@@ -158,7 +160,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
               className={styles.link}
             >
               <PersonAddFilled fontSize={24} />
-              Cadastro
+              <span>Cadastro</span>
             </Link>
           </>
         )}

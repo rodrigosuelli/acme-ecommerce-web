@@ -65,6 +65,7 @@
   margin-bottom: 15px;
 }
 
-.link svg {
-  margin-right: 16px;
+.link span {
+  margin-left: 16px;
+  margin-right: 6px;
 }
