@@ -5,17 +5,24 @@ import { useCart } from '@/contexts/cartContext';
 import useSWR from 'swr';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
+import { CgSpinner } from 'react-icons/cg';
+import { useRouter } from 'next/navigation';
 import InputCEP from '../../components/Inputs/InputCEP';
 import styles from './carrinho.module.css';
 import ProductListContent from './ProductListContent';
 import api from '../../services/api';
 import InputCupom from '../../components/Inputs/InputCupom';
+import { useUser } from '../../contexts/userContext';
 
 const fetcher = (url) => api.get(url).then((res) => res.data);
 
 function Carrinho() {
-  const { cart, setCart } = useCart();
+  const { user } = useUser();
+  const { cart, setCart, clearCart } = useCart();
+  const router = useRouter();
 
+  const [isCreatingPedido, setIsCreatingPedido] = useState(false);
   const [savedData, setSavedData] = useState(null);
 
   let productIdArray = [];
@@ -53,6 +60,10 @@ function Carrinho() {
     setSavedData(data);
   }
 
+  useEffect(() => {
+    router.prefetch('/login');
+  }, [router]);
+
   // Remover itens invalidos do carrinho
   useEffect(() => {
     if (savedData?.data && isCartValid) {
@@ -72,8 +83,9 @@ function Carrinho() {
     }
   }, [cart, isCartValid, savedData, setCart]);
 
+  const precoFrete = 25;
+  let precoFreteString = '';
   let precoProdutos = 0;
-  let precoFrete = 25;
   let precoTotal = 0;
   let precoEm10X = 0;
 
@@ -89,8 +101,50 @@ function Carrinho() {
 
     precoEm10X = (precoProdutos / 10).toFixed(2).replace('.', ',');
     precoTotal = (precoFrete + precoProdutos).toFixed(2).replace('.', ',');
-    precoFrete = precoFrete.toFixed(2).replace('.', ',');
+    precoFreteString = precoFrete.toFixed(2).replace('.', ',');
     precoProdutos = precoProdutos.toFixed(2).replace('.', ',');
+  }
+
+  async function handleCreatePedido() {
+    try {
+      setIsCreatingPedido(true);
+
+      if (!user) {
+        toast.error('Erro: você precisa estar logado para finalizar o pedido.');
+        router.push('/login');
+        return;
+      }
+
+      if (!savedData?.data || !isCartValid) {
+        toast.error('Erro: carrinho inválido.');
+        return;
+      }
+
+      const produtosCarrinho = savedData.data.flatMap((prod) => {
+        const cartItem = cart.find((item) => item.id === prod.id && item.qtd);
+
+        if (cartItem) {
+          return { produto: prod.id, qtd: cartItem.qtd };
+        }
+
+        return [];
+      });
+
+      await api.post('/api/pedidos', {
+        user: user.id,
+        valor_frete: precoFrete,
+        produtos: produtosCarrinho,
+      });
+
+      clearCart();
+      router.push('/');
+
+      toast.success('Pedido finalizado com sucesso.');
+    } catch (err) {
+      // Let interceptor handle
+    } finally {
+      setIsCreatingPedido(false);
+    }
   }
 
   return (
@@ -126,7 +180,7 @@ function Carrinho() {
             </div>
             <div className={styles.textContainer}>
               <h2>Frete:</h2>
-              <h3 className={styles.priceSmall}>R${precoFrete}</h3>
+              <h3 className={styles.priceSmall}>R${precoFreteString}</h3>
             </div>
             <div className={styles.textContainer}>
               <div className={styles.textLineSpaced}>
@@ -141,8 +195,13 @@ function Carrinho() {
               <p>Ganhe até 15% de desconto no pix</p>
             </div>
           </div>
-          <button className={`btnPrimary ${styles.btnCarrinho}`} type="button">
-            Ir para o pagamento
+          <button
+            disabled={isCreatingPedido}
+            onClick={handleCreatePedido}
+            className={`btnPrimary ${styles.btnCarrinho}`}
+            type="button"
+          >
+            {isCreatingPedido ? <CgSpinner size={26} /> : 'Finalizar pedido'}
           </button>
         </>
       ) : null}
