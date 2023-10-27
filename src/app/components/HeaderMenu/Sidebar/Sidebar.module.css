@@ -41,7 +41,7 @@
 .linksContainer {
   padding: 20px;
   height: calc(100% - 92px);
-  overflow-y: scroll;
+  overflow-y: auto;
   overscroll-behavior-y: none;
 }
 
