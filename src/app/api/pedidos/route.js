@@ -36,7 +36,7 @@ export async function POST(request) {
 }
 
 export async function GET(request) {
-  const url = `${process.env.STRAPI_API_URL}/pedidos`;
+  const url = `${process.env.STRAPI_API_URL}/pedidos?sort=id:desc`;
 
   const headersList = headers();
 
