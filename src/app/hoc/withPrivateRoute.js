@@ -2,7 +2,6 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useUser } from '@/contexts/userContext';
 import { CgSpinner } from 'react-icons/cg';
-import { toast } from 'react-toastify';
 
 const withPrivateRoute = (Component) => {
   const PrivateRoute = (props) => {
@@ -20,9 +19,6 @@ const withPrivateRoute = (Component) => {
     // If is logged out redirect to /login
     useEffect(() => {
       if (isLoggedOut) {
-        toast.error(
-          'Erro: você precisa estar logado para acessar essa página.'
-        );
         router.push('/login');
       }
     }, [isLoggedOut, router]);
