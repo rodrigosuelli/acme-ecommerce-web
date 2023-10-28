@@ -1,7 +1,7 @@
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useUser } from '@/contexts/userContext';
-import { CgSpinner } from 'react-icons/cg';
+import LoadingSpinner from '../components/LoadingSpinner/LoadingSpinner';
 
 const withPrivateRoute = (Component) => {
   const PrivateRoute = (props) => {
@@ -25,11 +25,7 @@ const withPrivateRoute = (Component) => {
 
     // If is Loading or not logged in, return loading component
     if (loadingUser || !user) {
-      return (
-        <div className="loadingProdutoPage">
-          <CgSpinner className="spinner" size={36} />
-        </div>
-      );
+      return <LoadingSpinner />;
     }
 
     // If user is logged in, return original component
