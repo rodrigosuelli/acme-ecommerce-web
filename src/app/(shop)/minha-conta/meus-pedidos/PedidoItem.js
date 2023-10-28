@@ -1,5 +1,6 @@
 import { ChevronDownFilled, ChevronUpFilled } from '@fluentui/react-icons';
 import { useState } from 'react';
+import Link from 'next/link';
 import styles from './meusPedidos.module.css';
 
 const statusTexts = {
@@ -72,6 +73,12 @@ function PedidoItem({ pedidoData }) {
             <h1>Pagamento</h1>
             <p>{formaPagamentoString}</p>
           </div>
+          <Link
+            className={`btnEnter btnPrimary ${styles.btnConferirPedido}`}
+            href="#"
+          >
+            Conferir Pedido
+          </Link>
         </>
       )}
     </div>

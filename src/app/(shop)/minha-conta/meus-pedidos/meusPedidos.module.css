@@ -55,6 +55,10 @@
   margin-top: 16px;
 }
 
+.pedidoIndividualInfoContainer:last-of-type {
+  margin-bottom: 20px;
+}
+
 .pedidoIndividualInfoContainer h1 {
   margin-bottom: 12px;
 }
@@ -73,4 +77,10 @@
 
 .pedidoIndividualInfoContainer .pedidoStatus.green {
   color: var(--success-s400);
+}
+
+.btnConferirPedido {
+  width: 100%;
+  height: 44px;
+  border-radius: 50px;
 }
