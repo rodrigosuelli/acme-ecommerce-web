@@ -84,7 +84,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
                 onClick={() => {
                   setIsSidebarVisible(false);
                 }}
-                href="#"
+                href="/minha-conta/meus-pedidos"
                 className={styles.link}
               >
                 <span>Meus Pedidos</span>
