@@ -10,7 +10,10 @@ import PedidoItem from './PedidoItem';
 const fetcher = (url) => api.get(url).then((res) => res.data);
 
 function MeusPedidos() {
-  const { data, error, isLoading } = useSWR('/api/pedidos', fetcher);
+  const { data, error, isLoading } = useSWR(
+    '/api/pedidos?sort=id:desc',
+    fetcher
+  );
 
   if (error) {
     return <h3>Erro, não foi possível buscar os pedidos no banco de dados.</h3>;
