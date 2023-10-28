@@ -63,8 +63,9 @@ export default function UserContextComp({ children }) {
           });
 
           setUser(response.data);
-          setLoadingUser(false);
         }
+
+        setLoadingUser(false);
       } catch (error) {
         if (error.name !== 'CanceledError') {
           setLoadingUser(false);
