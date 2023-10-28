@@ -44,7 +44,7 @@ function Carrinho() {
         },
       },
       populate: { imagens: { fields: ['url', 'formats'] } },
-      fields: ['id', 'titulo', 'preco_real', 'qtd_estoque', 'slug'],
+      fields: ['id', 'titulo', 'preco_real', 'slug'],
     },
     {
       encodeValuesOnly: true, // prettify URL
