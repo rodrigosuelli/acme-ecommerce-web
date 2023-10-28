@@ -148,7 +148,7 @@ function Carrinho() {
   }
 
   return (
-    <div className={`shopPage ${styles.carrinhoContainer}`}>
+    <div className="shopPage">
       <h1>Adicionar CEP</h1>
       <div className={styles.marker}></div>
       <InputCEP />

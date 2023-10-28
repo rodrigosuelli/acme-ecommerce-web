@@ -1,0 +1,76 @@
+.pedidosPageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pedidosList {
+  padding-top: 10px;
+  margin-bottom: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.pedidoItemContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  outline: 1px solid var(--neutral-n60);
+  border-radius: 12px;
+  padding: 23px 28px;
+  min-height: 100px;
+  width: 100%;
+}
+
+.pedidoItemContainer:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.pedidoItemContainer h1 {
+  font-size: 1.1875rem;
+  margin: 0;
+}
+
+.pedidoItemContainer p {
+  color: var(--neutral-n400);
+}
+
+.pedidoTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 9px;
+}
+
+.pedidoTitleContainer button {
+  color: var(--neutral-n800);
+  padding-left: 5px;
+}
+
+.pedidoIndividualInfoContainer {
+  margin-top: 16px;
+}
+
+.pedidoIndividualInfoContainer h1 {
+  margin-bottom: 12px;
+}
+
+.pedidoIndividualInfoContainer .pedidoStatus {
+  font-weight: 700;
+}
+
+.pedidoIndividualInfoContainer .pedidoStatus.red {
+  color: var(--danger-d300);
+}
+
+.pedidoIndividualInfoContainer .pedidoStatus.blue {
+  color: var(--primary-p300);
+}
+
+.pedidoIndividualInfoContainer .pedidoStatus.green {
+  color: var(--success-s400);
+}
