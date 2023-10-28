@@ -75,7 +75,7 @@ function PedidoItem({ pedidoData }) {
           </div>
           <Link
             className={`btnEnter btnPrimary ${styles.btnConferirPedido}`}
-            href="#"
+            href={`/minha-conta/meus-pedidos/${id}`}
           >
             Conferir Pedido
           </Link>
