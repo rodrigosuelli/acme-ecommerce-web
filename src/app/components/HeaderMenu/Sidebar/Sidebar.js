@@ -1,5 +1,7 @@
 'use client';
 
+import qs from 'qs';
+
 import {
   DismissFilled,
   PersonFilled,
@@ -20,14 +22,36 @@ import {
 } from '@fluentui/react-icons';
 import Link from 'next/link';
 import { useState } from 'react';
+import useSWR from 'swr';
 import styles from './Sidebar.module.css';
 import { useUser } from '../../../contexts/userContext';
+import api from '../../../services/api';
+
+const query = qs.stringify(
+  {
+    fields: ['id', 'titulo'],
+    sort: ['titulo:asc'],
+  },
+  {
+    encodeValuesOnly: true, // prettify URL
+  }
+);
+
+const fetcher = (url) => api.get(url).then((res) => res.data);
 
 function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
   const { user, loadingUser, logOut } = useUser();
 
   const [isMinhaContaExpanded, setIsMinhaContaExpanded] = useState(true);
   const [isCategoriasExpanded, setIsCategoriasExpanded] = useState(false);
+
+  const { data, error, isLoading } = useSWR(
+    `/api/categorias/?${query}`,
+    fetcher,
+    {
+      revalidateOnFocus: false,
+    }
+  );
 
   return (
     <aside
@@ -123,24 +147,29 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
         </div>
         {isCategoriasExpanded && (
           <div className={styles.sublinksContainer}>
-            <Link
-              onClick={() => {
-                setIsSidebarVisible(false);
-              }}
-              href="#"
-              className={styles.link}
-            >
-              <span>Brincos</span>
-            </Link>
-            <Link
-              onClick={() => {
-                setIsSidebarVisible(false);
-              }}
-              href="/minha-conta/meus-pedidos"
-              className={styles.link}
-            >
-              <span>Canecas</span>
-            </Link>
+            {error && (
+              <div className={styles.link}>
+                <span>Ocorreu um erro...</span>
+              </div>
+            )}
+            {isLoading && (
+              <div className={styles.link}>
+                <span>Carregando...</span>
+              </div>
+            )}
+            {data?.data &&
+              data.data.map((categoria) => (
+                <Link
+                  key={categoria.id}
+                  onClick={() => {
+                    setIsSidebarVisible(false);
+                  }}
+                  href="#"
+                  className={styles.link}
+                >
+                  <span>{categoria.attributes.titulo}</span>
+                </Link>
+              ))}
           </div>
         )}
         <Link
