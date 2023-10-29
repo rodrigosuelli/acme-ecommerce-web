@@ -29,6 +29,11 @@ import api from '../../../services/api';
 
 const query = qs.stringify(
   {
+    filters: {
+      tipo: {
+        $eq: 'categoria_produto',
+      },
+    },
     fields: ['id', 'titulo'],
     sort: ['titulo:asc'],
   },
