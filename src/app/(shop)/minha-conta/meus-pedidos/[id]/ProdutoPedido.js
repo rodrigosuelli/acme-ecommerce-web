@@ -31,7 +31,7 @@ function ProdutoPedido({ produtoPedidoData }) {
         <>
           <p className={styles.mgTop}>{nome}</p>
           <div className={styles.pedidoIndividualInfoContainer}>
-            <h1>Preço Unitário</h1>
+            <h1>Valor Unitário</h1>
             <p>R$ {valor_unitario.toFixed(2).replace('.', ',')}</p>
           </div>
           <div className={styles.pedidoIndividualInfoContainer}>
@@ -39,7 +39,7 @@ function ProdutoPedido({ produtoPedidoData }) {
             <p>{qtd}</p>
           </div>
           <div className={styles.pedidoIndividualInfoContainer}>
-            <h1>Preço Subtotal</h1>
+            <h1>Valor Subtotal</h1>
             <p
               className={`${meusPedidosStyles.pedidoStatus} ${meusPedidosStyles.blue}`}
             >

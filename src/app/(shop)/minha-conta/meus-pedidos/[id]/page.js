@@ -30,7 +30,14 @@ const formaPagamentoTexts = {
 
 const query = qs.stringify(
   {
-    fields: ['id', 'publishedAt', 'forma_pagamento', 'status'],
+    fields: [
+      'id',
+      'publishedAt',
+      'forma_pagamento',
+      'status',
+      'valor_frete',
+      'valor_total',
+    ],
     populate: {
       produtos: {
         fields: ['id', 'qtd', 'valor_subtotal', 'valor_unitario'],
@@ -74,8 +81,15 @@ function Pedido({ params }) {
   }
 
   if (data?.data) {
-    const { publishedAt, forma_pagamento, status, produtos } =
-      data.data.attributes;
+    const idPedido = data.data.id;
+    const {
+      publishedAt,
+      forma_pagamento,
+      status,
+      valor_frete,
+      valor_total,
+      produtos,
+    } = data.data.attributes;
 
     const statusObj = statusTexts[status];
     const { text: statusString, color: statusColor } = statusObj;
@@ -92,7 +106,7 @@ function Pedido({ params }) {
     return (
       <div className={`shopPage ${styles.pedidoInvidivualPageContainer}`}>
         <h1>Pedido</h1>
-        <p>#{id}</p>
+        <p>#{idPedido}</p>
         <div className="marker"></div>
 
         <div className={styles.pedidoIndividualInfoContainer}>
@@ -110,6 +124,18 @@ function Pedido({ params }) {
         <div className={styles.pedidoIndividualInfoContainer}>
           <h1>Pagamento</h1>
           <p>{formaPagamentoString}</p>
+        </div>
+        <div className={styles.pedidoIndividualInfoContainer}>
+          <h1>Valor do Frete</h1>
+          <p>R$ {valor_frete.toFixed(2).replace('.', ',')}</p>
+        </div>
+        <div className={styles.pedidoIndividualInfoContainer}>
+          <h1>Valor Total do Pedido</h1>
+          <p
+            className={`${meusPedidosStyles.pedidoStatus} ${meusPedidosStyles.blue}`}
+          >
+            R$ {valor_total.toFixed(2).replace('.', ',')}
+          </p>
         </div>
 
         <h1>Produtos</h1>
