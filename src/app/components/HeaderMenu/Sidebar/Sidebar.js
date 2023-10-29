@@ -89,7 +89,8 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
         </Link>
         {user && (
           <>
-            <div
+            <button
+              type="button"
               onClick={() => {
                 setIsMinhaContaExpanded(!isMinhaContaExpanded);
               }}
@@ -104,7 +105,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
               ) : (
                 <ChevronDownFilled fontSize={22} />
               )}
-            </div>
+            </button>
             {isMinhaContaExpanded && (
               <div className={styles.sublinksContainer}>
                 <Link
@@ -129,7 +130,8 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
             )}
           </>
         )}
-        <div
+        <button
+          type="button"
           onClick={() => {
             setIsCategoriasExpanded(!isCategoriasExpanded);
           }}
@@ -144,7 +146,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
           ) : (
             <ChevronDownFilled fontSize={22} />
           )}
-        </div>
+        </button>
         {isCategoriasExpanded && (
           <div className={styles.sublinksContainer}>
             {error && (
