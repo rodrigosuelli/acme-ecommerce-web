@@ -95,7 +95,7 @@ p.paragraphWithLink a.textLink {
   padding: 3px 0;
 }
 
-.btnEnter {
+.btnEnterAuth {
   border-radius: 40px;
   height: 40px;
   min-width: 145px;
@@ -133,7 +133,7 @@ p.paragraphWithLink a.textLink {
     font-size: 1.25rem;
   }
 
-  .btnEnter {
+  .btnEnterAuth {
     height: 60px;
     font-size: 1.25rem;
     margin-bottom: 32px;

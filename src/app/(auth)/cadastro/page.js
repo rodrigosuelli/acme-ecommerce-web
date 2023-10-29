@@ -115,7 +115,7 @@ function Cadastro() {
       />
       <button
         disabled={isSendingForm}
-        className="btnPrimary btnEnter"
+        className="btnPrimary btnEnterAuth"
         type="submit"
       >
         {isSendingForm ? <CgSpinner size={26} /> : 'Criar Conta'}

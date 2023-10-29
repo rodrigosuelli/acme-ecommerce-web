@@ -94,7 +94,8 @@ input {
 }
 
 button,
-.btnEnter {
+.btnEnter,
+.btnEnterAuth {
   display: flex;
   align-items: center;
   justify-content: center;

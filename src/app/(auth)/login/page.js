@@ -54,7 +54,7 @@ function Login() {
       </Link>
       <button
         disabled={isSendingForm}
-        className="btnPrimary btnEnter"
+        className="btnPrimary btnEnterAuth"
         type="submit"
       >
         {isSendingForm ? <CgSpinner size={26} /> : 'Login'}

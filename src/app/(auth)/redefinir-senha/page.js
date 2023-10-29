@@ -46,7 +46,7 @@ function RedefinirSenha() {
             sua nova senha nas próximas vezes em que fizer login na plataforma.
           </p>
 
-          <Link href="/" className="btnPrimary btnEnter">
+          <Link href="/" className="btnPrimary btnEnterAuth">
             Ir para a homepage
           </Link>
         </>
@@ -81,7 +81,7 @@ function RedefinirSenha() {
           />
           <button
             disabled={isSendingForm}
-            className="btnPrimary btnEnter"
+            className="btnPrimary btnEnterAuth"
             type="submit"
           >
             {isSendingForm ? <CgSpinner size={26} /> : 'Redefinir Senha'}
