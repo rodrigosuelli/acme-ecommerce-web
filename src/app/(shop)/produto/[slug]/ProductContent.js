@@ -5,10 +5,10 @@ import { AddFilled, CartFilled, CheckmarkFilled } from '@fluentui/react-icons';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import ProductRating from '../../components/ProductRating/ProductRating';
-import InputCEP from '../../components/Inputs/InputCEP';
+import { useCart } from '@/contexts/cartContext';
+import ProductRating from '../../../components/ProductRating/ProductRating';
+import InputCEP from '../../../components/Inputs/InputCEP';
 import styles from './produto.module.css';
-import { useCart } from '../../contexts/cartContext';
 
 function ProductContent({ produtoData }) {
   const [isAddedToCart, setIsAddedToCart] = useState(false);

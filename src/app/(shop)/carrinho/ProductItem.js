@@ -29,7 +29,7 @@ function ProductItem({ produtoData }) {
         height={100}
       />
       <div className={styles.produtoInfo}>
-        <Link href={`/${slug}`}>
+        <Link href={`/produto/${slug}`}>
           <h2>{titulo}</h2>
         </Link>
         <h3>R${preco}</h3>
