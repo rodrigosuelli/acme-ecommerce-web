@@ -15,13 +15,19 @@ import {
   KeyFilled,
   PersonAddFilled,
   ChevronDownFilled,
+  AppsListFilled,
+  ChevronUpFilled,
 } from '@fluentui/react-icons';
 import Link from 'next/link';
+import { useState } from 'react';
 import styles from './Sidebar.module.css';
 import { useUser } from '../../../contexts/userContext';
 
 function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
   const { user, loadingUser, logOut } = useUser();
+
+  const [isMinhaContaExpanded, setIsMinhaContaExpanded] = useState(true);
+  const [isCategoriasExpanded, setIsCategoriasExpanded] = useState(false);
 
   return (
     <aside
@@ -59,38 +65,83 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
         </Link>
         {user && (
           <>
+            <div
+              onClick={() => {
+                setIsMinhaContaExpanded(!isMinhaContaExpanded);
+              }}
+              className={`${styles.link} ${
+                isMinhaContaExpanded && styles.fatherLink
+              }`}
+            >
+              <PersonNoteFilled fontSize={24} />
+              <span>Minha Conta</span>
+              {isMinhaContaExpanded ? (
+                <ChevronUpFilled fontSize={22} />
+              ) : (
+                <ChevronDownFilled fontSize={22} />
+              )}
+            </div>
+            {isMinhaContaExpanded && (
+              <div className={styles.sublinksContainer}>
+                <Link
+                  onClick={() => {
+                    setIsSidebarVisible(false);
+                  }}
+                  href="#"
+                  className={styles.link}
+                >
+                  <span>Meu Perfil</span>
+                </Link>
+                <Link
+                  onClick={() => {
+                    setIsSidebarVisible(false);
+                  }}
+                  href="/minha-conta/meus-pedidos"
+                  className={styles.link}
+                >
+                  <span>Meus Pedidos</span>
+                </Link>
+              </div>
+            )}
+          </>
+        )}
+        <div
+          onClick={() => {
+            setIsCategoriasExpanded(!isCategoriasExpanded);
+          }}
+          className={`${styles.link} ${
+            isCategoriasExpanded && styles.fatherLink
+          }`}
+        >
+          <AppsListFilled fontSize={24} />
+          <span>Categorias</span>
+          {isCategoriasExpanded ? (
+            <ChevronUpFilled fontSize={22} />
+          ) : (
+            <ChevronDownFilled fontSize={22} />
+          )}
+        </div>
+        {isCategoriasExpanded && (
+          <div className={styles.sublinksContainer}>
             <Link
               onClick={() => {
                 setIsSidebarVisible(false);
               }}
               href="#"
-              className={`${styles.link} ${styles.fatherLink}`}
+              className={styles.link}
             >
-              <PersonNoteFilled fontSize={24} />
-              <span>Minha Conta</span>
-              <ChevronDownFilled fontSize={22} />
+              <span>Brincos</span>
             </Link>
-            <div className={styles.sublinksContainer}>
-              <Link
-                onClick={() => {
-                  setIsSidebarVisible(false);
-                }}
-                href="#"
-                className={styles.link}
-              >
-                <span>Meu Perfil</span>
-              </Link>
-              <Link
-                onClick={() => {
-                  setIsSidebarVisible(false);
-                }}
-                href="/minha-conta/meus-pedidos"
-                className={styles.link}
-              >
-                <span>Meus Pedidos</span>
-              </Link>
-            </div>
-          </>
+            <Link
+              onClick={() => {
+                setIsSidebarVisible(false);
+              }}
+              href="/minha-conta/meus-pedidos"
+              className={styles.link}
+            >
+              <span>Canecas</span>
+            </Link>
+          </div>
         )}
         <Link
           onClick={() => {

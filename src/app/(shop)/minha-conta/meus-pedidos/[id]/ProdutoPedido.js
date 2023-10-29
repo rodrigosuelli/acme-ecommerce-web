@@ -21,9 +21,9 @@ function ProdutoPedido({ produtoPedidoData }) {
         <h1>{nome}</h1>
         <button onClick={handleToggleExpanded} type="button">
           {isExpanded ? (
-            <ChevronDownFilled fontSize={26} />
-          ) : (
             <ChevronUpFilled fontSize={26} />
+          ) : (
+            <ChevronDownFilled fontSize={26} />
           )}
         </button>
       </div>
