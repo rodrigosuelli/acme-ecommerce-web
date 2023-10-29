@@ -3,5 +3,57 @@
 }
 
 .pedidoInvidivualPageContainer p {
-  margin-bottom: 16px;
+  margin-bottom: 15px;
+}
+
+.pedidoIndividualInfoContainer {
+  composes: pedidoIndividualInfoContainer from '../meusPedidos.module.css';
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.pedidoIndividualInfoContainer h1 {
+  font-size: 1.1875rem;
+  margin-bottom: 12px;
+}
+
+.pedidoIndividualInfoContainer p {
+  color: var(--neutral-n400);
+  margin: 0;
+}
+
+.pedidoItemContainer {
+  composes: pedidoItemContainer from '../meusPedidos.module.css';
+  min-height: 72px;
+  padding: 23px 25px;
+}
+
+.pedidoItemContainer .pedidoIndividualInfoContainer {
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.pedidoItemContainer h1 {
+  margin-bottom: 12px;
+}
+
+.pedidoItemContainer p {
+  margin: 0;
+}
+
+.pedidoTitleContainer {
+  composes: pedidoTitleContainer from '../meusPedidos.module.css';
+  margin: 0;
+}
+
+.pedidoTitleContainer h1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+p.mgTop {
+  margin-top: 12px;
 }
