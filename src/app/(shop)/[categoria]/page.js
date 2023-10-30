@@ -38,13 +38,13 @@ async function getCategoria(slug) {
   return res.json();
 }
 
-async function getProdutos(categoriaId, page = 1) {
+async function getProdutos(categoriaSlug, page = 1) {
   const query = qs.stringify(
     {
       filters: {
         categorias: {
-          id: {
-            $eq: categoriaId,
+          slug: {
+            $eq: categoriaSlug,
           },
         },
       },
@@ -90,22 +90,24 @@ async function Categoria({ params, searchParams }) {
   const { categoria: categoriaSlug } = params;
   let { page } = searchParams;
 
-  const data = await getCategoria(categoriaSlug);
+  if (!isNumeric(page)) {
+    page = 1;
+  }
 
-  const categoriaData = data.data[0];
+  const responseArr = await Promise.all([
+    getCategoria(categoriaSlug),
+    getProdutos(categoriaSlug, page),
+  ]);
+
+  const categoriaData = responseArr[0].data[0];
 
   if (!categoriaData) {
     notFound();
   }
 
-  const categoriaId = categoriaData.id;
   const { titulo } = categoriaData.attributes;
 
-  if (!isNumeric(page)) {
-    page = 1;
-  }
-
-  const dataProdutos = await getProdutos(categoriaId, page);
+  const dataProdutos = responseArr[1];
 
   const { meta } = dataProdutos;
 
