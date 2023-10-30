@@ -115,7 +115,7 @@ async function Categoria({ params, searchParams }) {
   const currentPage = meta.pagination.page;
   const { pageCount } = meta.pagination;
 
-  if (currentPage > pageCount) {
+  if (pageCount > 0 && currentPage > pageCount) {
     notFound();
   }
 
@@ -127,16 +127,21 @@ async function Categoria({ params, searchParams }) {
         <h1>Categoria: {titulo}</h1>
         <p>Escolha os produtos desejados</p>
       </div>
-      <div className={styles.listaProdutos}>
-        {arrayProdutos.length ? (
-          arrayProdutos.map((produto) => (
+      {arrayProdutos.length ? (
+        <div className={styles.listaProdutos}>
+          {arrayProdutos.map((produto) => (
             <ProdutoCategoria key={produto.id} produtoCategoriaData={produto} />
-          ))
-        ) : (
-          <h1>Não há nenhum produto nesta categoria...</h1>
-        )}
-      </div>
-      <PaginationButtons currentPage={currentPage} pageCount={pageCount} />
+          ))}
+        </div>
+      ) : null}
+      {!arrayProdutos.length && (
+        <h1 className={styles.emptyTitle}>
+          Não há nenhum produto nesta categoria...
+        </h1>
+      )}
+      {arrayProdutos.length ? (
+        <PaginationButtons currentPage={currentPage} pageCount={pageCount} />
+      ) : null}
     </div>
   );
 }

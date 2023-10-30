@@ -31,6 +31,14 @@
   font-size: 0.875rem;
 }
 
+h1.emptyTitle {
+  width: 280px;
+  text-align: center;
+  padding-bottom: 24px;
+  margin: auto;
+  font-size: 1.25rem;
+}
+
 .listaProdutos {
   display: grid;
   gap: 15px;
