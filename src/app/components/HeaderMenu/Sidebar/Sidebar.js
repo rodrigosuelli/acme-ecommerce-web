@@ -34,7 +34,7 @@ const query = qs.stringify(
         $eq: 'categoria_produto',
       },
     },
-    fields: ['id', 'titulo'],
+    fields: ['id', 'titulo', 'slug'],
     sort: ['titulo:asc'],
   },
   {
@@ -171,7 +171,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
                   onClick={() => {
                     setIsSidebarVisible(false);
                   }}
-                  href="#"
+                  href={`/${categoria.attributes.slug}`}
                   className={styles.link}
                 >
                   <span>{categoria.attributes.titulo}</span>
