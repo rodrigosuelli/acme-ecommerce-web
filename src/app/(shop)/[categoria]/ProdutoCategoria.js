@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { AddFilled } from '@fluentui/react-icons';
 import Link from 'next/link';
 import styles from './categoria.module.css';
-import ProductRating from '../../components/ProductRating/ProductRating';
+import StarsList from '../../components/ProductRating/StarsList';
 
 function ProdutoCategoria({ produtoCategoriaData }) {
   const { id } = produtoCategoriaData;
@@ -13,6 +13,7 @@ function ProdutoCategoria({ produtoCategoriaData }) {
     preco_original,
     avaliacao,
     qtd_avaliacoes,
+    slug,
     imagens,
   } = produtoCategoriaData.attributes;
 
@@ -29,9 +30,16 @@ function ProdutoCategoria({ produtoCategoriaData }) {
         width={110}
         height={110}
       />
-      <h1>{titulo}</h1>
-      <span>{preco}</span>
-      <ProductRating avaliacao={avaliacao} qtd_avaliacoes={qtd_avaliacoes} />
+      <Link href={`/produto/${slug}`}>
+        <h1>{titulo}</h1>
+      </Link>
+      <span className={styles.priceOriginal}>R${precoOriginal || preco}</span>
+      <span className={styles.price}>R${preco}</span>
+
+      <div className={styles.productRating}>
+        <StarsList numberOfStarsFilled={avaliacao} fontSize={14} />
+        <span>({qtd_avaliacoes})</span>
+      </div>
     </div>
   );
 }

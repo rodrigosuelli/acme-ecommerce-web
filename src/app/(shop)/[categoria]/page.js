@@ -21,6 +21,7 @@ async function getData(slug) {
             'preco_original',
             'avaliacao',
             'qtd_avaliacoes',
+            'slug',
           ],
           populate: { imagens: { fields: ['url', 'formats'] } },
         },
