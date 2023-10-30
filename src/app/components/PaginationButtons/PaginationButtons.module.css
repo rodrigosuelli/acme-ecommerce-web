@@ -1,0 +1,49 @@
+.pagButtonsContainer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+}
+
+.pagLinksContainer {
+  display: flex;
+  margin: 0 5px;
+}
+
+.pagLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  font-size: 0.8125rem;
+  color: var(--primary-p400);
+  background: var(--primary-p50);
+}
+
+.pagLink.icon {
+  border-radius: 50%;
+}
+
+.pagLink:hover {
+  background: #99e3f1;
+}
+
+.pagLink:active {
+  background: var(--primary-p100);
+}
+
+.pagLink.current {
+  background: var(--primary-p300);
+}
+
+.pagLinksContainer .pagLink:first-child {
+  padding-left: 4px;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+
+.pagLinksContainer .pagLink:last-child {
+  padding-right: 4px;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}

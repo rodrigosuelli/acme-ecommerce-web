@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import styles from './categoria.module.css';
 import ProdutoCategoria from './ProdutoCategoria';
 import isNumeric from '../../utils/isNumericString';
+import PaginationButtons from '../../components/PaginationButtons/PaginationButtons';
 
 async function getCategoria(slug) {
   const query = qs.stringify(
@@ -111,7 +112,10 @@ async function Categoria({ params, searchParams }) {
 
   const { meta } = dataProdutos;
 
-  if (meta.pagination.page > meta.pagination.pageCount) {
+  const currentPage = meta.pagination.page;
+  const { pageCount } = meta.pagination;
+
+  if (currentPage > pageCount) {
     notFound();
   }
 
@@ -132,6 +136,7 @@ async function Categoria({ params, searchParams }) {
           <h1>Não há nenhum produto nesta categoria...</h1>
         )}
       </div>
+      <PaginationButtons currentPage={currentPage} pageCount={pageCount} />
     </div>
   );
 }
