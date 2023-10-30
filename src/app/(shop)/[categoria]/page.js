@@ -88,7 +88,7 @@ async function getProdutos(categoriaId, page = 1) {
 
 async function Categoria({ params, searchParams }) {
   const { categoria: categoriaSlug } = params;
-  const { page } = searchParams;
+  let { page } = searchParams;
 
   const data = await getCategoria(categoriaSlug);
 
@@ -102,7 +102,7 @@ async function Categoria({ params, searchParams }) {
   const { titulo } = categoriaData.attributes;
 
   if (!isNumeric(page)) {
-    notFound();
+    page = 1;
   }
 
   const dataProdutos = await getProdutos(categoriaId, page);
