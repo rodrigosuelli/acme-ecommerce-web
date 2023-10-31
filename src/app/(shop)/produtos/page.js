@@ -6,9 +6,14 @@ import PaginationButtons from '../../components/PaginationButtons/PaginationButt
 import ListagemProdutos from '../../components/ListagemProdutos/ListagemProdutos';
 import HeroProdutos from '../../components/HeroProdutos/HeroProdutos';
 
-async function getProdutos(page = 1) {
+async function getProdutos(busca = '', page = 1) {
   const query = qs.stringify(
     {
+      filters: {
+        titulo: {
+          $contains: busca,
+        },
+      },
       populate: { imagens: { fields: ['url', 'formats'] } },
       fields: [
         'id',
@@ -49,13 +54,17 @@ async function getProdutos(page = 1) {
 }
 
 async function TodosProdutos({ searchParams }) {
-  let { page } = searchParams;
+  let { busca, page } = searchParams;
+
+  if (!busca) {
+    busca = '';
+  }
 
   if (!isNumeric(page)) {
     page = 1;
   }
 
-  const dataProdutos = await getProdutos(page);
+  const dataProdutos = await getProdutos(busca, page);
 
   const { meta } = dataProdutos;
 
@@ -71,7 +80,7 @@ async function TodosProdutos({ searchParams }) {
   return (
     <div className={`shopPage ${styles.todosProdutosContainer}`}>
       <HeroProdutos
-        title={`Todos os produtos`}
+        title={busca !== '' ? `Busca por "${busca}"` : `Todos os produtos`}
         text="Escolha os produtos desejados"
       />
       {arrayProdutos.length ? (
