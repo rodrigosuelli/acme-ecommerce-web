@@ -92,7 +92,11 @@ async function TodosProdutos({ searchParams }) {
         </h1>
       )}
       {arrayProdutos.length ? (
-        <PaginationButtons currentPage={currentPage} pageCount={pageCount} />
+        <PaginationButtons
+          currentPage={currentPage}
+          pageCount={pageCount}
+          busca={busca}
+        />
       ) : null}
     </div>
   );
