@@ -2,20 +2,26 @@
 
 import { DismissFilled, SearchFilled } from '@fluentui/react-icons';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useRef } from 'react';
 import styles from './SearchMobile.module.css';
 
 function SearchMobile({ isSearchVisible, handleToggleSearch }) {
-  const [search, setSearch] = useState('');
+  const inputRef = useRef(null);
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (isSearchVisible) {
+      inputRef.current?.focus();
+    }
+  }, [isSearchVisible]);
 
   function handleSearch(e) {
     e.preventDefault();
 
-    router.push(`/produtos?busca=${search}`);
+    router.push(`/produtos?busca=${inputRef.current.value}`);
 
-    setSearch('');
+    inputRef.current.value = '';
 
     handleToggleSearch();
   }
@@ -38,14 +44,13 @@ function SearchMobile({ isSearchVisible, handleToggleSearch }) {
         <form onSubmit={handleSearch}>
           <div className={styles.searchInputField}>
             <input
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
               required
               className="inputDefault"
               placeholder="Faça sua busca"
               type="text"
               name="search"
               id="search"
+              ref={inputRef}
             />
             <button type="submit">
               <SearchFilled fontSize={24} />
