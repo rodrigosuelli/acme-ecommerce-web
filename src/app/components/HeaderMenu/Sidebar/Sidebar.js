@@ -44,7 +44,7 @@ const query = qs.stringify(
 
 const fetcher = (url) => api.get(url).then((res) => res.data);
 
-function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
+function Sidebar({ isSidebarVisible, setIsSidebarVisible }) {
   const { user, loadingUser, logOut } = useUser();
 
   const [isMinhaContaExpanded, setIsMinhaContaExpanded] = useState(true);
@@ -77,7 +77,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
             {!loadingUser && !user && 'Olá, anônimo'}
           </h2>
         </div>
-        <button onClick={onMenuToggle} type="button">
+        <button onClick={() => setIsSidebarVisible(false)} type="button">
           <DismissFilled fontSize={24} />
         </button>
       </div>

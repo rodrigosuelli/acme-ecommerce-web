@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
 import styles from './SearchMobile.module.css';
 
-function SearchMobile({ isSearchVisible, handleToggleSearch }) {
+function SearchMobile({ isSearchVisible, setIsSearchVisible }) {
   const inputRef = useRef(null);
 
   const router = useRouter();
@@ -19,11 +19,12 @@ function SearchMobile({ isSearchVisible, handleToggleSearch }) {
   function handleSearch(e) {
     e.preventDefault();
 
-    router.push(`/produtos?busca=${inputRef.current.value}`);
-
+    inputRef.current?.blur(); // remove focus
     inputRef.current.value = '';
 
-    handleToggleSearch();
+    router.push(`/produtos?busca=${inputRef.current.value}`);
+
+    setIsSearchVisible(false);
   }
 
   return (
@@ -37,7 +38,7 @@ function SearchMobile({ isSearchVisible, handleToggleSearch }) {
       <div className={styles.contentWrapper}>
         <div className={styles.searchTitleContainer}>
           <h1>O que você procura?</h1>
-          <button onClick={handleToggleSearch} type="button">
+          <button onClick={() => setIsSearchVisible(false)} type="button">
             <DismissFilled fontSize={24} />
           </button>
         </div>

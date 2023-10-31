@@ -79,13 +79,12 @@ function HeaderMenu() {
         }
       />
       <Sidebar
-        onMenuToggle={handleToggleSidebar}
         isSidebarVisible={isSidebarVisible}
         setIsSidebarVisible={setIsSidebarVisible}
       />
       <SearchMobile
-        handleToggleSearch={handleToggleSearch}
         isSearchVisible={isSearchVisible}
+        setIsSearchVisible={setIsSearchVisible}
       />
     </header>
   );
