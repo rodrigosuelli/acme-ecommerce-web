@@ -88,7 +88,7 @@ async function TodosProdutos({ searchParams }) {
       ) : null}
       {!arrayProdutos.length && (
         <h1 className={styles.emptyTitle}>
-          Não há nenhum produto nesta categoria...
+          Não foi encontrado nenhum produto...
         </h1>
       )}
       {arrayProdutos.length ? (
