@@ -7,11 +7,16 @@
   background: var(--neutral-n20);
   height: 96px;
   margin-bottom: 24px;
+  padding: 0 16px;
 }
 
 .heroContainer h1 {
+  max-width: 100%;
   font-size: 1.25rem;
   margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .heroContainer p {
