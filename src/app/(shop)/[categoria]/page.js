@@ -1,9 +1,10 @@
 import qs from 'qs';
 import { notFound } from 'next/navigation';
 import styles from './categoria.module.css';
-import ProdutoCategoria from './ProdutoCategoria';
 import isNumeric from '../../utils/isNumericString';
 import PaginationButtons from '../../components/PaginationButtons/PaginationButtons';
+import ListagemProdutos from '../../components/ListagemProdutos/ListagemProdutos';
+import HeroProdutos from '../../components/HeroProdutos/HeroProdutos';
 
 async function getCategoria(slug) {
   const query = qs.stringify(
@@ -124,16 +125,12 @@ async function Categoria({ params, searchParams }) {
 
   return (
     <div className={`shopPage ${styles.categoriaContainer}`}>
-      <div className={styles.heroContainer}>
-        <h1>Categoria: {titulo}</h1>
-        <p>Escolha os produtos desejados</p>
-      </div>
+      <HeroProdutos
+        title={`Categoria: ${titulo}`}
+        text="Escolha os produtos desejados"
+      />
       {arrayProdutos.length ? (
-        <div className={styles.listaProdutos}>
-          {arrayProdutos.map((produto) => (
-            <ProdutoCategoria key={produto.id} produtoCategoriaData={produto} />
-          ))}
-        </div>
+        <ListagemProdutos arrayProdutos={arrayProdutos} />
       ) : null}
       {!arrayProdutos.length && (
         <h1 className={styles.emptyTitle}>

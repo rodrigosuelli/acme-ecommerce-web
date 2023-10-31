@@ -1,0 +1,19 @@
+.heroContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--neutral-n20);
+  height: 96px;
+  margin-bottom: 24px;
+}
+
+.heroContainer h1 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.heroContainer p {
+  font-size: 0.875rem;
+}

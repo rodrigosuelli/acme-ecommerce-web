@@ -1,11 +1,10 @@
 import Image from 'next/image';
-import { AddFilled } from '@fluentui/react-icons';
 import Link from 'next/link';
-import styles from './categoria.module.css';
-import StarsList from '../../components/ProductRating/StarsList';
+import styles from './ListagemProdutos.module.css';
+import StarsList from '../ProductRating/StarsList';
 
-function ProdutoCategoria({ produtoCategoriaData }) {
-  const { id } = produtoCategoriaData;
+function ProdutoIndividual({ produtoData }) {
+  const { id } = produtoData;
 
   const {
     titulo,
@@ -15,14 +14,14 @@ function ProdutoCategoria({ produtoCategoriaData }) {
     qtd_avaliacoes,
     slug,
     imagens,
-  } = produtoCategoriaData.attributes;
+  } = produtoData.attributes;
 
   const preco = preco_real.toFixed(2).replace('.', ',');
   const precoOriginal = preco_original?.toFixed(2).replace('.', ',');
   const imgThumbUrl = imagens?.data[0]?.attributes.formats?.thumbnail.url;
 
   return (
-    <div key={id} className={styles.produtoCategoriaContainer}>
+    <div key={id} className={styles.produtoIndividualContainer}>
       <Image
         priority={true}
         src={imgThumbUrl}
@@ -44,4 +43,4 @@ function ProdutoCategoria({ produtoCategoriaData }) {
   );
 }
 
-export default ProdutoCategoria;
+export default ProdutoIndividual;
