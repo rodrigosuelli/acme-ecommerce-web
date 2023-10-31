@@ -54,7 +54,9 @@
 .searchInputField button {
   color: var(--neutral-n500);
   position: absolute;
-  right: 16px;
+  right: 0;
+  height: 100%;
+  padding: 0 16px 0 10px;
   top: 50%;
   transform: translateY(-50%);
   transition: unset;
