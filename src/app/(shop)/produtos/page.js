@@ -11,7 +11,7 @@ async function getProdutos(busca = '', page = 1) {
     {
       filters: {
         titulo: {
-          $contains: busca,
+          $containsi: busca,
         },
       },
       populate: { imagens: { fields: ['url', 'formats'] } },
