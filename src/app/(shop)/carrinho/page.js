@@ -150,10 +150,10 @@ function Carrinho() {
   return (
     <div className="shopPage">
       <h1>Adicionar CEP</h1>
-      <div className={styles.marker}></div>
+      <div className="marker"></div>
       <InputCEP />
       <h1 className={styles.titleMgTop}>Produtos Selecionados</h1>
-      <div className={styles.marker}></div>
+      <div className="marker"></div>
       <div className={styles.produtosList}>
         {isCartValid ? (
           <ProductListContent
@@ -168,10 +168,10 @@ function Carrinho() {
       {isCartValid && !isLoading && savedData ? (
         <>
           <h1>Inserir Cupom de Desconto</h1>
-          <div className={styles.marker}></div>
+          <div className="marker"></div>
           <InputCupom />
           <h1 className={styles.titleMgTop}>Resumo da compra</h1>
-          <div className={styles.marker}></div>
+          <div className="marker"></div>
           <div className={styles.resumoCarrinho}>
             <div className={styles.textContainer}>
               <h2>Valor dos produtos:</h2>
