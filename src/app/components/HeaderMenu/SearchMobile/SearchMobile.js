@@ -20,9 +20,10 @@ function SearchMobile({ isSearchVisible, setIsSearchVisible }) {
     e.preventDefault();
 
     inputRef.current?.blur(); // remove focus
-    inputRef.current.value = '';
 
     router.push(`/produtos?busca=${inputRef.current.value}`);
+
+    inputRef.current.value = '';
 
     setIsSearchVisible(false);
   }
