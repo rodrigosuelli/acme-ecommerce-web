@@ -77,7 +77,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible, onMenuToggle }) {
             {!loadingUser && !user && 'Olá, anônimo'}
           </h2>
         </div>
-        <button onClick={onMenuToggle} className="close-btn" type="button">
+        <button onClick={onMenuToggle} type="button">
           <DismissFilled fontSize={24} />
         </button>
       </div>

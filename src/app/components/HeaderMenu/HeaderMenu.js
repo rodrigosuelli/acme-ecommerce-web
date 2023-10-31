@@ -12,14 +12,20 @@ import { useCart } from '../../contexts/cartContext';
 
 import styles from './HeaderMenu.module.css';
 import Sidebar from './Sidebar/Sidebar';
+import SearchMobile from './SearchMobile/SearchMobile';
 
 function HeaderMenu() {
   const { cart } = useCart();
 
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
 
   function handleToggleSidebar() {
     setIsSidebarVisible(!isSidebarVisible);
+  }
+
+  function handleToggleSearch() {
+    setIsSearchVisible(!isSearchVisible);
   }
 
   return (
@@ -48,7 +54,11 @@ function HeaderMenu() {
           <CartFilled fontSize={32} />
           <div className={styles.cartCount}>{cart ? cart.length : 0}</div>
         </Link>
-        <button type="button" className={styles.iconBtn}>
+        <button
+          onClick={handleToggleSearch}
+          type="button"
+          className={styles.iconBtn}
+        >
           <SearchFilled fontSize={32} />
         </button>
       </div>
@@ -60,10 +70,22 @@ function HeaderMenu() {
             : styles.sidebarShadow
         }
       />
+      <div
+        onClick={handleToggleSearch}
+        className={
+          isSearchVisible
+            ? `${styles.sidebarShadow} ${styles.visible}`
+            : styles.sidebarShadow
+        }
+      />
       <Sidebar
         onMenuToggle={handleToggleSidebar}
         isSidebarVisible={isSidebarVisible}
         setIsSidebarVisible={setIsSidebarVisible}
+      />
+      <SearchMobile
+        handleToggleSearch={handleToggleSearch}
+        isSearchVisible={isSearchVisible}
       />
     </header>
   );
