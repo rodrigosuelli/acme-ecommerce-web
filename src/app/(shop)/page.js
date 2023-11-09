@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './homepage.module.css';
 
 function Homepage() {
@@ -30,6 +31,12 @@ function Homepage() {
           Descubra nossas novidades mais reluzentes! Na Acme, estamos empolgados
           em apresentar as mais recentes adições à nossa coleção de joias.
         </p>
+        <Link
+          href="/lancamentos"
+          className={`btnEnter btnPrimary ${styles.sectionLink}`}
+        >
+          Ver Lançamentos
+        </Link>
       </div>
     </div>
   );

@@ -68,3 +68,10 @@
 .lancamentos .sectionTitleContainer {
   margin-bottom: 26px;
 }
+
+.sectionLink {
+  font-size: 1rem;
+  width: 184px;
+  border-radius: 50px;
+  height: 40px;
+}
