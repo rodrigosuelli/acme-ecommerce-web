@@ -1,24 +1,26 @@
 'use client';
 
-import { useUser } from '@/contexts/userContext';
+import Image from 'next/image';
 import styles from './homepage.module.css';
 
 function Homepage() {
-  const { user, logOut } = useUser();
-
-  function handleLogout() {
-    logOut();
-  }
-
   return (
-    <div className={`shopPage ${styles.homeContainer}`}>
-      <h1>{user && user.username}</h1>
-      <button
-        className={`btnPrimary ${styles.btnLogout}`}
-        onClick={handleLogout}
-      >
-        Logout
-      </button>
+    <div className={`shopPage ${styles.homePage}`}>
+      <div className={styles.homeContainer}>
+        <h1 className={styles.heroTitle}>Abrace o Luxo em Cada Detalhe!</h1>
+        <p>
+          Não espere mais! Explore agora mesmo nossa emocionante coleção de
+          lançamentos e descubra o que há de mais recente em semijoias.
+        </p>
+        <Image
+          className={styles.heroImage}
+          priority={true}
+          src="/images/homeHeroImageMobile.png"
+          alt="imagem miniatura do produto"
+          width={293}
+          height={256}
+        />
+      </div>
     </div>
   );
 }

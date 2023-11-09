@@ -1,12 +1,29 @@
-.homeContainer {
+.homePage {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  width: 360px;
+  padding: 0;
 }
 
-.btnLogout {
-  font-size: 1.25rem;
-  border-radius: 5px;
-  width: 200px;
-  height: 54px;
+.homeContainer {
+  padding: 24px 40px 60px;
+  position: relative;
+}
+
+.homeContainer p {
+  font-size: 1rem;
+  color: var(--neutral-n300);
+}
+
+.homeContainer .heroTitle {
+  font-size: 2rem;
+  margin-bottom: 36px;
+}
+
+.homeContainer .heroImage {
+  position: absolute;
+  right: 0px;
+  margin: 64px 0;
+  border-radius: 6px;
 }
