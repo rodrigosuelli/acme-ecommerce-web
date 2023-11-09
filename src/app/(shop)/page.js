@@ -12,14 +12,24 @@ function Homepage() {
           Não espere mais! Explore agora mesmo nossa emocionante coleção de
           lançamentos e descubra o que há de mais recente em semijoias.
         </p>
-        <Image
-          className={styles.heroImage}
-          priority={true}
-          src="/images/homeHeroImageMobile.png"
-          alt="imagem miniatura do produto"
-          width={293}
-          height={256}
-        />
+      </div>
+      <Image
+        className={styles.heroImage}
+        priority={true}
+        src="/images/homeHeroImageMobile.png"
+        alt="imagem miniatura do produto"
+        width={293}
+        height={256}
+      />
+      <div className={styles.lancamentos}>
+        <div className={styles.sectionTitleContainer}>
+          <h2>Confira Os Nossos Lançamentos</h2>
+          <div className={styles.marker} />
+        </div>
+        <p>
+          Descubra nossas novidades mais reluzentes! Na Acme, estamos empolgados
+          em apresentar as mais recentes adições à nossa coleção de joias.
+        </p>
       </div>
     </div>
   );

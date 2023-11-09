@@ -3,27 +3,68 @@
   flex-direction: column;
   align-items: center;
   width: 360px;
-  padding: 0;
+  padding-top: 24px;
+  padding-bottom: 60px;
+}
+
+.marker {
+  composes: marker from './shopPagesGlobal.css';
+  margin-bottom: 0;
+  height: 3px;
 }
 
 .homeContainer {
-  padding: 24px 40px 60px;
-  position: relative;
+  padding: 0 40px;
 }
 
-.homeContainer p {
+.homePage h2 {
+  font-size: 1.4375rem;
+  color: var(--neutral-n800);
+  margin-bottom: 16px;
+}
+
+.homePage p {
   font-size: 1rem;
   color: var(--neutral-n300);
 }
 
-.homeContainer .heroTitle {
+.homePage .heroTitle {
   font-size: 2rem;
   margin-bottom: 36px;
 }
 
-.homeContainer .heroImage {
-  position: absolute;
-  right: 0px;
+.homePage .heroImage {
+  align-self: flex-end;
   margin: 64px 0;
   border-radius: 6px;
+}
+
+.lancamentos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 327px;
+  background: var(--neutral-n20);
+  padding: 32px 8px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.sectionTitleContainer,
+.lancamentos p {
+  max-width: 270px;
+}
+
+.lancamentos p {
+  text-align: justify;
+}
+
+.sectionTitleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lancamentos .sectionTitleContainer {
+  margin-bottom: 26px;
 }
