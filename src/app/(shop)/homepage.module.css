@@ -33,6 +33,10 @@
   margin-bottom: 36px;
 }
 
+.homePage .heroTitle span {
+  color: var(--primary-p400);
+}
+
 .homePage .heroImage {
   align-self: flex-end;
   margin: 64px 0;
