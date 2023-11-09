@@ -43,7 +43,7 @@
   border-radius: 6px;
 }
 
-.lancamentos {
+.section {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,14 +52,49 @@
   padding: 32px 8px;
   border-radius: 6px;
   text-align: center;
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.section.blue {
+  background: var(--primary-p500);
+  text-align: unset;
+  padding: 32px 24px 140px;
+  margin-bottom: 118px;
+  width: 336px;
+}
+
+.section.blue .marker {
+  background: var(--primary-p100);
+}
+
+.section.blue h1,
+.section.blue h2,
+.section.blue h3 {
+  color: var(--white);
+}
+
+.section.blue p {
+  color: var(--primary-p50);
+}
+
+.section.blue .sectionTitleContainer,
+.section.blue p {
+  max-width: unset;
+}
+
+.section.blue img {
+  position: absolute;
+  bottom: -118px;
+  border-radius: 6px;
 }
 
 .sectionTitleContainer,
-.lancamentos p {
+.section p {
   max-width: 270px;
 }
 
-.lancamentos p {
+.section p {
   text-align: justify;
 }
 
@@ -69,7 +104,7 @@
   align-items: center;
 }
 
-.lancamentos .sectionTitleContainer {
+.section .sectionTitleContainer {
   margin-bottom: 26px;
 }
 
@@ -78,4 +113,30 @@
   width: 184px;
   border-radius: 50px;
   height: 40px;
+}
+
+.section.blue .sectionLink {
+  align-self: flex-start;
+  width: 233px;
+  height: 48px;
+  background: var(--primary-p100);
+  color: var(--primary-p500);
+  margin: 48px 0;
+}
+
+.section.blue .sectionLink:not(:disabled):hover,
+.section.blue .sectionLink:not(:disabled):active {
+  background: var(--primary-p500);
+  color: var(--primary-p100);
+  border: 3px solid var(--primary-p100);
+}
+
+.promosTitle {
+  font-size: 1.4375rem;
+  margin-top: 60px;
+}
+
+.promosDesc {
+  margin-top: 32px;
+  margin-bottom: 48px;
 }
