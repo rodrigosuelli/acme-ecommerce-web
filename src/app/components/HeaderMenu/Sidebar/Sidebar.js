@@ -193,7 +193,7 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible }) {
           onClick={() => {
             setIsSidebarVisible(false);
           }}
-          href="#"
+          href="/lancamentos"
           className={styles.link}
         >
           <NewFilled fontSize={24} />
