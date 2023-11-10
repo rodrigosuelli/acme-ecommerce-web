@@ -161,6 +161,40 @@
 }
 
 .feedbackItem {
-  padding: 24px 0;
+  width: 280px;
+  padding: 24px 32px;
+  border-radius: 6px;
   background: var(--neutral-n900);
+  color: var(--white);
+}
+
+.feedbackItem img {
+  margin-bottom: 15px;
+}
+.feedbackItem .feedbackUserName {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
+.feedbackItem .feedbackTitle {
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+}
+
+.feedbackItem p {
+  color: var(--neutral-n70);
+  text-align: justify;
+}
+
+.feedbackAvaliacao {
+  margin-bottom: 13px;
+}
+
+.feedbackAvaliacao svg {
+  color: #e7cc42;
+}
+
+.feedbackAvaliacao svg:not(:last-child) {
+  margin-right: 4px;
 }

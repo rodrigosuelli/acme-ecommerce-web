@@ -7,6 +7,7 @@ import styles from './homepage.module.css';
 import homeHeroImageMobile from '../../../public/images/homeHeroImageMobile.png';
 import historySectionImageMobile from '../../../public/images/historySectionImageMobile.png';
 import feedback1Mobile from '../../../public/images/feedbacks/feedback1Mobile.png';
+import StarsList from '../components/ProductRating/StarsList';
 
 function Homepage() {
   return (
@@ -82,8 +83,19 @@ function Homepage() {
           <div className={styles.feedbackList}>
             <div className={styles.feedbackItem}>
               <Image src={feedback1Mobile} alt="imagem rosto do avaliador" />
-              <p>Nome do usuario</p>
-              <h3>Título do comentário</h3>
+              <h4 className={styles.feedbackUserName}>Jane Doe</h4>
+              <h2 className={styles.feedbackTitle}>Loja Incrível</h2>
+              <div className={styles.feedbackAvaliacao}>
+                <StarsList numberOfStarsFilled={5} fontSize={18} />
+              </div>
+              <p>
+                Estou impressionada com a qualidade e a beleza das joias que
+                encontrei na sua loja. Cada peça é única e radiante, e o
+                atendimento ao cliente foi excepcional. Fiquei satisfeita em
+                encontrar a joia perfeita para uma ocasião especial, e
+                definitivamente vou recomendar a loja aos meus amigos e
+                familiares. Continuem o ótimo trabalho!
+              </p>
             </div>
           </div>
         </div>
