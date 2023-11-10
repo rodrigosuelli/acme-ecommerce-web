@@ -4,6 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './homepage.module.css';
 
+import homeHeroImageMobile from '../../../public/images/homeHeroImageMobile.png';
+import historySectionImageMobile from '../../../public/images/historySectionImageMobile.png';
+import feedback1Mobile from '../../../public/images/feedbacks/feedback1Mobile.png';
+
 function Homepage() {
   return (
     <div className={`shopPage ${styles.homePage}`}>
@@ -19,10 +23,8 @@ function Homepage() {
       <Image
         className={styles.heroImage}
         priority={true}
-        src="/images/homeHeroImageMobile.png"
+        src={homeHeroImageMobile}
         alt="imagem garota propaganda"
-        width={293}
-        height={256}
       />
       <div className={styles.section}>
         <div className={styles.sectionTitleContainer}>
@@ -58,12 +60,7 @@ function Homepage() {
         <Link href="#" className={`btnEnter btnPrimary ${styles.sectionLink}`}>
           Conheça Nosso Legado
         </Link>
-        <Image
-          src="/images/historySectionImageMobile.png"
-          alt="imagem fachada da loja"
-          width={293}
-          height={256}
-        />
+        <Image src={historySectionImageMobile} alt="imagem fachada da loja" />
       </div>
 
       <div className={styles.homeContainer}>
@@ -77,6 +74,19 @@ function Homepage() {
           incríveis de adquirir joias excepcionais e acessórios elegantes a
           preços que irão encantar você.
         </p>
+      </div>
+      <div className={styles.feedbacks}>
+        <div className={styles.sectionTitleContainer}>
+          <h2>Feedbacks que nos inspiram!</h2>
+          <div className={styles.marker} />
+          <div className={styles.feedbackList}>
+            <div className={styles.feedbackItem}>
+              <Image src={feedback1Mobile} alt="imagem rosto do avaliador" />
+              <p>Nome do usuario</p>
+              <h3>Título do comentário</h3>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
