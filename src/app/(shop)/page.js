@@ -80,23 +80,23 @@ function Homepage() {
         <div className={styles.sectionTitleContainer}>
           <h2>Feedbacks que nos inspiram!</h2>
           <div className={styles.marker} />
-          <div className={styles.feedbackList}>
-            <div className={styles.feedbackItem}>
-              <Image src={feedback1Mobile} alt="imagem rosto do avaliador" />
-              <h4 className={styles.feedbackUserName}>Jane Doe</h4>
-              <h2 className={styles.feedbackTitle}>Loja Incrível</h2>
-              <div className={styles.feedbackAvaliacao}>
-                <StarsList numberOfStarsFilled={5} fontSize={18} />
-              </div>
-              <p>
-                Estou impressionada com a qualidade e a beleza das joias que
-                encontrei na sua loja. Cada peça é única e radiante, e o
-                atendimento ao cliente foi excepcional. Fiquei satisfeita em
-                encontrar a joia perfeita para uma ocasião especial, e
-                definitivamente vou recomendar a loja aos meus amigos e
-                familiares. Continuem o ótimo trabalho!
-              </p>
+        </div>
+        <div className={styles.feedbackList}>
+          <div className={styles.feedbackItem}>
+            <Image src={feedback1Mobile} alt="imagem rosto do avaliador" />
+            <h4 className={styles.feedbackUserName}>Jane Doe</h4>
+            <h2 className={styles.feedbackTitle}>Loja Incrível</h2>
+            <div className={styles.feedbackAvaliacao}>
+              <StarsList numberOfStarsFilled={5} fontSize={18} />
             </div>
+            <p>
+              Estou impressionada com a qualidade e a beleza das joias que
+              encontrei na sua loja. Cada peça é única e radiante, e o
+              atendimento ao cliente foi excepcional. Fiquei satisfeita em
+              encontrar a joia perfeita para uma ocasião especial, e
+              definitivamente vou recomendar a loja aos meus amigos e
+              familiares. Continuem o ótimo trabalho!
+            </p>
           </div>
         </div>
       </div>
