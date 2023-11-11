@@ -112,6 +112,7 @@ function Homepage() {
           itemClass={styles.carouselItem}
           renderDotsOutside={true}
           dotListClass={styles.carouselDotList}
+          infinite={true}
         >
           <div className={styles.feedbackItem}>
             <Image src={feedback1Mobile} alt="imagem rosto do avaliador" />
