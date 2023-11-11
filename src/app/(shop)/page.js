@@ -11,6 +11,7 @@ import homeHeroImageMobile from '../../../public/images/homeHeroImageMobile.png'
 import historySectionImageMobile from '../../../public/images/historySectionImageMobile.png';
 import feedback1Mobile from '../../../public/images/feedbacks/feedback1Mobile.png';
 import StarsList from '../components/ProductRating/StarsList';
+import InputEmail from '../components/Inputs/InputEmail';
 
 function Homepage() {
   const responsive = {
@@ -163,6 +164,18 @@ function Homepage() {
             </p>
           </div>
         </Carousel>
+      </div>
+      <div className={styles.homeContainer}>
+        <h2 className={styles.promosTitle}>
+          Deseja receber informações sobre a loja?
+        </h2>
+        <div className={styles.marker} />
+        <p className={styles.promosDesc}>
+          Não perca nenhuma atualização emocionante e ofertas especiais da nossa
+          loja! Inscreva-se agora para receber nossas últimas novidades,
+          lançamentos e promoções diretamente na sua caixa de entrada.
+        </p>
+        <InputEmail />
       </div>
     </div>
   );
