@@ -105,6 +105,7 @@ function Homepage() {
           <div className={styles.marker} />
         </div>
         <Carousel
+          draggable={false}
           showDots={true}
           responsive={responsive}
           containerClass={styles.carouselContainer}
