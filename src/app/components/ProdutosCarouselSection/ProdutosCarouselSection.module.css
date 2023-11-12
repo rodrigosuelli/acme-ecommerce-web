@@ -1,9 +1,8 @@
 h1.emptyTitle {
   width: 280px;
   text-align: center;
-  padding-bottom: 24px;
   margin: auto;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .carouselContainer {
