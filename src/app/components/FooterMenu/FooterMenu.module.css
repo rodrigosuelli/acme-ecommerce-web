@@ -9,6 +9,11 @@
   color: white;
 }
 
+.logoFooter {
+  display: none;
+  margin-bottom: 25px;
+}
+
 .links {
   width: 100%;
   margin-bottom: 48px;
@@ -67,6 +72,40 @@
   margin: unset;
 }
 
+.links .inlineSeparator {
+  display: none;
+}
+
 .copyright {
   font-weight: 700;
+}
+
+@media only screen and (min-width: 760px) {
+  .footerMenu {
+    padding-top: 40px;
+  }
+
+  .logoFooter {
+    display: block;
+  }
+
+  .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .links .inlineSeparator {
+    display: block;
+  }
+
+  .links .linkContainer:not(:last-child) {
+    margin: 0 5px;
+  }
+
+  .separator {
+    display: none;
+  }
 }

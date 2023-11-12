@@ -5,11 +5,16 @@ import {
   BiLogoTiktok,
   BiLogoWhatsapp,
 } from 'react-icons/bi';
+import Image from 'next/image';
 import styles from './FooterMenu.module.css';
+import logoImg from '../../../../public/images/logoFooter.svg';
 
 function FooterMenu() {
   return (
     <footer className={styles.footerMenu}>
+      <Link href="/" className={styles.logoFooter}>
+        <Image src={logoImg} alt="Logo Acme" />
+      </Link>
       <div className={styles.links}>
         <div className={styles.linkContainer}>
           <Link href="/" className={styles.logoLink}>
@@ -17,18 +22,21 @@ function FooterMenu() {
           </Link>
         </div>
         <div className={styles.separator}></div>
+        <span className={styles.inlineSeparator}>|</span>
         <div className={styles.linkContainer}>
           <Link href="#" className={styles.logoLink}>
             Sobre
           </Link>
         </div>
         <div className={styles.separator}></div>
+        <span className={styles.inlineSeparator}>|</span>
         <div className={styles.linkContainer}>
           <Link href="#" className={styles.logoLink}>
             Lançamentos
           </Link>
         </div>
         <div className={styles.separator}></div>
+        <span className={styles.inlineSeparator}>|</span>
         <div className={styles.linkContainer}>
           <Link href="#" className={styles.logoLink}>
             Fale Conosco
