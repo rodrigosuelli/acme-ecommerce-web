@@ -5,6 +5,11 @@ import {
   NavigationFilled,
   SearchFilled,
   CartFilled,
+  PinFilled,
+  NewFilled,
+  GiftFilled,
+  BriefcaseFilled,
+  PersonFilled,
 } from '@fluentui/react-icons';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -29,64 +34,97 @@ function HeaderMenu() {
   }
 
   return (
-    <header className={styles.headerMenu}>
-      <button
-        onClick={handleToggleSidebar}
-        type="button"
-        className={styles.iconBtn}
-      >
-        <NavigationFilled fontSize={32} />
-      </button>
-      <Link href="/" className={styles.logoLink}>
-        <Image
-          priority={true}
-          src="/images/logo.svg"
-          alt="Logo Acme"
-          width={91}
-          height={30}
-        />
-      </Link>
-      <div className={styles.rightItems}>
-        <Link
-          href="/carrinho"
-          className={`${styles.iconBtn} ${styles.cartLink}`}
-        >
-          <CartFilled fontSize={32} />
-          <div className={styles.cartCount}>{cart ? cart.length : 0}</div>
-        </Link>
-        <button
-          onClick={handleToggleSearch}
-          type="button"
-          className={styles.iconBtn}
-        >
-          <SearchFilled fontSize={32} />
-        </button>
+    <>
+      <header className={styles.headerMenu}>
+        <div className={styles.headerWrapper}>
+          <button
+            onClick={handleToggleSidebar}
+            type="button"
+            className={styles.hamburguer}
+          >
+            <NavigationFilled fontSize={32} />
+          </button>
+          <Link href="/" className={styles.logoLink}>
+            <Image
+              priority={true}
+              src="/images/logo.svg"
+              alt="Logo Acme"
+              width={91}
+              height={30}
+            />
+          </Link>
+          <div className={styles.headerLinks}>
+            <Link href="/">Home</Link>
+            <Link href="/">Categorias</Link>
+            <Link href="/">Fale Conosco</Link>
+            <Link href="/">Sobre</Link>
+          </div>
+          <div className={styles.rightItems}>
+            <Link
+              href="/carrinho"
+              className={`${styles.iconBtn} ${styles.cartLink}`}
+            >
+              <CartFilled fontSize={32} />
+              <div className={styles.cartCount}>{cart ? cart.length : 0}</div>
+            </Link>
+            <button type="button" className={styles.userIcon}>
+              <PersonFilled fontSize={32} />
+            </button>
+            <button
+              onClick={handleToggleSearch}
+              type="button"
+              className={styles.iconBtn}
+            >
+              <SearchFilled fontSize={32} />
+            </button>
+          </div>
+          <div
+            onClick={handleToggleSidebar}
+            className={
+              isSidebarVisible
+                ? `${styles.sidebarShadow} ${styles.visible}`
+                : styles.sidebarShadow
+            }
+          />
+          <div
+            onClick={handleToggleSearch}
+            className={
+              isSearchVisible
+                ? `${styles.sidebarShadow} ${styles.visible}`
+                : styles.sidebarShadow
+            }
+          />
+          <Sidebar
+            isSidebarVisible={isSidebarVisible}
+            setIsSidebarVisible={setIsSidebarVisible}
+          />
+          <SearchMobile
+            isSearchVisible={isSearchVisible}
+            setIsSearchVisible={setIsSearchVisible}
+          />
+        </div>
+      </header>
+      <div className={styles.blueBarContainer}>
+        <div className={styles.blueBarLinks}>
+          <Link href="">
+            <PinFilled fontSize={20} />
+            Promoçoes
+          </Link>
+          <Link href="/lancamentos">
+            <NewFilled fontSize={20} />
+            Lançamentos
+          </Link>
+          <Link href="/">
+            <GiftFilled fontSize={20} />
+            Presentes
+          </Link>
+          <Link href="/">
+            <BriefcaseFilled fontSize={20} />
+            Kits
+          </Link>
+        </div>
       </div>
-      <div
-        onClick={handleToggleSidebar}
-        className={
-          isSidebarVisible
-            ? `${styles.sidebarShadow} ${styles.visible}`
-            : styles.sidebarShadow
-        }
-      />
-      <div
-        onClick={handleToggleSearch}
-        className={
-          isSearchVisible
-            ? `${styles.sidebarShadow} ${styles.visible}`
-            : styles.sidebarShadow
-        }
-      />
-      <Sidebar
-        isSidebarVisible={isSidebarVisible}
-        setIsSidebarVisible={setIsSidebarVisible}
-      />
-      <SearchMobile
-        isSearchVisible={isSearchVisible}
-        setIsSearchVisible={setIsSearchVisible}
-      />
-    </header>
+    </>
   );
 }
 

@@ -1,14 +1,73 @@
 .headerMenu {
+  width: 100%;
+  height: var(--header-menu-height-mobile);
+}
+
+.headerWrapper {
+  max-width: 1600px;
+  width: 91.6%;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.blueBarContainer {
+  display: none;
+  width: 100%;
+  height: var(--blue-bar-height);
+  background: var(--primary-p500);
+  color: var(--white);
+}
+
+.blueBarLinks a {
+  font-family: var(--font-merriweather);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+
+.blueBarLinks a svg {
+  margin-right: 12px;
+}
+
+.blueBarLinks {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: var(--header-menu-height);
-  padding: 0 15px;
+  max-width: 630px;
+}
+
+.headerLinks {
+  display: none;
+  margin: 0 42px;
+  width: 100%;
+  max-width: 520px;
+}
+
+.headerLinks a {
+  color: var(--neutral-n800);
+  font-family: var(--font-merriweather);
+  font-size: 1.125rem;
+  font-weight: 400;
+  text-wrap: nowrap;
+}
+
+.headerLinks a:hover,
+.blueBarContainer a:hover {
+  text-decoration: underline;
+}
+
+.headerLinks a:not(:last-child) {
+  margin-right: 12px;
 }
 
 .rightItems {
   display: flex;
+  align-items: center;
 }
 
 .rightItems a:not(:last-child),
@@ -16,6 +75,8 @@
   margin-right: 10px;
 }
 
+.hamburguer,
+.userIcon,
 .iconBtn,
 .logoLink {
   display: flex;
@@ -24,10 +85,17 @@
   padding: 4px;
 }
 
+.userIcon {
+  display: none;
+  padding: 5px;
+}
+
 .logoLink {
   margin-left: 15px;
 }
 
+.hamburguer svg,
+.userIcon svg,
 .iconBtn svg {
   color: var(--neutral-n800);
 }
@@ -65,4 +133,54 @@
 
 .sidebarShadow.visible {
   display: block;
+}
+
+@media only screen and (min-width: 760px) {
+  .headerMenu {
+    height: var(--header-menu-height-desktop);
+  }
+
+  .blueBarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hamburguer {
+    display: none;
+  }
+
+  .userIcon {
+    display: flex;
+  }
+
+  .logoLink {
+    margin: 0;
+  }
+
+  .logoLink img {
+    width: 113px;
+    height: 50px;
+  }
+
+  .headerLinks {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .iconBtn svg {
+    font-size: 34px;
+  }
+
+  .rightItems {
+    width: 100%;
+    justify-content: space-between;
+    max-width: 160px;
+  }
+
+  .rightItems a:not(:last-child),
+  .rightItems button:not(:last-child) {
+    margin: 0px;
+  }
 }

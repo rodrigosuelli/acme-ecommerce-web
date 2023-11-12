@@ -29,7 +29,9 @@
   --success-s200: #38f496;
   --success-s400: #0ba95a;
   --placeholder-text: #858585;
-  --header-menu-height: 76px;
+  --header-menu-height-mobile: 76px;
+  --header-menu-height-desktop: 92px;
+  --blue-bar-height: 42px;
 }
 
 html {

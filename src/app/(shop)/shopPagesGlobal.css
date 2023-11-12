@@ -9,7 +9,7 @@
 .shopPage {
   padding: 15px 0px 40px;
   width: 280px;
-  min-height: calc(100vh - var(--header-menu-height));
+  min-height: calc(100vh - var(--header-menu-height-mobile));
 }
 
 .loadingProdutoPage {
@@ -19,7 +19,7 @@
   width: 100%;
   padding-top: 15px;
   padding-bottom: 95px;
-  min-height: calc(100vh - var(--header-menu-height));
+  min-height: calc(100vh - var(--header-menu-height-mobile));
 }
 
 .shopPage h1 {
@@ -33,4 +33,18 @@
   height: 2px;
   background: var(--primary-p300);
   margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 760px) {
+  .shopPage {
+    min-height: calc(
+      100vh - var(--header-menu-height-desktop) - var(--blue-bar-height)
+    );
+  }
+
+  .loadingProdutoPage {
+    min-height: calc(
+      100vh - var(--header-menu-height-desktop) - var(--blue-bar-height)
+    );
+  }
 }
