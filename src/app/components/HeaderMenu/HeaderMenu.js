@@ -60,6 +60,9 @@ function HeaderMenu() {
             <Link href="/">Sobre</Link>
           </div>
           <div className={styles.rightItems}>
+            <button type="button" className={styles.userIcon}>
+              <PersonFilled fontSize={32} />
+            </button>
             <Link
               href="/carrinho"
               className={`${styles.iconBtn} ${styles.cartLink}`}
@@ -67,9 +70,6 @@ function HeaderMenu() {
               <CartFilled fontSize={32} />
               <div className={styles.cartCount}>{cart ? cart.length : 0}</div>
             </Link>
-            <button type="button" className={styles.userIcon}>
-              <PersonFilled fontSize={32} />
-            </button>
             <button
               onClick={handleToggleSearch}
               type="button"

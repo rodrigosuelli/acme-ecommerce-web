@@ -180,6 +180,14 @@
     max-width: 160px;
   }
 
+  .userIcon {
+    order: 1;
+  }
+
+  .cartLink {
+    order: 2;
+  }
+
   .rightItems a:not(:last-child),
   .rightItems button:not(:last-child) {
     margin: 0px;
