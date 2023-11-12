@@ -29,13 +29,17 @@ h1.emptyTitle {
   border-radius: 5px;
   padding: 20px;
   width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .produtoCarouselItemContainer img {
   margin-bottom: 10px;
+}
+
+.produtoCarouselItemContainer a {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .produtoCarouselItemContainer h1 {
@@ -65,9 +69,16 @@ h1.emptyTitle {
   font-weight: 700;
   color: var(--primary-p400);
   margin-bottom: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
 .produtoCarouselItemContainer p {
   font-size: 1rem;
   color: var(--neutral-n300);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
