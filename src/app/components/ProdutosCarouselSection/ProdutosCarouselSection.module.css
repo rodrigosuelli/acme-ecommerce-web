@@ -1,0 +1,74 @@
+h1.emptyTitle {
+  width: 280px;
+  text-align: center;
+  padding-bottom: 24px;
+  margin: auto;
+  font-size: 1.25rem;
+}
+
+.carouselContainer {
+  width: 300px;
+  margin-bottom: 30px;
+  padding: 1px 0;
+}
+
+.carouselItem {
+  /* width: 100% !important; */
+  padding: 0 10px;
+}
+
+.carouselDotList {
+  position: unset;
+}
+
+.produtoCarouselItemContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--white);
+  outline: 1px solid var(--neutral-n60);
+  border-radius: 5px;
+  padding: 20px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.produtoCarouselItemContainer img {
+  margin-bottom: 10px;
+}
+
+.produtoCarouselItemContainer h1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.produtoCarouselItemContainer .categoryLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-p300);
+  color: var(--white);
+  width: 118px;
+  height: 24px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 38px;
+  margin-bottom: 12px;
+}
+
+.produtoCarouselItemContainer span.price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-p400);
+  margin-bottom: 12px;
+}
+
+.produtoCarouselItemContainer p {
+  font-size: 1rem;
+  color: var(--neutral-n300);
+}

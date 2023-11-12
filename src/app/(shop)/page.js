@@ -8,6 +8,7 @@ import homeHeroImageMobile from '../../../public/images/homeHeroImageMobile.png'
 import historySectionImageMobile from '../../../public/images/historySectionImageMobile.png';
 import InputEmail from '../components/Inputs/InputEmail';
 import CarouselFeedback from '../components/CarouselFeedback/CarouselFeedback';
+import ProdutosCarouselSection from '../components/ProdutosCarouselSection/ProdutosCarouselSection';
 
 function Homepage() {
   return (
@@ -32,10 +33,11 @@ function Homepage() {
           <h2>Confira Os Nossos Lançamentos</h2>
           <div className={styles.marker} />
         </div>
-        <p>
+        <p className={styles.lancamentosDesc}>
           Descubra nossas novidades mais reluzentes! Na Acme, estamos empolgados
           em apresentar as mais recentes adições à nossa coleção de joias.
         </p>
+        <ProdutosCarouselSection categoriaSlug="lancamentos" />
         <Link
           href="/lancamentos"
           className={`btnEnter btnPrimary ${styles.sectionLink}`}
