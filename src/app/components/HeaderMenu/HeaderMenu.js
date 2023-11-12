@@ -19,6 +19,8 @@ import styles from './HeaderMenu.module.css';
 import Sidebar from './Sidebar/Sidebar';
 import SearchMobile from './SearchMobile/SearchMobile';
 
+import logoImg from '../../../../public/images/logo.svg';
+
 function HeaderMenu() {
   const { cart } = useCart();
 
@@ -45,13 +47,7 @@ function HeaderMenu() {
             <NavigationFilled fontSize={32} />
           </button>
           <Link href="/" className={styles.logoLink}>
-            <Image
-              priority={true}
-              src="/images/logo.svg"
-              alt="Logo Acme"
-              width={91}
-              height={30}
-            />
+            <Image priority={true} src={logoImg} alt="Logo Acme" />
           </Link>
           <div className={styles.headerLinks}>
             <Link href="/">Home</Link>
