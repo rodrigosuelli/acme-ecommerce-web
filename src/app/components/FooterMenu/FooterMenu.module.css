@@ -95,6 +95,7 @@
     justify-content: space-between;
     width: 100%;
     max-width: 600px;
+    margin-bottom: 25px;
   }
 
   .links .inlineSeparator {
@@ -105,7 +106,30 @@
     margin: 0 5px;
   }
 
+  .links .linkContainer a,
+  .linkLine,
+  .copyright {
+    font-size: 1.0625rem;
+  }
+
   .separator {
     display: none;
+  }
+
+  .social {
+    margin-bottom: 32px;
+  }
+
+  .social svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .social svg:not(:last-child) {
+    margin-right: 42px;
+  }
+
+  .linkLine {
+    margin-bottom: 32px;
   }
 }
