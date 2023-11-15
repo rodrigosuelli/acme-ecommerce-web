@@ -57,7 +57,9 @@ function FooterMenu() {
         <span className={styles.inlineSeparator}>|</span>
         <span>Cookies</span>
       </div>
-      <h4 className={styles.copyright}>&copy; 2023 ACME LTDA</h4>
+      <div className={styles.copyrightContainer}>
+        <h4 className={styles.copyright}>&copy; 2023 ACME LTDA</h4>
+      </div>
     </footer>
   );
 }

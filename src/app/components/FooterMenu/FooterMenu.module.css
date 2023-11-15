@@ -83,6 +83,7 @@
 @media only screen and (min-width: 760px) {
   .footerMenu {
     padding-top: 40px;
+    padding-bottom: 0px;
   }
 
   .logoFooter {
@@ -131,5 +132,14 @@
 
   .linkLine {
     margin-bottom: 32px;
+  }
+
+  .copyrightContainer {
+    width: 100%;
+    padding: 18px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--neutral-n700);
   }
 }
