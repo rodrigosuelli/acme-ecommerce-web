@@ -1,10 +1,19 @@
 .homePage {
+  width: 100%;
+  padding-top: 24px;
+  padding-bottom: 60px;
+}
+
+.homePageWrapper,
+.homeHeroContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 360px;
-  padding-top: 24px;
-  padding-bottom: 60px;
+
+  min-width: 360px;
+  max-width: 450px;
+  width: 91.6%;
+  margin: 0 auto;
 }
 
 .marker {
@@ -13,8 +22,13 @@
   height: 3px;
 }
 
-.homeContainer {
+.homeContainer,
+.homeHeroContainer {
   padding: 0 40px;
+}
+
+.homeHeroContainer .marker {
+  display: none;
 }
 
 .homePage h2 {
@@ -83,7 +97,7 @@
   max-width: unset;
 }
 
-.section.blue img {
+.historyImageMobile {
   position: absolute;
   bottom: -145px;
   border-radius: 6px;
@@ -102,13 +116,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.section .sectionTitleContainer {
   margin-bottom: 26px;
 }
 
-.section .lancamentosDesc {
+.lancamentosDesc {
   margin-bottom: 30px;
 }
 
@@ -136,6 +147,10 @@
   border: 3px solid var(--primary-p100);
 }
 
+.historyImageDesktop {
+  display: none;
+}
+
 .promosTitle {
   font-size: 1.4375rem;
   margin-top: 60px;
@@ -156,6 +171,200 @@
   text-align: center;
 }
 
+.feedbacks .sectionTitleContainer {
+  margin-bottom: 0;
+}
+
 .feedbacks h2 {
   color: var(--white);
+}
+
+@media only screen and (min-width: 760px) {
+  .homePage {
+    padding-top: 0px;
+    padding-bottom: 52px;
+  }
+
+  .homePage h2 {
+    font-size: 2.25rem;
+    margin-bottom: 26px;
+  }
+
+  .homePage p {
+    font-size: 1.125rem;
+  }
+
+  .homeContainer {
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 9vh;
+  }
+
+  .homeContainer div {
+    max-width: 460px;
+  }
+
+  .homePageWrapper,
+  .homeHeroContainer {
+    min-width: unset;
+  }
+
+  .homePageWrapper {
+    max-width: 1432px;
+  }
+
+  .homeHeroContainer {
+    max-width: unset;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    min-height: 400px;
+    height: 70vh;
+    max-height: 908px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 9vh;
+
+    background-image: url(/images/homeHeroImageDesktop.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: all 0.3s ease;
+  }
+
+  .homePage .heroTitle {
+    font-size: 2.75rem;
+    margin-bottom: 30px;
+    color: var(--white);
+    max-width: 400px;
+    text-align: center;
+  }
+
+  .homeHeroContainer p {
+    margin-top: 32px;
+    font-size: 1.125rem;
+    max-width: 480px;
+    text-align: center;
+    color: var(--white);
+  }
+
+  .marker {
+    height: 4px;
+    width: 240px;
+  }
+
+  .homeHeroContainer .marker {
+    display: block;
+  }
+
+  .homePage .heroTitle span {
+    color: var(--primary-p300);
+  }
+
+  .homePage .heroImage {
+    display: none;
+  }
+
+  .section,
+  .section.blue {
+    width: 100%;
+    margin-bottom: 9vh;
+  }
+
+  .section {
+    background: unset;
+    padding: 0;
+  }
+
+  .section.blue {
+    padding: 52px 48px 224px;
+    margin-bottom: 202px;
+  }
+
+  .section.blue .sectionTitleContainer,
+  .section.blue p {
+    max-width: 600px;
+  }
+
+  .section.blue p {
+    text-align: justify;
+  }
+
+  .sectionTitleContainer,
+  .section p {
+    max-width: 420px;
+  }
+
+  .section p {
+    text-align: unset;
+  }
+
+  .sectionTitleContainer {
+    margin-bottom: 32px;
+  }
+
+  .lancamentosDesc {
+    margin-bottom: 44px;
+  }
+
+  .sectionLink,
+  .section.blue .sectionLink {
+    font-size: 1.0625rem;
+    width: unset;
+    height: unset;
+    padding: 10px 36px;
+  }
+
+  .sectionLink {
+    margin-top: 35px;
+  }
+
+  .section.blue .sectionLink {
+    align-self: center;
+    margin: 52px 0;
+  }
+
+  .historyImageMobile {
+    display: none;
+  }
+
+  .historyImageDesktop {
+    display: block;
+    position: absolute;
+    width: 600px;
+    height: auto;
+    bottom: -202px;
+  }
+
+  .promosTitle {
+    max-width: 600px;
+    margin-top: 9vh;
+    text-align: center;
+  }
+
+  .newsletter .promosTitle {
+    max-width: 460px;
+  }
+
+  .promosDesc {
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .newsletter .promosDesc {
+    max-width: 430px;
+  }
+}
+
+@media only screen and (min-width: 1060px) {
+  .homeHeroContainer {
+    background-position: bottom 42% right;
+    background-size: 120%;
+  }
 }

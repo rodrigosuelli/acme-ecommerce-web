@@ -13,6 +13,7 @@ h1.emptyTitle {
 
 .carouselItem {
   /* width: 100% !important; */
+  width: 300px !important;
   padding: 0 10px;
 }
 
@@ -81,4 +82,22 @@ h1.emptyTitle {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media only screen and (min-width: 760px) {
+  .carouselContainer {
+    width: 600px;
+  }
+}
+
+@media only screen and (min-width: 970px) {
+  .carouselContainer {
+    width: 900px;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .carouselContainer {
+    width: 1200px;
+  }
 }
