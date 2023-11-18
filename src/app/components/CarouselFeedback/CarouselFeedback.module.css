@@ -1,11 +1,12 @@
 .carouselContainer {
   width: 300px;
-  margin-top: 32px;
+  margin-top: 36px;
   margin-bottom: 25px;
 }
 
 .carouselItem {
   /* width: 100% !important; */
+  width: 300px !important;
   padding: 0 10px;
 }
 
@@ -23,6 +24,8 @@
 
 .feedbackItem img {
   margin-bottom: 15px;
+  width: 65px;
+  height: 65px;
 }
 
 .feedbackItem .feedbackUserName {
@@ -51,4 +54,35 @@
 
 .feedbackAvaliacao svg:not(:last-child) {
   margin-right: 4px;
+}
+
+@media only screen and (min-width: 760px) {
+  .carouselContainer {
+    width: 600px;
+  }
+
+  .feedbackItem img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .feedbackItem .feedbackUserName {
+    font-size: 1.0625rem;
+  }
+
+  .feedbackItem p {
+    font-size: 1.125rem;
+  }
+}
+
+@media only screen and (min-width: 970px) {
+  .carouselContainer {
+    width: 900px;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .carouselContainer {
+    width: 1200px;
+  }
 }
