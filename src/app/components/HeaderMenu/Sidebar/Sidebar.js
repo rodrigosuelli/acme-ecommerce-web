@@ -1,7 +1,5 @@
 'use client';
 
-import qs from 'qs';
-
 import {
   DismissFilled,
   PersonFilled,
@@ -22,41 +20,20 @@ import {
 } from '@fluentui/react-icons';
 import Link from 'next/link';
 import { useState } from 'react';
-import useSWR from 'swr';
 import styles from './Sidebar.module.css';
 import { useUser } from '../../../contexts/userContext';
-import api from '../../../services/api';
 
-const query = qs.stringify(
-  {
-    filters: {
-      tipo: {
-        $eq: 'categoria_produto',
-      },
-    },
-    fields: ['id', 'titulo', 'slug'],
-    sort: ['titulo:asc'],
-  },
-  {
-    encodeValuesOnly: true, // prettify URL
-  }
-);
-
-const fetcher = (url) => api.get(url).then((res) => res.data);
-
-function Sidebar({ isSidebarVisible, setIsSidebarVisible }) {
+function Sidebar({
+  isSidebarVisible,
+  setIsSidebarVisible,
+  categoriasData,
+  categoriasError,
+  categoriasLoading,
+}) {
   const { user, loadingUser, logOut } = useUser();
 
   const [isMinhaContaExpanded, setIsMinhaContaExpanded] = useState(true);
   const [isCategoriasExpanded, setIsCategoriasExpanded] = useState(false);
-
-  const { data, error, isLoading } = useSWR(
-    `/api/categorias/?${query}`,
-    fetcher,
-    {
-      revalidateOnFocus: false,
-    }
-  );
 
   return (
     <aside
@@ -154,18 +131,18 @@ function Sidebar({ isSidebarVisible, setIsSidebarVisible }) {
         </button>
         {isCategoriasExpanded && (
           <div className={styles.sublinksContainer}>
-            {error && (
+            {categoriasError && (
               <div className={styles.link}>
                 <span>Ocorreu um erro...</span>
               </div>
             )}
-            {isLoading && (
+            {categoriasLoading && (
               <div className={styles.link}>
                 <span>Carregando...</span>
               </div>
             )}
-            {data?.data &&
-              data.data.map((categoria) => (
+            {categoriasData?.data &&
+              categoriasData.data.map((categoria) => (
                 <Link
                   key={categoria.id}
                   onClick={() => {

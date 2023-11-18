@@ -1,5 +1,7 @@
 'use client';
 
+import qs from 'qs';
+
 import Image from 'next/image';
 import {
   NavigationFilled,
@@ -16,6 +18,7 @@ import {
 import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
 import Link from 'next/link';
 import { useState } from 'react';
+import useSWR from 'swr';
 import { useCart } from '../../contexts/cartContext';
 
 import styles from './HeaderMenu.module.css';
@@ -23,6 +26,24 @@ import Sidebar from './Sidebar/Sidebar';
 import SearchMobile from './SearchMobile/SearchMobile';
 
 import logoImg from '../../../../public/images/logo.svg';
+import api from '../../services/api';
+
+const query = qs.stringify(
+  {
+    filters: {
+      tipo: {
+        $eq: 'categoria_produto',
+      },
+    },
+    fields: ['id', 'titulo', 'slug'],
+    sort: ['titulo:asc'],
+  },
+  {
+    encodeValuesOnly: true, // prettify URL
+  }
+);
+
+const fetcher = (url) => api.get(url).then((res) => res.data);
 
 function HeaderMenu() {
   const { cart } = useCart();
@@ -30,7 +51,17 @@ function HeaderMenu() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
 
-  const { buttonProps, itemProps, isOpen, setIsOpen } = useDropdownMenu(7);
+  const { data, error, isLoading } = useSWR(
+    `/api/categorias/?${query}`,
+    fetcher,
+    {
+      revalidateOnFocus: false,
+    }
+  );
+
+  const { buttonProps, itemProps, isOpen, setIsOpen } = useDropdownMenu(
+    data?.data && data.data.length
+  );
 
   function handleToggleSidebar() {
     setIsSidebarVisible(!isSidebarVisible);
@@ -73,69 +104,29 @@ function HeaderMenu() {
                 }`}
                 role="menu"
               >
-                <Link
-                  {...itemProps[0]}
-                  onClick={() => {
-                    setIsOpen(false);
-                  }}
-                  href="/"
-                >
-                  Anéis
-                </Link>
-                <Link
-                  {...itemProps[1]}
-                  onClick={() => {
-                    setIsOpen(false);
-                  }}
-                  href="/brincos"
-                >
-                  Brincos
-                </Link>
-                <Link
-                  {...itemProps[2]}
-                  onClick={() => {
-                    setIsOpen(false);
-                  }}
-                  href="/"
-                >
-                  Colares
-                </Link>
-                <Link
-                  {...itemProps[3]}
-                  onClick={() => {
-                    setIsOpen(false);
-                  }}
-                  href="/"
-                >
-                  Pulseiras
-                </Link>
-                <Link
-                  {...itemProps[4]}
-                  onClick={() => {
-                    setIsOpen(false);
-                  }}
-                  href="/"
-                >
-                  Kits
-                </Link>
-                <Link
-                  {...itemProps[5]}
-                  onClick={() => {
-                    setIsOpen(false);
-                  }}
-                  href="/"
-                >
-                  Pingentes
-                </Link>
-                <Link
-                  {...itemProps[6]}
-                  onClick={() => {
-                    setIsOpen(false);
-                  }}
-                  href="/"
-                >
-                  Pins
-                </Link>
+                {error && (
+                  <div>
+                    <span>Ocorreu um erro...</span>
+                  </div>
+                )}
+                {isLoading && (
+                  <div>
+                    <span>Carregando...</span>
+                  </div>
+                )}
+                {data?.data &&
+                  data.data.map((categoria, index) => (
+                    <Link
+                      key={categoria.id}
+                      {...itemProps[index]}
+                      onClick={() => {
+                        setIsOpen(false);
+                      }}
+                      href={`/${categoria.attributes.slug}`}
+                    >
+                      {categoria.attributes.titulo}
+                    </Link>
+                  ))}
               </div>
             </div>
             <Link className={styles.link} href="/">
@@ -183,6 +174,9 @@ function HeaderMenu() {
           <Sidebar
             isSidebarVisible={isSidebarVisible}
             setIsSidebarVisible={setIsSidebarVisible}
+            categoriasData={data}
+            categoriasError={error}
+            categoriasLoading={isLoading}
           />
           <SearchMobile
             isSearchVisible={isSearchVisible}

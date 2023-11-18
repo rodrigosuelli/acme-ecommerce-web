@@ -102,16 +102,19 @@
   visibility: visible;
 }
 
-.dropdownCategorias a {
+.dropdownCategorias a,
+.dropdownCategorias div {
   font-weight: 400;
   font-family: var(--font-merriweather);
   padding-left: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
-.dropdownCategorias a:hover {
+.dropdownCategorias a:hover,
+.dropdownCategorias div:hover {
   background: var(--primary-p400);
   color: var(--white);
 }
