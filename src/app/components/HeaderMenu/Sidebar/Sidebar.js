@@ -160,11 +160,11 @@ function Sidebar({
           onClick={() => {
             setIsSidebarVisible(false);
           }}
-          href="#"
+          href="/promocoes"
           className={styles.link}
         >
           <PinFilled fontSize={24} />
-          <span>Promoçoes</span>
+          <span>Promoções</span>
         </Link>
         <Link
           onClick={() => {
@@ -180,7 +180,7 @@ function Sidebar({
           onClick={() => {
             setIsSidebarVisible(false);
           }}
-          href="#"
+          href="/presentes"
           className={styles.link}
         >
           <GiftFilled fontSize={24} />
@@ -190,7 +190,7 @@ function Sidebar({
           onClick={() => {
             setIsSidebarVisible(false);
           }}
-          href="#"
+          href="/kits"
           className={styles.link}
         >
           <BriefcaseFilled fontSize={24} />

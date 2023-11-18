@@ -186,19 +186,19 @@ function HeaderMenu() {
       </header>
       <div className={styles.blueBarContainer}>
         <div className={styles.blueBarLinks}>
-          <Link href="">
+          <Link href="/promocoes">
             <PinFilled fontSize={20} />
-            Promoçoes
+            Promoções
           </Link>
           <Link href="/lancamentos">
             <NewFilled fontSize={20} />
             Lançamentos
           </Link>
-          <Link href="/">
+          <Link href="/presentes">
             <GiftFilled fontSize={20} />
             Presentes
           </Link>
-          <Link href="/">
+          <Link href="/kits">
             <BriefcaseFilled fontSize={20} />
             Kits
           </Link>

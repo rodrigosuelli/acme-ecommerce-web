@@ -31,7 +31,7 @@ function FooterMenu() {
         <div className={styles.separator}></div>
         <span className={styles.inlineSeparator}>|</span>
         <div className={styles.linkContainer}>
-          <Link href="#" className={styles.logoLink}>
+          <Link href="/lancamentos" className={styles.logoLink}>
             Lançamentos
           </Link>
         </div>
