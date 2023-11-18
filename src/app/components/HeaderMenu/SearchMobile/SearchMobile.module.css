@@ -42,6 +42,8 @@
   width: 100%;
   position: relative;
   margin-bottom: 24px;
+  border: 1px solid var(--neutral-n60);
+  border-radius: 6px;
 }
 
 .searchInputField input {
