@@ -60,7 +60,7 @@ function HeaderMenu() {
   );
 
   const { buttonProps, itemProps, isOpen, setIsOpen } = useDropdownMenu(
-    data?.data && data.data.length
+    data?.data ? data.data.length : 1
   );
 
   function handleToggleSidebar() {
