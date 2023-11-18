@@ -10,7 +10,10 @@ import {
   GiftFilled,
   BriefcaseFilled,
   PersonFilled,
+  ChevronUpFilled,
+  ChevronDownFilled,
 } from '@fluentui/react-icons';
+import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useCart } from '../../contexts/cartContext';
@@ -26,6 +29,8 @@ function HeaderMenu() {
 
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+
+  const { buttonProps, itemProps, isOpen, setIsOpen } = useDropdownMenu(7);
 
   function handleToggleSidebar() {
     setIsSidebarVisible(!isSidebarVisible);
@@ -50,10 +55,95 @@ function HeaderMenu() {
             <Image priority={true} src={logoImg} alt="Logo Acme" />
           </Link>
           <div className={styles.headerLinks}>
-            <Link href="/">Home</Link>
-            <Link href="/">Categorias</Link>
-            <Link href="/">Fale Conosco</Link>
-            <Link href="/">Sobre</Link>
+            <Link className={styles.link} href="/">
+              Home
+            </Link>
+            <div className={styles.containerCategorias}>
+              <button {...buttonProps} type="button" className={styles.link}>
+                Categorias
+                {isOpen ? (
+                  <ChevronUpFilled fontSize={20} />
+                ) : (
+                  <ChevronDownFilled fontSize={20} />
+                )}
+              </button>
+              <div
+                className={`${styles.dropdownCategorias} ${
+                  isOpen && styles.visible
+                }`}
+                role="menu"
+              >
+                <Link
+                  {...itemProps[0]}
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                  href="/"
+                >
+                  Anéis
+                </Link>
+                <Link
+                  {...itemProps[1]}
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                  href="/brincos"
+                >
+                  Brincos
+                </Link>
+                <Link
+                  {...itemProps[2]}
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                  href="/"
+                >
+                  Colares
+                </Link>
+                <Link
+                  {...itemProps[3]}
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                  href="/"
+                >
+                  Pulseiras
+                </Link>
+                <Link
+                  {...itemProps[4]}
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                  href="/"
+                >
+                  Kits
+                </Link>
+                <Link
+                  {...itemProps[5]}
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                  href="/"
+                >
+                  Pingentes
+                </Link>
+                <Link
+                  {...itemProps[6]}
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                  href="/"
+                >
+                  Pins
+                </Link>
+              </div>
+            </div>
+            <Link className={styles.link} href="/">
+              Fale Conosco
+            </Link>
+            <Link className={styles.link} href="/">
+              Sobre
+            </Link>
           </div>
           <div className={styles.rightItems}>
             <button type="button" className={styles.userIcon}>
