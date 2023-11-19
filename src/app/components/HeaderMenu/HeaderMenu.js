@@ -11,9 +11,9 @@ import {
   NewFilled,
   GiftFilled,
   BriefcaseFilled,
-  PersonFilled,
   ChevronUpFilled,
   ChevronDownFilled,
+  PersonFilled,
 } from '@fluentui/react-icons';
 import useDropdownMenu from 'react-accessible-dropdown-menu-hook';
 import Link from 'next/link';
@@ -27,6 +27,8 @@ import SearchMobile from './SearchMobile/SearchMobile';
 
 import logoImg from '../../../../public/images/logo.svg';
 import api from '../../services/api';
+import UserAccountContainer from './UserAccountContainer';
+import { useUser } from '../../contexts/userContext';
 
 const query = qs.stringify(
   {
@@ -46,6 +48,7 @@ const query = qs.stringify(
 const fetcher = (url) => api.get(url).then((res) => res.data);
 
 function HeaderMenu() {
+  const { user, loadingUser } = useUser();
   const { cart } = useCart();
 
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
@@ -137,9 +140,19 @@ function HeaderMenu() {
             </Link>
           </div>
           <div className={styles.rightItems}>
-            <button type="button" className={styles.userIcon}>
-              <PersonFilled fontSize={32} />
-            </button>
+            {loadingUser && !user && (
+              <button className={styles.userIcon}>
+                Carregando...
+                <PersonFilled fontSize={32} />
+              </button>
+            )}
+            {!loadingUser && user && <UserAccountContainer />}
+            {!loadingUser && !user && (
+              <Link href="/login" className={styles.userIcon}>
+                Faça Login
+                <PersonFilled fontSize={32} />
+              </Link>
+            )}
             <Link
               href="/carrinho"
               className={`${styles.iconBtn} ${styles.cartLink}`}
