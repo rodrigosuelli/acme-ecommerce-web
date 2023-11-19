@@ -80,7 +80,7 @@
   font-weight: 700;
 }
 
-@media only screen and (min-width: 760px) {
+@media only screen and (min-width: 730px) {
   .footerMenu {
     padding-top: 40px;
     padding-bottom: 0px;

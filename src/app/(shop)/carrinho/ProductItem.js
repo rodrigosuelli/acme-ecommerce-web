@@ -29,11 +29,13 @@ function ProductItem({ produtoData }) {
         height={100}
       />
       <div className={styles.produtoInfo}>
-        <Link href={`/produto/${slug}`}>
-          <h2>{titulo}</h2>
-        </Link>
-        <h3>R${preco}</h3>
-        <p>10x sem juros de R${precoEm10X}</p>
+        <div className={styles.produtoInfoWrapper}>
+          <Link href={`/produto/${slug}`}>
+            <h2>{titulo}</h2>
+          </Link>
+          <h3>R${preco}</h3>
+          <p>10x sem juros de R${precoEm10X}</p>
+        </div>
         <div className={styles.actionsContainer}>
           <div className={styles.qtdContainer}>
             <p className={styles.qtdTitle}>Quantidade:</p>

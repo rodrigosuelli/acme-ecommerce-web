@@ -148,71 +148,101 @@ function Carrinho() {
   }
 
   return (
-    <div className="shopPage">
-      <h1>Adicionar CEP</h1>
-      <div className="marker"></div>
-      <InputCEP />
-      <h1 className={styles.titleMgTop}>Produtos Selecionados</h1>
-      <div className="marker"></div>
-      <div className={styles.produtosList}>
-        {isCartValid ? (
-          <ProductListContent
-            data={savedData}
-            error={error}
-            isLoading={isLoading}
-          />
-        ) : (
-          <h3 className={styles.vazioTitle}>Seu carrinho está vazio.</h3>
-        )}
-      </div>
-      {isCartValid && !isLoading && savedData ? (
-        <>
-          <h1>Inserir Cupom de Desconto</h1>
-          <div className="marker"></div>
-          <InputCupom />
-          <h1 className={styles.titleMgTop}>Resumo da compra</h1>
-          <div className="marker"></div>
-          <div className={styles.resumoCarrinho}>
-            <div className={styles.textContainer}>
-              <h2>Valor dos produtos:</h2>
-              <h3 className={styles.priceMed}>R${precoProdutos}</h3>
-              <div className={styles.separator}></div>
-            </div>
-            <div className={styles.textContainer}>
-              <h2>Frete:</h2>
-              <h3 className={styles.priceSmall}>R${precoFreteString}</h3>
-            </div>
-            <div className={styles.textContainer}>
-              <div className={styles.textLineSpaced}>
-                <h2>Total à prazo:</h2>
-                <h3 className={styles.priceSmall}>R${precoTotal}</h3>
-              </div>
-              <p>(em até 10x de R${precoEm10X} sem juros)</p>
-            </div>
-            <div className={styles.textContainer}>
-              <h2>Total à vista:</h2>
-              <h3 className={styles.priceBig}>R${precoTotal}</h3>
-              <p>Ganhe até 15% de desconto no pix</p>
+    <div className={`shopPage ${styles.carrinhoPage}`}>
+      <div className={styles.carrinhoWrapper}>
+        <div className={styles.leftContent}>
+          <div className={styles.contentItem}>
+            <h1>Adicionar CEP</h1>
+            <div className="marker"></div>
+            <div className={styles.adicionarCEPWrapper}>
+              <InputCEP />
             </div>
           </div>
-          <button
-            disabled={isCreatingPedido}
-            onClick={handleCreatePedido}
-            className={`btnPrimary ${styles.btnCarrinho}`}
-            type="button"
-          >
-            {isCreatingPedido ? <CgSpinner size={26} /> : 'Finalizar pedido'}
-          </button>
-        </>
-      ) : null}
-      {!isLoading && (
-        <Link
-          className={`btnEnter btnPrimaryOutline ${styles.btnCarrinho}`}
-          href="/"
-        >
-          Continuar comprando
-        </Link>
-      )}
+          <div className={styles.contentItem}>
+            <h1 className={styles.titleMgTop}>Produtos Selecionados</h1>
+            <div className="marker"></div>
+            <div className={styles.produtosList}>
+              {isCartValid ? (
+                <ProductListContent
+                  data={savedData}
+                  error={error}
+                  isLoading={isLoading}
+                />
+              ) : (
+                <h3 className={styles.vazioTitle}>Seu carrinho está vazio.</h3>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className={styles.rightContent}>
+          <div className={styles.stickyContainer}>
+            {!isLoading && (
+              <>
+                {isCartValid && savedData ? (
+                  <div className={styles.contentItem}>
+                    <h1>Inserir Cupom de Desconto</h1>
+                    <div className="marker"></div>
+                    <InputCupom />
+                  </div>
+                ) : null}
+                <div className={`${styles.contentItem} ${styles.resumoPedido}`}>
+                  {isCartValid && savedData ? (
+                    <>
+                      <h1 className={styles.titleMgTop}>Resumo da compra</h1>
+                      <div className="marker"></div>
+                      <div className={styles.resumoCarrinho}>
+                        <div className={styles.textContainer}>
+                          <h2>Valor dos produtos:</h2>
+                          <h3 className={styles.priceMed}>R${precoProdutos}</h3>
+                          <div className={styles.separator}></div>
+                        </div>
+                        <div className={styles.textContainer}>
+                          <h2>Frete:</h2>
+                          <h3 className={styles.priceSmall}>
+                            R${precoFreteString}
+                          </h3>
+                        </div>
+                        <div className={styles.textContainer}>
+                          <div className={styles.textLineSpaced}>
+                            <h2>Total à prazo:</h2>
+                            <h3 className={styles.priceSmall}>
+                              R${precoTotal}
+                            </h3>
+                          </div>
+                          <p>(em até 10x de R${precoEm10X} sem juros)</p>
+                        </div>
+                        <div className={styles.textContainer}>
+                          <h2>Total à vista:</h2>
+                          <h3 className={styles.priceBig}>R${precoTotal}</h3>
+                          <p>Ganhe até 15% de desconto no pix</p>
+                        </div>
+                      </div>
+                      <button
+                        disabled={isCreatingPedido}
+                        onClick={handleCreatePedido}
+                        className={`btnPrimary ${styles.btnCarrinho}`}
+                        type="button"
+                      >
+                        {isCreatingPedido ? (
+                          <CgSpinner size={26} />
+                        ) : (
+                          'Finalizar pedido'
+                        )}
+                      </button>
+                    </>
+                  ) : null}
+                  <Link
+                    className={`btnEnter btnPrimaryOutline ${styles.btnCarrinho}`}
+                    href="/"
+                  >
+                    Continuar comprando
+                  </Link>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

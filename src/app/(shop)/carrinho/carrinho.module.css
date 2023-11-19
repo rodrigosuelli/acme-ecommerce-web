@@ -1,3 +1,20 @@
+.carrinhoPage {
+  width: 100%;
+  padding-top: 24px;
+  padding-bottom: 60px;
+}
+
+.carrinhoWrapper {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 20px;
+  min-width: 350px;
+  max-width: 440px;
+  width: 85%;
+  margin: 0 auto;
+}
+
 .titleMgTop {
   margin-top: 35px;
 }
@@ -161,4 +178,156 @@
 
 .btnCarrinho:not(:last-child) {
   margin-bottom: 15px;
+}
+
+@media only screen and (min-width: 900px) {
+  .carrinhoPage {
+    background: var(--neutral-n20);
+  }
+
+  .carrinhoWrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1432px;
+    padding: 0;
+  }
+
+  .leftContent {
+    min-width: 380px;
+    margin-right: 32px;
+    width: 70%;
+  }
+
+  .leftContent .contentItem:first-child,
+  .rightContent .contentItem:last-child {
+    margin-bottom: 30px;
+  }
+
+  .rightContent {
+    min-width: 350px;
+    width: 30%;
+  }
+
+  .rightContent .stickyContainer {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 24px;
+  }
+
+  .contentItem {
+    background-color: var(--white);
+    padding: 32px;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+  }
+
+  .resumoPedido {
+    order: -1;
+  }
+
+  .titleMgTop {
+    margin-top: 0px;
+  }
+
+  .adicionarCEPWrapper {
+    max-width: 500px;
+  }
+}
+
+@media only screen and (min-width: 1044px) {
+  .rightContent {
+    min-width: 360px;
+  }
+}
+
+@media only screen and (min-width: 1120px) {
+  .contentItem {
+    padding: 40px;
+  }
+
+  .leftContent .contentItem {
+    padding: 40px 46px;
+  }
+
+  .produtoItemContainer {
+    padding: 15px 15px 15px 10px;
+    height: 140px;
+  }
+
+  .produtoItemContainer img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .produtoItemContainer .produtoInfo {
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .produtoItemContainer .produtoInfoWrapper {
+    width: 100%;
+    margin-right: 30px;
+    overflow: hidden;
+  }
+
+  .actionsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .produtoItemContainer .produtoInfo h2,
+  .produtoItemContainer .produtoInfo h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .produtoItemContainer .produtoInfo h3 {
+    color: var(--primary-p400);
+  }
+
+  .produtoItemContainer .produtoInfo p {
+    font-size: 0.9375rem;
+    margin-bottom: 0px;
+  }
+
+  .produtoItemContainer .produtoInfo .qtdTitle {
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+
+  .qtdBtnContainer {
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .qtdBtnContainer span {
+    margin: 0;
+    width: 100%;
+    font-size: 0.9375rem;
+    text-align: center;
+  }
+
+  .btnChangeQtd {
+    padding: 3px;
+  }
+
+  .btnChangeQtd svg {
+    font-size: 20px;
+  }
+
+  .btnDeleteItem {
+    width: 90%;
+    border-radius: 66px;
+    margin-top: 12px;
+  }
+
+  .btnDeleteItem svg {
+    font-size: 20px;
+  }
 }
