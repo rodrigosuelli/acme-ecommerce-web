@@ -226,7 +226,7 @@ function Sidebar({
             className={styles.link}
           >
             <SignOutFilled fontSize={24} />
-            <span>Log out</span>
+            <span>Sair</span>
           </button>
         ) : (
           <>
