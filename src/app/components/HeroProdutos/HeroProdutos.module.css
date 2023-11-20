@@ -22,3 +22,19 @@
 .heroContainer p {
   font-size: 0.875rem;
 }
+
+@media only screen and (min-width: 760px) {
+  .heroContainer {
+    height: 126px;
+    margin-bottom: 35px;
+  }
+
+  .heroContainer h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .heroContainer p {
+    font-size: 1.0625rem;
+  }
+}

@@ -22,14 +22,14 @@ function ProdutoIndividual({ produtoData }) {
 
   return (
     <div key={id} className={styles.produtoIndividualContainer}>
-      <Image
-        priority={true}
-        src={imgThumbUrl}
-        alt="imagem miniatura do produto"
-        width={110}
-        height={110}
-      />
       <Link href={`/produto/${slug}`}>
+        <Image
+          priority={true}
+          src={imgThumbUrl}
+          alt="imagem miniatura do produto"
+          width={110}
+          height={110}
+        />
         <h1>{titulo}</h1>
       </Link>
       <span className={styles.priceOriginal}>R${precoOriginal || preco}</span>

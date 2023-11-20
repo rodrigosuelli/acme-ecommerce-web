@@ -62,7 +62,7 @@ async function getProdutos(categoriaSlug, page = 1) {
       ],
       pagination: {
         page,
-        pageSize: 10,
+        pageSize: 20,
       },
     },
     {

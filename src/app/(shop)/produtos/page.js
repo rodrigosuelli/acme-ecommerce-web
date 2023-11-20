@@ -26,7 +26,7 @@ async function getProdutos(busca = '', page = 1) {
       ],
       pagination: {
         page,
-        pageSize: 10,
+        pageSize: 20,
       },
     },
     {
