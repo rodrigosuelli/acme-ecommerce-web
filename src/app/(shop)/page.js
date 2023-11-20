@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import 'react-multi-carousel/lib/styles.css';
 
 import styles from './homepage.module.css';
 
