@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { Suspense } from 'react';
+import { CgSpinner } from 'react-icons/cg';
 import styles from './homepage.module.css';
 
 import homeHeroImageMobile from '../../../public/images/homeHeroImageMobile.png';
@@ -40,7 +42,9 @@ function Homepage() {
             empolgados em apresentar as mais recentes adições à nossa coleção de
             joias.
           </p>
-          <ProdutosCarouselSection categoriaSlug="lancamentos" />
+          <Suspense fallback={<CgSpinner className="spinner" size={34} />}>
+            <ProdutosCarouselSection categoriaSlug="lancamentos" />
+          </Suspense>
           <Link
             href="/lancamentos"
             className={`btnEnter btnPrimary ${styles.sectionLink}`}
