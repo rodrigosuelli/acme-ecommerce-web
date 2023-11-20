@@ -80,6 +80,7 @@ span.price {
   .produtoIndividualContainer {
     padding: 12px;
     height: unset;
+    max-width: 174px;
   }
 
   .produtoIndividualContainer img {
