@@ -1,21 +1,11 @@
-'use client';
-
 import Image from 'next/image';
-import { AddFilled, CartFilled, CheckmarkFilled } from '@fluentui/react-icons';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { toast } from 'react-toastify';
-import { useCart } from '@/contexts/cartContext';
 import InputCEP from '../../../components/Inputs/InputCEP';
 import styles from './produto.module.css';
 import StarsList from '../../../components/ProductRating/StarsList';
+import BtnBuyContainer from './BtnBuyContainer';
 
 function ProductContent({ produtoData }) {
-  const [isAddedToCart, setIsAddedToCart] = useState(false);
-  const { addItemToCart } = useCart();
-  const router = useRouter();
-
-  const { id } = produtoData;
+  const { idProduto } = produtoData;
   const { titulo, descricao, preco_real, imagens, avaliacao, qtd_avaliacoes } =
     produtoData.attributes;
 
@@ -91,48 +81,7 @@ function ProductContent({ produtoData }) {
             </p>
             <div className={styles.produtoActions}>
               <InputCEP />
-              <div className={styles.btnBuyContainer}>
-                <button
-                  onClick={() => {
-                    try {
-                      if (!isAddedToCart) {
-                        addItemToCart(id);
-                      }
-                      router.push('/carrinho');
-                    } catch (error) {
-                      toast.error(error.message, {
-                        position: 'bottom-right',
-                      });
-                    }
-                  }}
-                  className={`btnPrimary ${styles.btnBuy}`}
-                  type="button"
-                >
-                  <CartFilled fontSize={26} />
-                  Comprar
-                </button>
-                <button
-                  onClick={() => {
-                    try {
-                      if (isAddedToCart) return;
-                      addItemToCart(id);
-                      setIsAddedToCart(true);
-                    } catch (error) {
-                      toast.error(error.message, {
-                        position: 'bottom-right',
-                      });
-                    }
-                  }}
-                  className={`btnPrimaryOutline ${styles.btnAddToCart}`}
-                  type="button"
-                >
-                  {isAddedToCart ? (
-                    <CheckmarkFilled fontSize={24} />
-                  ) : (
-                    <AddFilled fontSize={24} />
-                  )}
-                </button>
-              </div>
+              <BtnBuyContainer idProduto={idProduto} />
             </div>
           </div>
         </div>
