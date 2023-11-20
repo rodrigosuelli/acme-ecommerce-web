@@ -1,8 +1,11 @@
 import Image from 'next/image';
+import { Suspense } from 'react';
+import { CgSpinner } from 'react-icons/cg';
 import InputCEP from '../../../components/Inputs/InputCEP';
 import styles from './produto.module.css';
 import StarsList from '../../../components/ProductRating/StarsList';
 import BtnBuyContainer from './BtnBuyContainer';
+import ProdutosCarouselSection from '../../../components/ProdutosCarouselSection/ProdutosCarouselSection';
 
 function ProductContent({ produtoData }) {
   const { idProduto } = produtoData;
@@ -94,6 +97,13 @@ function ProductContent({ produtoData }) {
             )}
         </div>
       </div>
+      <div className={styles.titleContainer}>
+        <h1>Lançamentos</h1>
+        <div className="marker"></div>
+      </div>
+      <Suspense fallback={<CgSpinner className="spinner" size={34} />}>
+        <ProdutosCarouselSection categoriaSlug="lancamentos" />
+      </Suspense>
     </div>
   );
 }
