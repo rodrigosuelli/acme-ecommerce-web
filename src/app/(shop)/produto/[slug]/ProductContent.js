@@ -8,7 +8,7 @@ import BtnBuyContainer from './BtnBuyContainer';
 import ProdutosCarouselSection from '../../../components/ProdutosCarouselSection/ProdutosCarouselSection';
 
 function ProductContent({ produtoData }) {
-  const { idProduto } = produtoData;
+  const { id: idProduto } = produtoData;
   const { titulo, descricao, preco_real, imagens, avaliacao, qtd_avaliacoes } =
     produtoData.attributes;
 
