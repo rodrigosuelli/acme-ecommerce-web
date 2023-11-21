@@ -140,7 +140,6 @@ p.seeMoreOptions {
 }
 
 .productDesc p {
-  color: var(--neutral-n300);
   word-break: break-word;
 }
 
