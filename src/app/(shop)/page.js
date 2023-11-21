@@ -16,6 +16,14 @@ function Homepage() {
   return (
     <div className={`shopPage ${styles.homePage}`}>
       <div className={styles.homeHeroContainer}>
+        <Image
+          priority={true}
+          src="/images/homeHeroImageDesktop.png"
+          alt="imagem garota propaganda"
+          style={{ display: 'none' }}
+          width={2654}
+          height={1604}
+        />
         <h1 className={styles.heroTitle}>
           Abrace o <span>Luxo</span> em Cada Detalhe!
         </h1>
