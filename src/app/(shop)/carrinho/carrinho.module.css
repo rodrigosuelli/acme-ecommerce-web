@@ -42,6 +42,12 @@
   margin-bottom: 20px;
 }
 
+.imgLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .produtoItemContainer .produtoInfo {
   width: 100%;
   margin-left: 8px;

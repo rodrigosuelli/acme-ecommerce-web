@@ -21,13 +21,15 @@ function ProductItem({ produtoData }) {
 
   return (
     <div key={id} className={styles.produtoItemContainer}>
-      <Image
-        priority={true}
-        src={imgThumbUrl}
-        alt="imagem miniatura do produto"
-        width={100}
-        height={100}
-      />
+      <Link className={styles.imgLink} href={`/produto/${slug}`}>
+        <Image
+          priority={true}
+          src={imgThumbUrl}
+          alt="imagem miniatura do produto"
+          width={100}
+          height={100}
+        />
+      </Link>
       <div className={styles.produtoInfo}>
         <div className={styles.produtoInfoWrapper}>
           <Link href={`/produto/${slug}`}>
