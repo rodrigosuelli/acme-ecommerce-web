@@ -19,6 +19,10 @@
   flex-direction: column;
 }
 
+.nomeProdutoDesktop {
+  display: none;
+}
+
 .pedidoInvidivualPage h1 {
   margin-bottom: 8px;
 }
@@ -60,13 +64,24 @@
   margin-bottom: 20px;
 }
 
+.nomeProdutoContainer p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .produtoInfoContainer {
   margin-top: 16px;
   margin-bottom: 0;
+  display: none;
+}
+
+.produtoInfoContainer.visible {
+  display: block;
 }
 
 .produtoItemContainer h1 {
-  font-size: 1.1875rem;
+  font-size: 1.125rem;
   margin-bottom: 12px;
 }
 
@@ -98,6 +113,11 @@
 
 p.mgTop {
   margin-top: 12px;
+  display: none;
+}
+
+p.mgTop.visible {
+  display: block;
 }
 
 @media only screen and (min-width: 760px) {
@@ -140,5 +160,42 @@ p.mgTop {
     grid-template-columns: repeat(3, 1fr);
     margin-top: 10px;
     margin-bottom: 35px;
+  }
+
+  .produtoItemContainer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 28px;
+  }
+
+  .nomeProdutoContainer {
+    max-width: 180px;
+  }
+
+  .pedidoTitleContainer button {
+    display: none;
+  }
+
+  p.mgTop {
+    display: block;
+  }
+
+  .produtoInfoContainer {
+    display: block;
+  }
+
+  .produtoInfoContainer,
+  .produtoInfoContainer.visible {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .nomeProdutoMobile {
+    display: none;
+  }
+
+  .nomeProdutoDesktop {
+    display: block;
   }
 }

@@ -16,35 +16,48 @@ function ProdutoPedido({ produtoPedidoData }) {
 
   return (
     <div className={styles.produtoItemContainer}>
-      <div className={styles.pedidoTitleContainer}>
-        <h1>{nome}</h1>
-        <button onClick={handleToggleExpanded} type="button">
-          {isExpanded ? (
-            <ChevronUpFilled fontSize={26} />
-          ) : (
-            <ChevronDownFilled fontSize={26} />
-          )}
-        </button>
+      <div className={styles.nomeProdutoContainer}>
+        <div className={styles.pedidoTitleContainer}>
+          <h1 className={styles.nomeProdutoDesktop}>Nome do Produto</h1>
+          <h1 className={styles.nomeProdutoMobile}>{nome}</h1>
+          <button onClick={handleToggleExpanded} type="button">
+            {isExpanded ? (
+              <ChevronUpFilled fontSize={26} />
+            ) : (
+              <ChevronDownFilled fontSize={26} />
+            )}
+          </button>
+        </div>
+        <p className={`${styles.mgTop} ${isExpanded && styles.visible}`}>
+          {nome}
+        </p>
       </div>
-      {isExpanded && (
-        <>
-          <p className={styles.mgTop}>{nome}</p>
-          <div className={styles.produtoInfoContainer}>
-            <h1>Valor Unitário</h1>
-            <p>R$ {valor_unitario.toFixed(2).replace('.', ',')}</p>
-          </div>
-          <div className={styles.produtoInfoContainer}>
-            <h1>Quantidade</h1>
-            <p>{qtd}</p>
-          </div>
-          <div className={styles.produtoInfoContainer}>
-            <h1>Valor Subtotal</h1>
-            <p className="pedidoStatus blue">
-              R$ {valor_subtotal.toFixed(2).replace('.', ',')}
-            </p>
-          </div>
-        </>
-      )}
+      <div
+        className={`${styles.produtoInfoContainer} ${
+          isExpanded && styles.visible
+        }`}
+      >
+        <h1>Valor Unitário</h1>
+        <p>R$ {valor_unitario.toFixed(2).replace('.', ',')}</p>
+      </div>
+      <div
+        className={`${styles.produtoInfoContainer} ${
+          isExpanded && styles.visible
+        }`}
+      >
+        <h1>Quantidade</h1>
+        <p>{qtd}</p>
+      </div>
+      <div
+        className={`${styles.produtoInfoContainer} ${
+          isExpanded && styles.visible
+        }`}
+      >
+        <h1>Valor Subtotal</h1>
+        <p className="pedidoStatus blue">
+          R$ {valor_subtotal.toFixed(2).replace('.', ',')}
+        </p>
+      </div>
     </div>
   );
 }
