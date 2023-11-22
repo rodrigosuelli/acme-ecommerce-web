@@ -3,60 +3,60 @@ import qs from 'qs';
 import { notFound } from 'next/navigation';
 import ProductContent from './ProductContent';
 
-async function fetchSlugsByPage({ page }) {
-  const query = qs.stringify(
-    {
-      fields: ['slug'],
-      pagination: {
-        page,
-        pageSize: 250,
-      },
-    },
-    {
-      encodeValuesOnly: true, // prettify URL
-    }
-  );
+// async function fetchSlugsByPage({ page }) {
+//   const query = qs.stringify(
+//     {
+//       fields: ['slug'],
+//       pagination: {
+//         page,
+//         pageSize: 250,
+//       },
+//     },
+//     {
+//       encodeValuesOnly: true, // prettify URL
+//     }
+//   );
 
-  const url = `${process.env.STRAPI_API_URL}/produtos?${query}`;
+//   const url = `${process.env.STRAPI_API_URL}/produtos?${query}`;
 
-  const response = await fetch(url, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
-    },
-  }).then((res) => res.json());
+//   const response = await fetch(url, {
+//     method: 'GET',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+//     },
+//   }).then((res) => res.json());
 
-  return response;
-}
+//   return response;
+// }
 
-export async function generateStaticParams() {
-  const getAllDataPromiseArray = [];
+// export async function generateStaticParams() {
+//   const getAllDataPromiseArray = [];
 
-  const initialRes = await fetchSlugsByPage({ page: 1 });
+//   const initialRes = await fetchSlugsByPage({ page: 1 });
 
-  const { page, pageCount } = initialRes.meta.pagination;
+//   const { page, pageCount } = initialRes.meta.pagination;
 
-  if (page < pageCount) {
-    for (let i = page + 1; i <= pageCount; i++) {
-      const res = fetchSlugsByPage({ page: i });
-      getAllDataPromiseArray.push(res);
-    }
-  }
+//   if (page < pageCount) {
+//     for (let i = page + 1; i <= pageCount; i++) {
+//       const res = fetchSlugsByPage({ page: i });
+//       getAllDataPromiseArray.push(res);
+//     }
+//   }
 
-  const allResponses = await Promise.all(getAllDataPromiseArray);
-  allResponses.push(initialRes);
+//   const allResponses = await Promise.all(getAllDataPromiseArray);
+//   allResponses.push(initialRes);
 
-  const staticParamsArrays = allResponses.map((req) =>
-    req.data.map((produto) => ({
-      slug: produto.attributes.slug,
-    }))
-  );
+//   const staticParamsArrays = allResponses.map((req) =>
+//     req.data.map((produto) => ({
+//       slug: produto.attributes.slug,
+//     }))
+//   );
 
-  const staticParams = staticParamsArrays.flat();
+//   const staticParams = staticParamsArrays.flat();
 
-  return staticParams;
-}
+//   return staticParams;
+// }
 
 async function getData(slug) {
   const query = qs.stringify(
