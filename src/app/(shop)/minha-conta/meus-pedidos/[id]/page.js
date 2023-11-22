@@ -3,6 +3,7 @@
 import qs from 'qs';
 
 import useSWR from 'swr';
+import { notFound } from 'next/navigation';
 import withPrivateRoute from '../../../../hoc/withPrivateRoute';
 import api from '../../../../services/api';
 import styles from './pedido.module.css';
@@ -69,6 +70,10 @@ function Pedido({ params }) {
   );
 
   if (error) {
+    if (error?.response?.data?.error?.name === 'ForbiddenError') {
+      notFound();
+    }
+
     return (
       <h3>
         Erro, não foi possível buscar os dados do pedido no banco de dados.
