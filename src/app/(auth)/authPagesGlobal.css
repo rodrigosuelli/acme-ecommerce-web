@@ -3,6 +3,39 @@
   flex-direction: column;
   align-items: center;
   min-height: 100%;
+  background: var(--neutral-n20);
+}
+
+.logoAuth {
+  position: absolute;
+  margin: 10px 0;
+  top: 20px;
+  right: 6%;
+  z-index: 1;
+}
+
+.acmeLogoBack {
+  display: none;
+}
+
+.backButtonLink {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-image: url(/images/circleBackButton.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 20px;
+  left: 6%;
+  z-index: 1;
+}
+
+.backButtonLink svg {
+  color: var(--white);
 }
 
 .authPageContainer h1,
@@ -24,18 +57,28 @@
   margin-bottom: 25px;
 }
 
-.authForm {
-  margin-top: 28px;
+.formWrapper {
+  padding: 86px 0;
   display: flex;
   flex-direction: column;
-  width: 280px;
+  align-items: center;
+  background: var(--white);
+  width: 100%;
+  height: 100vh;
   z-index: 0;
 }
 
+.authForm {
+  margin-top: 3vh;
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+}
+
 .authForm label {
-  color: var(--neutral-n500);
+  color: var(--neutral-n800);
   width: fit-content;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1rem;
   margin-bottom: 15px;
 }
@@ -45,11 +88,7 @@
   margin-bottom: 24px;
   height: 50px;
   border-radius: 5px;
-  background: var(--neutral-n10);
-}
-
-.authForm input:last-of-type {
-  margin-bottom: 20px;
+  background: var(--neutral-n20);
 }
 
 .authForm .passwordField {
@@ -109,40 +148,82 @@ p.paragraphWithLink a.textLink {
 
 @media only screen and (min-width: 500px) {
   .authPageContainer h1 {
-    font-size: 2.5rem;
+    font-size: 2.0625rem;
     margin-bottom: 24px;
   }
 
   .authPageContainer p {
-    font-size: 1.25rem;
+    font-size: 1.1875rem;
     margin-bottom: 32px;
   }
 
+  .logoAuth {
+    margin: 20px 0;
+  }
+
+  .backButtonLink {
+    width: 70px;
+    height: 70px;
+  }
+
+  .formWrapper {
+    padding: 92px 0;
+  }
+
   .authForm {
-    margin-top: 6vh;
+    margin-top: 5vh;
     width: 380px;
+  }
+
+  .authForm label {
+    font-size: 1.1875rem;
   }
 
   .authForm input {
     margin-bottom: 32px;
-    font-size: 1.25rem;
-    height: 60px;
+    font-size: 1.1875rem;
+    height: 56px;
+  }
+
+  .authForm .passwordField {
+    margin-bottom: 32px;
   }
 
   a.textLink {
-    font-size: 1.25rem;
+    font-size: 1.1875rem;
   }
 
   .btnEnterAuth {
-    height: 60px;
-    font-size: 1.25rem;
+    height: 50px;
+    font-size: 1.1875rem;
     margin-bottom: 32px;
   }
 }
 
-@media only screen and (min-width: 901px) {
+@media only screen and (min-width: 900px) {
   .authPageContainer {
     justify-content: center;
+  }
+
+  .authPageContainer::before {
+    content: '';
+    position: fixed;
+    background-image: url(/images/authDesktopBackground.svg);
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    min-height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  .logoAuth {
+    display: none;
+  }
+
+  .backButtonLink {
+    top: 6%;
   }
 
   .authForm {
@@ -151,7 +232,72 @@ p.paragraphWithLink a.textLink {
     justify-content: unset;
   }
 
+  .formWrapper {
+    margin: 24px 0;
+    height: unset;
+    width: unset;
+    padding: 56px 50px;
+    border-radius: 6px;
+    border: 1px solid var(--neutral-n60);
+  }
+
   a.textLink {
     margin-bottom: unset;
+  }
+
+  p.paragraphWithLink {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width: 1080px) {
+  .backButtonLink {
+    width: 90px;
+    height: 90px;
+    left: 9%;
+  }
+
+  .backButtonLink svg {
+    font-size: 28px;
+  }
+
+  .acmeLogoBack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 180px;
+    background: var(--primary-p300);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 8%;
+    right: 4%;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .backButtonLink {
+    top: 8%;
+    left: 13%;
+  }
+}
+
+@media only screen and (min-width: 1380px) {
+  .acmeLogoBack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+    height: 220px;
+    background: var(--primary-p300);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 8%;
+    right: 9%;
+  }
+
+  .acmeLogoBack img {
+    width: 120px;
+    height: 40px;
   }
 }
