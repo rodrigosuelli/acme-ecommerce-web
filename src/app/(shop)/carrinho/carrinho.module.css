@@ -51,12 +51,16 @@
 .produtoItemContainer .produtoInfo {
   width: 100%;
   margin-left: 8px;
+  overflow: hidden;
 }
 
 .produtoItemContainer .produtoInfo h2,
 .produtoItemContainer .produtoInfo h3 {
   font-size: 0.95rem;
   margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .produtoItemContainer .produtoInfo h2 {
@@ -288,9 +292,6 @@
   .produtoItemContainer .produtoInfo h3 {
     font-size: 1rem;
     margin-bottom: 8px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   .produtoItemContainer .produtoInfo h3 {
