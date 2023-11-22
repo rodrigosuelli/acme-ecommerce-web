@@ -6,6 +6,8 @@ import { CgSpinner } from 'react-icons/cg';
 import Link from 'next/link';
 import { useUser } from '@/contexts/userContext';
 
+import styles from './esqueciSenha.module.css';
+
 function EsqueciSenha() {
   const [isSendingForm, setIsSendingForm] = useState(false);
   const [isEmailSent, setIsEmailSent] = useState(false);
@@ -45,7 +47,10 @@ function EsqueciSenha() {
             encontre nosso email imediatamente. Se precisar de mais assistência,
             nossa equipe de suporte está à disposição para ajudar.
           </p>
-          <Link href="/login" className="btnPrimary btnEnterAuth">
+          <Link
+            href="/login"
+            className={`btnPrimary btnEnterAuth ${styles.btnPageCustom}`}
+          >
             Retornar para Login
           </Link>
         </>
@@ -69,7 +74,7 @@ function EsqueciSenha() {
           />
           <button
             disabled={isSendingForm}
-            className="btnPrimary btnEnterAuth"
+            className={`btnPrimary btnEnterAuth ${styles.btnPageCustom}`}
             type="submit"
           >
             {isSendingForm ? <CgSpinner size={26} /> : 'Enviar Email'}

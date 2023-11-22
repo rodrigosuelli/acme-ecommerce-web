@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { useUser } from '@/contexts/userContext';
 import { useSearchParams } from 'next/navigation';
 
+import styles from './redefinirSenha.module.css';
+
 function RedefinirSenha() {
   const [isSendingForm, setIsSendingForm] = useState(false);
   const [isPasswordReset, setIsPasswordReset] = useState(false);
@@ -46,7 +48,10 @@ function RedefinirSenha() {
             sua nova senha nas próximas vezes em que fizer login na plataforma.
           </p>
 
-          <Link href="/" className="btnPrimary btnEnterAuth">
+          <Link
+            href="/"
+            className={`btnPrimary btnEnterAuth ${styles.btnPageCustom}`}
+          >
             Ir para a homepage
           </Link>
         </>
@@ -81,7 +86,7 @@ function RedefinirSenha() {
           />
           <button
             disabled={isSendingForm}
-            className="btnPrimary btnEnterAuth"
+            className={`btnPrimary btnEnterAuth ${styles.btnPageCustom}`}
             type="submit"
           >
             {isSendingForm ? <CgSpinner size={26} /> : 'Redefinir Senha'}
