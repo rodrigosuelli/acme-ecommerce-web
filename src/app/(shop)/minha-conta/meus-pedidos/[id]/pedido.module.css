@@ -7,7 +7,6 @@
 }
 
 .pedidoIndividualInfoContainer {
-  composes: pedidoIndividualInfoContainer from '../meusPedidos.module.css';
   margin-top: 0px;
   margin-bottom: 20px;
   display: block;
@@ -24,9 +23,19 @@
 }
 
 .pedidoItemContainer {
-  composes: pedidoItemContainer from '../meusPedidos.module.css';
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  outline: 1px solid var(--neutral-n60);
+  border-radius: 12px;
+  width: 100%;
+
   min-height: 72px;
   padding: 23px 25px;
+}
+
+.pedidoItemContainer:not(:last-child) {
+  margin-bottom: 20px;
 }
 
 .pedidoItemContainer .pedidoIndividualInfoContainer {
@@ -43,8 +52,16 @@
 }
 
 .pedidoTitleContainer {
-  composes: pedidoTitleContainer from '../meusPedidos.module.css';
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   margin: 0;
+}
+
+.pedidoTitleContainer button {
+  color: var(--neutral-n800);
+  padding-left: 5px;
 }
 
 .pedidoTitleContainer h1 {
@@ -57,27 +74,4 @@
 
 p.mgTop {
   margin-top: 12px;
-}
-
-@media only screen and (min-width: 1020px) {
-  .pedidoTitleContainer {
-    width: 100%;
-  }
-
-  .pedidoTitleContainer button {
-    display: flex;
-  }
-
-  .pedidoItemContainer {
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-  }
-
-  .pedidoIndividualInfoContainer,
-  .pedidoIndividualInfoContainer.visible,
-  .pedidoIndividualInfoContainer:last-of-type {
-    margin-top: 0 !important;
-    margin-bottom: 20px !important;
-  }
 }
