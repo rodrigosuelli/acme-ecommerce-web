@@ -1,15 +1,37 @@
-.pedidoInvidivualPageContainer h1 {
+.pedidoInvidivualPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.pedidoInvidivualPageWrapper {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 310px;
+  width: 78%;
+  margin: 0 auto;
+}
+
+.pageTitleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.pedidoInvidivualPage h1 {
   margin-bottom: 8px;
 }
 
-.pedidoInvidivualPageContainer p {
+.pedidoInvidivualPage p {
   margin-bottom: 15px;
 }
 
-.pedidoIndividualInfoContainer {
-  margin-top: 0px;
+.gridContainer {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(1, 1fr);
   margin-bottom: 20px;
-  display: block;
 }
 
 .pedidoIndividualInfoContainer h1 {
@@ -22,7 +44,7 @@
   margin: 0;
 }
 
-.pedidoItemContainer {
+.produtoItemContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,20 +56,22 @@
   padding: 23px 25px;
 }
 
-.pedidoItemContainer:not(:last-child) {
+.produtoItemContainer:not(:last-child) {
   margin-bottom: 20px;
 }
 
-.pedidoItemContainer .pedidoIndividualInfoContainer {
+.produtoInfoContainer {
   margin-top: 16px;
   margin-bottom: 0;
 }
 
-.pedidoItemContainer h1 {
+.produtoItemContainer h1 {
+  font-size: 1.1875rem;
   margin-bottom: 12px;
 }
 
-.pedidoItemContainer p {
+.produtoItemContainer p {
+  color: var(--neutral-n400);
   margin: 0;
 }
 
@@ -74,4 +98,47 @@
 
 p.mgTop {
   margin-top: 12px;
+}
+
+@media only screen and (min-width: 760px) {
+  .pedidoInvidivualPage {
+    padding-top: 35px;
+    padding-bottom: 50px;
+  }
+
+  .pedidoInvidivualPageWrapper {
+    max-width: 500px;
+  }
+
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 5px;
+    margin-bottom: 30px;
+  }
+
+  .pedidoIndividualInfoContainer {
+    background: var(--neutral-n20);
+    border-radius: 6px;
+    padding: 16px 30px;
+  }
+}
+
+@media only screen and (min-width: 1020px) {
+  .pedidoInvidivualPageWrapper {
+    max-width: 800px;
+  }
+
+  .pageTitleContainer h1 {
+    font-size: 1.5625rem;
+  }
+
+  .pageTitleContainer p {
+    font-size: 1.0625rem;
+  }
+
+  .gridContainer {
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 10px;
+    margin-bottom: 35px;
+  }
 }

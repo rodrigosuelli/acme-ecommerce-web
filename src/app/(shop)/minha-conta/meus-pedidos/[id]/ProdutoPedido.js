@@ -15,7 +15,7 @@ function ProdutoPedido({ produtoPedidoData }) {
   }
 
   return (
-    <div className={styles.pedidoItemContainer}>
+    <div className={styles.produtoItemContainer}>
       <div className={styles.pedidoTitleContainer}>
         <h1>{nome}</h1>
         <button onClick={handleToggleExpanded} type="button">
@@ -29,15 +29,15 @@ function ProdutoPedido({ produtoPedidoData }) {
       {isExpanded && (
         <>
           <p className={styles.mgTop}>{nome}</p>
-          <div className={styles.pedidoIndividualInfoContainer}>
+          <div className={styles.produtoInfoContainer}>
             <h1>Valor Unitário</h1>
             <p>R$ {valor_unitario.toFixed(2).replace('.', ',')}</p>
           </div>
-          <div className={styles.pedidoIndividualInfoContainer}>
+          <div className={styles.produtoInfoContainer}>
             <h1>Quantidade</h1>
             <p>{qtd}</p>
           </div>
-          <div className={styles.pedidoIndividualInfoContainer}>
+          <div className={styles.produtoInfoContainer}>
             <h1>Valor Subtotal</h1>
             <p className="pedidoStatus blue">
               R$ {valor_subtotal.toFixed(2).replace('.', ',')}

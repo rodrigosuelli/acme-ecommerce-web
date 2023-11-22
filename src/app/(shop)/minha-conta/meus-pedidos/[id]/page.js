@@ -108,44 +108,50 @@ function Pedido({ params }) {
     const dataString = `${day}/${month}/${year}`;
 
     return (
-      <div className={`shopPage ${styles.pedidoInvidivualPageContainer}`}>
-        <h1>Pedido</h1>
-        <p>#{idPedido}</p>
-        <div className="marker"></div>
+      <div className={`shopPage ${styles.pedidoInvidivualPage}`}>
+        <div className={styles.pedidoInvidivualPageWrapper}>
+          <div className={styles.pageTitleContainer}>
+            <h1 className={styles.pageTitle}>Pedido</h1>
+            <p>#{idPedido}</p>
+            <div className="marker"></div>
+          </div>
 
-        <div className={styles.pedidoIndividualInfoContainer}>
-          <h1>Status</h1>
-          <p className={`pedidoStatus ${[statusColor]}`}>{statusString}</p>
-        </div>
-        <div className={styles.pedidoIndividualInfoContainer}>
-          <h1>Data</h1>
-          <p>{dataString}</p>
-        </div>
-        <div className={styles.pedidoIndividualInfoContainer}>
-          <h1>Pagamento</h1>
-          <p>{formaPagamentoString}</p>
-        </div>
-        <div className={styles.pedidoIndividualInfoContainer}>
-          <h1>Valor do Frete</h1>
-          <p>R$ {valor_frete.toFixed(2).replace('.', ',')}</p>
-        </div>
-        <div className={styles.pedidoIndividualInfoContainer}>
-          <h1>Valor Total do Pedido</h1>
-          <p className="pedidoStatus blue">
-            R$ {valor_total.toFixed(2).replace('.', ',')}
-          </p>
-        </div>
+          <div className={styles.gridContainer}>
+            <div className={styles.pedidoIndividualInfoContainer}>
+              <h1>Status</h1>
+              <p className={`pedidoStatus ${[statusColor]}`}>{statusString}</p>
+            </div>
+            <div className={styles.pedidoIndividualInfoContainer}>
+              <h1>Data</h1>
+              <p>{dataString}</p>
+            </div>
+            <div className={styles.pedidoIndividualInfoContainer}>
+              <h1>Pagamento</h1>
+              <p>{formaPagamentoString}</p>
+            </div>
+            <div className={styles.pedidoIndividualInfoContainer}>
+              <h1>Valor do Frete</h1>
+              <p>R$ {valor_frete.toFixed(2).replace('.', ',')}</p>
+            </div>
+            <div className={styles.pedidoIndividualInfoContainer}>
+              <h1>Valor Total</h1>
+              <p className="pedidoStatus blue">
+                R$ {valor_total.toFixed(2).replace('.', ',')}
+              </p>
+            </div>
+          </div>
 
-        <h1>Produtos</h1>
-        <div className="marker"></div>
+          <h1>Produtos</h1>
+          <div className="marker"></div>
 
-        <div className="pedidosList">
-          {produtos.map((produtoPedido) => (
-            <ProdutoPedido
-              key={produtoPedido.id}
-              produtoPedidoData={produtoPedido}
-            />
-          ))}
+          <div className="pedidosList">
+            {produtos.map((produtoPedido) => (
+              <ProdutoPedido
+                key={produtoPedido.id}
+                produtoPedidoData={produtoPedido}
+              />
+            ))}
+          </div>
         </div>
       </div>
     );
