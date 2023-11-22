@@ -39,7 +39,7 @@ function MeusPedidos() {
           <div className="marker"></div>
         </div>
 
-        <div className={styles.pedidosList}>
+        <div className="pedidosList">
           {isLoading && <CgSpinner className="spinner" size={36} />}
           {data?.data &&
             data.data.map((pedido) => (

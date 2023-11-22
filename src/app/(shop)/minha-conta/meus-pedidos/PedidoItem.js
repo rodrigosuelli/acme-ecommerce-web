@@ -66,9 +66,7 @@ function PedidoItem({ pedidoData }) {
         }`}
       >
         <h1>Status</h1>
-        <p className={`${styles.pedidoStatus} ${styles[statusColor]}`}>
-          {statusString}
-        </p>
+        <p className={`pedidoStatus ${[statusColor]}`}>{statusString}</p>
       </div>
       <div
         className={`${styles.pedidoIndividualInfoContainer} ${

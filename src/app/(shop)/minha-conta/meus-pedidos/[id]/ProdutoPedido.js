@@ -2,7 +2,6 @@ import { ChevronDownFilled, ChevronUpFilled } from '@fluentui/react-icons';
 import { useState } from 'react';
 
 import styles from './pedido.module.css';
-import meusPedidosStyles from '../meusPedidos.module.css';
 
 function ProdutoPedido({ produtoPedidoData }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -40,9 +39,7 @@ function ProdutoPedido({ produtoPedidoData }) {
           </div>
           <div className={styles.pedidoIndividualInfoContainer}>
             <h1>Valor Subtotal</h1>
-            <p
-              className={`${meusPedidosStyles.pedidoStatus} ${meusPedidosStyles.blue}`}
-            >
+            <p className="pedidoStatus blue">
               R$ {valor_subtotal.toFixed(2).replace('.', ',')}
             </p>
           </div>

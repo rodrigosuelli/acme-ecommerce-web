@@ -10,6 +10,7 @@
   composes: pedidoIndividualInfoContainer from '../meusPedidos.module.css';
   margin-top: 0px;
   margin-bottom: 20px;
+  display: block;
 }
 
 .pedidoIndividualInfoContainer h1 {
@@ -56,4 +57,27 @@
 
 p.mgTop {
   margin-top: 12px;
+}
+
+@media only screen and (min-width: 1020px) {
+  .pedidoTitleContainer {
+    width: 100%;
+  }
+
+  .pedidoTitleContainer button {
+    display: flex;
+  }
+
+  .pedidoItemContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .pedidoIndividualInfoContainer,
+  .pedidoIndividualInfoContainer.visible,
+  .pedidoIndividualInfoContainer:last-of-type {
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+  }
 }

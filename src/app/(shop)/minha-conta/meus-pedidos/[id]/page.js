@@ -7,7 +7,6 @@ import { notFound } from 'next/navigation';
 import withPrivateRoute from '../../../../hoc/withPrivateRoute';
 import api from '../../../../services/api';
 import styles from './pedido.module.css';
-import meusPedidosStyles from '../meusPedidos.module.css';
 import LoadingSpinner from '../../../../components/LoadingSpinner/LoadingSpinner';
 import ProdutoPedido from './ProdutoPedido';
 
@@ -116,11 +115,7 @@ function Pedido({ params }) {
 
         <div className={styles.pedidoIndividualInfoContainer}>
           <h1>Status</h1>
-          <p
-            className={`${meusPedidosStyles.pedidoStatus} ${meusPedidosStyles[statusColor]}`}
-          >
-            {statusString}
-          </p>
+          <p className={`pedidoStatus ${[statusColor]}`}>{statusString}</p>
         </div>
         <div className={styles.pedidoIndividualInfoContainer}>
           <h1>Data</h1>
@@ -136,9 +131,7 @@ function Pedido({ params }) {
         </div>
         <div className={styles.pedidoIndividualInfoContainer}>
           <h1>Valor Total do Pedido</h1>
-          <p
-            className={`${meusPedidosStyles.pedidoStatus} ${meusPedidosStyles.blue}`}
-          >
+          <p className="pedidoStatus blue">
             R$ {valor_total.toFixed(2).replace('.', ',')}
           </p>
         </div>
@@ -146,7 +139,7 @@ function Pedido({ params }) {
         <h1>Produtos</h1>
         <div className="marker"></div>
 
-        <div className={meusPedidosStyles.pedidosList}>
+        <div className="pedidosList">
           {produtos.map((produtoPedido) => (
             <ProdutoPedido
               key={produtoPedido.id}

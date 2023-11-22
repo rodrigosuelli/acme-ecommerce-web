@@ -20,16 +20,6 @@
   flex-direction: column;
 }
 
-.pedidosList {
-  padding-top: 10px;
-  margin-bottom: 35px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
 .pedidoItemContainer {
   display: flex;
   flex-direction: column;
@@ -83,22 +73,6 @@
 
 .pedidoIndividualInfoContainer h1 {
   margin-bottom: 12px;
-}
-
-.pedidoIndividualInfoContainer .pedidoStatus {
-  font-weight: 700;
-}
-
-.pedidoIndividualInfoContainer .pedidoStatus.red {
-  color: var(--danger-d300);
-}
-
-.pedidoIndividualInfoContainer .pedidoStatus.blue {
-  color: var(--primary-p400);
-}
-
-.pedidoIndividualInfoContainer .pedidoStatus.green {
-  color: var(--success-s400);
 }
 
 .btnConferirPedido {

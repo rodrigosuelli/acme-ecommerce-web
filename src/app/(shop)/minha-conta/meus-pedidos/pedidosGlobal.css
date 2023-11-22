@@ -1,0 +1,25 @@
+.pedidosList {
+  padding-top: 10px;
+  margin-bottom: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.pedidoStatus {
+  font-weight: 700;
+}
+
+.pedidoStatus.red {
+  color: var(--danger-d300);
+}
+
+.pedidoStatus.blue {
+  color: var(--primary-p400);
+}
+
+.pedidoStatus.green {
+  color: var(--success-s400);
+}
