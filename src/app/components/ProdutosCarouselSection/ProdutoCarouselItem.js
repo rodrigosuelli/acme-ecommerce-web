@@ -12,14 +12,14 @@ function ProdutoCarouselItem({ produtoData }) {
 
   return (
     <div className={styles.produtoCarouselItemContainer}>
-      <Image
-        src={imgThumbUrl}
-        alt="imagem miniatura do produto"
-        width={156}
-        height={156}
-      />
-      <div className={styles.categoryLabel}>Lançamento</div>
       <Link href={`/produto/${slug}`}>
+        <Image
+          src={imgThumbUrl}
+          alt="imagem miniatura do produto"
+          width={156}
+          height={156}
+        />
+        <div className={styles.categoryLabel}>Lançamento</div>
         <h1>{titulo}</h1>
       </Link>
       <span className={styles.price}>R${preco}</span>
