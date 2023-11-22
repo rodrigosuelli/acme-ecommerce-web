@@ -74,7 +74,7 @@ function EsqueciSenha() {
           />
           <button
             disabled={isSendingForm}
-            className={`btnPrimary btnEnterAuth ${styles.btnPageCustom}`}
+            className="btnPrimary btnEnterAuth"
             type="submit"
           >
             {isSendingForm ? <CgSpinner size={26} /> : 'Enviar Email'}
