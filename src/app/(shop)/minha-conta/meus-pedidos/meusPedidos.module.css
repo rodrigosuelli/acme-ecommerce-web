@@ -1,7 +1,23 @@
-.pedidosPageContainer {
+.pedidosPage {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+}
+
+.pedidosPageWrapper {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 325px;
+  width: 78%;
+  margin: 0 auto;
+}
+
+.pageTitleContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .pedidosList {
@@ -53,6 +69,12 @@
 
 .pedidoIndividualInfoContainer {
   margin-top: 16px;
+  display: none;
+}
+
+.pedidoIndividualInfoContainer.visible {
+  margin-top: 16px;
+  display: block;
 }
 
 .pedidoIndividualInfoContainer:last-of-type {
@@ -83,4 +105,65 @@
   width: 100%;
   height: 44px;
   border-radius: 50px;
+  display: none;
+}
+
+.btnConferirPedido.visible {
+  display: flex;
+}
+
+@media only screen and (min-width: 760px) {
+  .pedidosPage {
+    padding-top: 40px;
+    padding-bottom: 50px;
+  }
+}
+
+@media only screen and (min-width: 1020px) {
+  .pedidosPageWrapper {
+    max-width: 1160px;
+  }
+
+  .pageTitleContainer h1 {
+    font-size: 1.5625rem;
+  }
+
+  .pedidoItemContainer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 28px;
+  }
+
+  .numeroPedidoContainer {
+    min-width: 177px;
+  }
+
+  .pedidoTitleContainer {
+    width: unset;
+  }
+
+  .pedidoTitleContainer button {
+    display: none;
+  }
+
+  .pedidoIndividualInfoContainer {
+    display: block;
+  }
+
+  .pedidoIndividualInfoContainer,
+  .pedidoIndividualInfoContainer.visible,
+  .pedidoIndividualInfoContainer:last-of-type {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .btnConferirPedido {
+    align-self: center;
+    width: 24%;
+    min-width: 180px;
+    max-width: 220px;
+    display: flex;
+    height: 42px;
+  }
 }

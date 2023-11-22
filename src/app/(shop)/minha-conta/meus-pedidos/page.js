@@ -13,6 +13,9 @@ const query = qs.stringify(
   {
     fields: ['id', 'publishedAt', 'forma_pagamento', 'status'],
     sort: ['id:desc'],
+    pagination: {
+      pageSize: 100,
+    },
   },
   {
     encodeValuesOnly: true, // prettify URL
@@ -29,16 +32,20 @@ function MeusPedidos() {
   }
 
   return (
-    <div className={`shopPage ${styles.pedidosPageContainer}`}>
-      <h1>Meus pedidos</h1>
-      <div className="marker"></div>
+    <div className={`shopPage ${styles.pedidosPage}`}>
+      <div className={styles.pedidosPageWrapper}>
+        <div className={styles.pageTitleContainer}>
+          <h1 className={styles.pageTitle}>Meus Pedidos</h1>
+          <div className="marker"></div>
+        </div>
 
-      <div className={styles.pedidosList}>
-        {isLoading && <CgSpinner className="spinner" size={36} />}
-        {data?.data &&
-          data.data.map((pedido) => (
-            <PedidoItem key={pedido.id} pedidoData={pedido} />
-          ))}
+        <div className={styles.pedidosList}>
+          {isLoading && <CgSpinner className="spinner" size={36} />}
+          {data?.data &&
+            data.data.map((pedido) => (
+              <PedidoItem key={pedido.id} pedidoData={pedido} />
+            ))}
+        </div>
       </div>
     </div>
   );

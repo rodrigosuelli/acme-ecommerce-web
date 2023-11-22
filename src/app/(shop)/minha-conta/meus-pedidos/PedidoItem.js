@@ -46,41 +46,54 @@ function PedidoItem({ pedidoData }) {
 
   return (
     <div className={styles.pedidoItemContainer}>
-      <div className={styles.pedidoTitleContainer}>
-        <h1>Numero do Pedido</h1>
-        <button onClick={handleToggleExpanded} type="button">
-          {isExpanded ? (
-            <ChevronUpFilled fontSize={26} />
-          ) : (
-            <ChevronDownFilled fontSize={26} />
-          )}
-        </button>
+      <div className={styles.numeroPedidoContainer}>
+        <div className={styles.pedidoTitleContainer}>
+          <h1>Numero do Pedido</h1>
+          <button onClick={handleToggleExpanded} type="button">
+            {isExpanded ? (
+              <ChevronUpFilled fontSize={26} />
+            ) : (
+              <ChevronDownFilled fontSize={26} />
+            )}
+          </button>
+        </div>
+        <p>#{id}</p>
       </div>
-      <p>#{id}</p>
-      {isExpanded && (
-        <>
-          <div className={styles.pedidoIndividualInfoContainer}>
-            <h1>Status</h1>
-            <p className={`${styles.pedidoStatus} ${styles[statusColor]}`}>
-              {statusString}
-            </p>
-          </div>
-          <div className={styles.pedidoIndividualInfoContainer}>
-            <h1>Data</h1>
-            <p>{dataString}</p>
-          </div>
-          <div className={styles.pedidoIndividualInfoContainer}>
-            <h1>Pagamento</h1>
-            <p>{formaPagamentoString}</p>
-          </div>
-          <Link
-            className={`btnEnter btnPrimary ${styles.btnConferirPedido}`}
-            href={`/minha-conta/meus-pedidos/${id}`}
-          >
-            Conferir Pedido
-          </Link>
-        </>
-      )}
+
+      <div
+        className={`${styles.pedidoIndividualInfoContainer} ${
+          isExpanded && styles.visible
+        }`}
+      >
+        <h1>Status</h1>
+        <p className={`${styles.pedidoStatus} ${styles[statusColor]}`}>
+          {statusString}
+        </p>
+      </div>
+      <div
+        className={`${styles.pedidoIndividualInfoContainer} ${
+          isExpanded && styles.visible
+        }`}
+      >
+        <h1>Data</h1>
+        <p>{dataString}</p>
+      </div>
+      <div
+        className={`${styles.pedidoIndividualInfoContainer} ${
+          isExpanded && styles.visible
+        }`}
+      >
+        <h1>Pagamento</h1>
+        <p>{formaPagamentoString}</p>
+      </div>
+      <Link
+        className={`btnEnter btnPrimary ${styles.btnConferirPedido} ${
+          isExpanded && styles.visible
+        }`}
+        href={`/minha-conta/meus-pedidos/${id}`}
+      >
+        Conferir Pedido
+      </Link>
     </div>
   );
 }
