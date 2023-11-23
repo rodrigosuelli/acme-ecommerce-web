@@ -4,6 +4,7 @@ import Providers from './providers';
 
 import './globals.css';
 import 'react-toastify/dist/ReactToastify.min.css';
+import 'react-multi-carousel/lib/styles.css';
 
 const roboto = Roboto_Flex({
   subsets: ['latin'],

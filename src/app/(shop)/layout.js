@@ -1,7 +1,6 @@
 import FooterMenu from '../components/FooterMenu/FooterMenu';
 import HeaderMenu from '../components/HeaderMenu/HeaderMenu';
 import './shopPagesGlobal.css';
-import 'react-multi-carousel/lib/styles.css';
 
 export default function ShopLayout({ children }) {
   return (
