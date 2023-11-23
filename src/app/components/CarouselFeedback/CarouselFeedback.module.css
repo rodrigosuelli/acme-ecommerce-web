@@ -11,7 +11,7 @@
 }
 
 .carouselDotList {
-  position: unset;
+  position: unset !important;
 }
 
 .feedbackItem {
