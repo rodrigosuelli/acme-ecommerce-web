@@ -14,7 +14,7 @@ import ProdutosCarouselSection from '../components/ProdutosCarouselSection/Produ
 
 function Homepage() {
   return (
-    <div className={`shopPage ${styles.homePage}`}>
+    <div className={`${styles.homePage}`}>
       <div className={styles.homeHeroContainer}>
         <Image
           priority={true}
