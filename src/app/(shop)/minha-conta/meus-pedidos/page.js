@@ -47,6 +47,10 @@ function MeusPedidos() {
             ))}
         </div>
       </div>
+
+      {!isLoading && !data?.data?.length && (
+        <h3 className={styles.vazioTitle}>Você não possui nenhum pedido...</h3>
+      )}
     </div>
   );
 }
