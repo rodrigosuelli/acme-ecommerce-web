@@ -89,18 +89,21 @@
   background: var(--neutral-n20);
 }
 
-.authForm .passwordField {
+.authForm .passwordField,
+.passwordField {
   width: 100%;
   position: relative;
   margin-bottom: 24px;
 }
 
-.authForm .passwordField input {
+.authForm .passwordField input,
+.passwordField input {
   padding: 0px 49px 0px 16px;
   margin-bottom: unset;
 }
 
-.authForm .passwordField button {
+.authForm .passwordField button,
+.passwordField button {
   color: var(--neutral-n500);
   position: absolute;
   right: 16px;
@@ -189,7 +192,8 @@ p.paragraphWithLink a.textLink {
     height: 56px;
   }
 
-  .authForm .passwordField {
+  .authForm .passwordField,
+  .passwordField {
     margin-bottom: 32px;
   }
 
@@ -282,26 +286,43 @@ p.paragraphWithLink a.textLink {
 @media only screen and (min-width: 1280px) {
   .backButtonLink {
     top: 8%;
-    left: 13%;
+    left: 9%;
   }
 }
 
-@media only screen and (min-width: 1380px) {
+@media only screen and (min-width: 1560px) {
   .acmeLogoBack {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 220px;
-    height: 220px;
+    width: 210px;
+    height: 210px;
     background: var(--primary-p300);
     border-radius: 50%;
     position: absolute;
     bottom: 8%;
-    right: 9%;
+    right: 5%;
   }
 
   .acmeLogoBack img {
     width: 120px;
     height: 40px;
+  }
+}
+
+@media only screen and (min-width: 1660px) {
+  .backButtonLink {
+    left: 13%;
+  }
+
+  .acmeLogoBack {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media only screen and (min-width: 1760px) {
+  .acmeLogoBack {
+    right: 9%;
   }
 }
