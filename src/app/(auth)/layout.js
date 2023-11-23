@@ -9,7 +9,7 @@ export default function AuthPagesLayout({ children }) {
   return (
     <div className="authPageContainer">
       <Link href="/" className="backButtonLink">
-        <ArrowReplyFilled fontSize={26} />
+        <ArrowReplyFilled fontSize={24} />
       </Link>
       <Image
         className="logoAuth"

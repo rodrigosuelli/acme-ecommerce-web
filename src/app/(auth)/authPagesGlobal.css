@@ -8,8 +8,8 @@
 
 .logoAuth {
   position: absolute;
-  margin: 10px 0;
-  top: 20px;
+  margin: 8px 0;
+  top: 22px;
   right: 6%;
   z-index: 1;
 }
@@ -20,14 +20,14 @@
 
 .backButtonLink {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 46px;
+  height: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--primary-p300);
   border-radius: 50%;
-  top: 20px;
+  top: 22px;
   left: 6%;
   z-index: 1;
 }
@@ -157,11 +157,17 @@ p.paragraphWithLink a.textLink {
 
   .logoAuth {
     margin: 20px 0;
+    top: 20px;
   }
 
   .backButtonLink {
     width: 70px;
     height: 70px;
+    top: 20px;
+  }
+
+  .backButtonLink svg {
+    font-size: 26px;
   }
 
   .formWrapper {
