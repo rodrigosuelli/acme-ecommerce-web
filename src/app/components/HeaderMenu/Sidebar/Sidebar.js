@@ -200,7 +200,7 @@ function Sidebar({
           onClick={() => {
             setIsSidebarVisible(false);
           }}
-          href="#"
+          href="/fale-conosco"
           className={styles.link}
         >
           <ChatMultipleFilled fontSize={24} />

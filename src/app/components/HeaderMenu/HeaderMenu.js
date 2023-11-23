@@ -132,7 +132,7 @@ function HeaderMenu() {
                   ))}
               </div>
             </div>
-            <Link className={styles.link} href="/">
+            <Link className={styles.link} href="/fale-conosco">
               Fale Conosco
             </Link>
             <Link className={styles.link} href="/">
