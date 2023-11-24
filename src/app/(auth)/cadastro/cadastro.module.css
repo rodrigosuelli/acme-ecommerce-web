@@ -19,6 +19,10 @@
     width: 792px;
   }
 
+  .inputRow div {
+    margin-bottom: 0;
+  }
+
   .authForm input {
     margin-bottom: 0;
   }
