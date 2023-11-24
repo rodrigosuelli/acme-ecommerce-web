@@ -94,15 +94,6 @@ function Sidebar({
                   onClick={() => {
                     setIsSidebarVisible(false);
                   }}
-                  href="#"
-                  className={styles.link}
-                >
-                  <span>Meu Perfil</span>
-                </Link>
-                <Link
-                  onClick={() => {
-                    setIsSidebarVisible(false);
-                  }}
                   href="/minha-conta/meus-pedidos"
                   className={styles.link}
                 >

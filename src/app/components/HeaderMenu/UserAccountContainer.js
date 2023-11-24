@@ -39,15 +39,6 @@ function UserAccountContainer() {
         >
           Meus Pedidos
         </Link>
-        <Link
-          {...itemProps[1]}
-          onClick={() => {
-            setIsOpen(false);
-          }}
-          href="#"
-        >
-          Meu Perfil
-        </Link>
         <button
           type="button"
           {...itemProps[2]}
