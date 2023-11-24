@@ -1,0 +1,230 @@
+.faleConoscoPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 50px;
+}
+
+.faleConoscoWrapper {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 450px;
+  width: 78%;
+  margin: 0 auto;
+}
+
+.pageTitleContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2px;
+}
+
+.pageTitleContainer h1 {
+  font-size: 1.4375rem;
+}
+
+.enderecoSection,
+.mapSection,
+.socialSection {
+  margin-bottom: 40px;
+}
+
+.enderecoSection {
+  padding: 24px 18px;
+  background: var(--neutral-n20);
+  font-size: 0.9375rem;
+}
+
+.infoContainer {
+  color: #1e1e1e;
+  margin-bottom: 15px;
+}
+
+.infoTitle {
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.infoContent {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.leftContent {
+  margin-bottom: 28px;
+}
+
+.mapSection p {
+  text-align: justify;
+}
+
+.iframeMap {
+  width: 100%;
+  min-height: 250px;
+  height: auto;
+}
+
+.socialIconsWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.iconContainer {
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.iconContainer.magenta {
+  background: #c241a6;
+}
+
+.iconContainer.blue {
+  background: #1f3689;
+}
+
+.iconContainer.green {
+  background: #45cf6c;
+}
+
+.iconContainer.red {
+  background: #be3838;
+}
+
+.faqSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.faqList {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(1, 1fr);
+  width: 100%;
+  max-width: 340px;
+}
+
+.faqItem {
+  background: var(--neutral-n20);
+  padding: 24px;
+}
+
+.faqItem p {
+  margin-top: 16px;
+  display: none;
+}
+
+.faqItem p.visible {
+  display: block;
+}
+
+.faqTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.faqTitleContainer h3,
+.faqTitleContainer button svg {
+  color: #4b676c;
+}
+
+.faqTitleContainer h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+}
+
+.faqTitleContainer button {
+  padding-left: 5px;
+}
+
+@media only screen and (min-width: 500px) {
+  .enderecoSection {
+    font-size: 1rem;
+  }
+
+  .iframeMap {
+    width: 100%;
+    min-height: 350px;
+    height: auto;
+  }
+}
+
+@media only screen and (min-width: 760px) {
+  .enderecoSection,
+  .mapSection,
+  .socialSection {
+    margin-bottom: 6vh;
+  }
+
+  .pageTitleContainer {
+    margin-bottom: 10px;
+  }
+
+  .pageTitleContainer h1 {
+    font-size: 1.5rem;
+  }
+
+  .faleConoscoPage {
+    padding-top: 40px;
+    padding-bottom: 50px;
+  }
+}
+
+@media only screen and (min-width: 1020px) {
+  .faleConoscoWrapper {
+    max-width: 760px;
+  }
+
+  .pageTitleContainer h1 {
+    font-size: 1.625rem;
+  }
+
+  .enderecoSection {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 45px 60px;
+    font-size: 1.0625rem;
+  }
+
+  .mapSection p {
+    font-size: 1.0625rem;
+    text-align: center;
+  }
+
+  .iframeMap {
+    min-height: 420px;
+  }
+
+  .socialIconsWrapper {
+    gap: 12px;
+  }
+
+  .faqList {
+    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: unset;
+  }
+
+  .faqTitleContainer button {
+    display: none;
+  }
+
+  .faqItem h3 {
+    font-size: 1.0625rem;
+  }
+
+  .faqItem p {
+    margin-top: 16px;
+    display: block;
+  }
+}
