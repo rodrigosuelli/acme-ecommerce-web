@@ -24,7 +24,9 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 Esse é o front-end do servidor [acme-ecommerce-server](https://github.com/rodrigosuelli/acme-ecommerce-server).
 
-O Acme E-commerce trata-se de um projeto de desenvolvimento parcial de um e-commerce para uma loja de bijuterias e semijoias. O desenvolvimento foi parcial pois foram deixadas de lado questões como: cálculo de frete, rastreamento, emissão de nota fiscal eletrônica, envio do produto e pagamento do pedido. O site possui as funcionalidades de cadastro, login, visualização e busca de produtos, adição de produtos ao carrinho, fechamento de pedido, e visualização e detalhamento dos pedidos já feitos. Pelo painel CMS do [Strapi](https://strapi.io/) no backend [acme-ecommerce-server](https://github.com/rodrigosuelli/acme-ecommerce-server) os administradores do site podem gerenciar categorias, produtos, pedidos e usuários. O backend também é responsável pela autenticação, envio de emails de 'esqueci minha senha' e armazenamento das imagens e dados dos produtos.
+O Acme E-commerce trata-se de um projeto de desenvolvimento parcial de um e-commerce para uma loja de bijuterias e semijoias. O desenvolvimento foi parcial pois foram deixadas de lado questões como: cálculo de frete, rastreamento, emissão de nota fiscal eletrônica, envio do produto e pagamento do pedido.
+
+O site possui as funcionalidades de cadastro, login, visualização e busca de produtos, adição de produtos ao carrinho, fechamento de pedido, e visualização e detalhamento dos pedidos já feitos. Pelo painel CMS do [Strapi](https://strapi.io/) no backend [acme-ecommerce-server](https://github.com/rodrigosuelli/acme-ecommerce-server) os administradores do site podem gerenciar categorias, produtos, pedidos e usuários. O backend também é responsável pela autenticação, envio de emails de 'esqueci minha senha' e armazenamento das imagens e dados dos produtos.
 
 ## 🔖 Layout
 
