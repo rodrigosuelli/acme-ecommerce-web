@@ -7,7 +7,7 @@ Se quiser dar uma olhada em todas as screenshots, click [aqui](https://drive.goo
 ## 📌 Índice
 
 - [Tecnologias](#-tecnologias)
-- [Projeto](#-projeto)
+- [Projeto](#-sobre-o-projeto)
 - [Layout](#-layout)
 - [Instalação](#-instalação)
 - [Como contribuir](#-como-contribuir)
@@ -20,7 +20,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [React](https://react.dev)
 - [Nextjs (App Router)](https://nextjs.org)
 
-## 💻 Projeto
+## 💻 Sobre o Projeto
 
 Esse é o front-end do servidor [acme-ecommerce-server](https://github.com/rodrigosuelli/acme-ecommerce-server).
 
