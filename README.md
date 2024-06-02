@@ -8,11 +8,10 @@ Se quiser dar uma olhada em todas as screenshots, click [aqui](https://drive.goo
 
 - [Tecnologias](#-tecnologias)
 - [Projeto](#-projeto)
-- [Observações](#observações)
 - [Layout](#-layout)
 - [Instalação](#-instalação)
 - [Como contribuir](#-como-contribuir)
-- [Licença](#memo-licença)
+- [Licença](#-licença)
 
 ## ⚙ Tecnologias
 
