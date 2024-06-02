@@ -7,7 +7,7 @@ Se quiser dar uma olhada em todas as screenshots, click [aqui](https://drive.goo
 ## 📌 Índice
 
 - [Tecnologias](#-tecnologias)
-- [Projeto](#-sobre-o-projeto)
+- [Sobre o Projeto](#-sobre-o-projeto)
 - [Layout](#-layout)
 - [Instalação](#-instalação)
 - [Como contribuir](#-como-contribuir)
